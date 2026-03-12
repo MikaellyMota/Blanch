@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blanch — Óleos Essenciais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:        #9a7a4a;
+      --gold-light:  #b89a6a;
+      --gold-pale:   #e8d9c0;
+      --bg:          #faf7f2;
+      --bg-2:        #f2ede4;
+      --bg-3:        #e8e0d4;
+      --text:        #1e1810;
+      --text-muted:  #7a6e62;
+      --border:      rgba(154,122,74,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-light); border-radius: 3px; }
+
+    /* ─── UTILITIES ─── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 0 auto 48px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 64px;
+      transition: background 0.5s, padding 0.4s, backdrop-filter 0.5s, box-shadow 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(16px);
+      padding: 16px 64px;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid var(--gold-light);
+      color: var(--gold);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('blanch_background_hero.png');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.06);
+      animation: heroZoom 12s ease forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.0); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        rgba(17,14,11,0.78) 0%,
+        rgba(17,14,11,0.52) 48%,
+        rgba(17,14,11,0.18) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+      padding: 0 64px;
+      animation: fadeUp 1.2s 0.2s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5.2vw, 4rem);
+      font-weight: 300;
+      line-height: 1.16;
+      color: #f5f0e8;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-subtitle {
+      font-size: 0.93rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(245,240,232,0.68);
+      max-width: 460px;
+      margin-bottom: 48px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 17px 40px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.35s;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: 0;
+    }
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary:hover { color: #fff; }
+    .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+    .btn-primary svg {
+      width: 15px; height: 15px;
+      transition: transform 0.3s;
+    }
+    .btn-primary:hover svg { transform: translateX(5px); }
+    /* hero button — white text/border over dark background */
+    .hero .btn-primary { color: #f5f0e8; border-color: rgba(245,240,232,0.55); }
+    .hero .btn-primary:hover { color: #fff; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.55;
+      animation: fadeUp 1.4s 1s ease both;
+      color: #fff;
+    }
+    .scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, #fff, transparent);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 0.3; transform: scaleY(1); transform-origin: top; }
+      50%      { opacity: 1;   transform: scaleY(0.5); transform-origin: top; }
+    }
+
+    /* ─── O QUE FAZEMOS ─── */
+    .what-we-do {
+      padding: 120px 64px;
+      background: var(--bg-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .what-we-do-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .what-we-do-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+    .what-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .what-card {
+      display: flex;
+      gap: 22px;
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .what-card:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+    }
+    .what-card-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .what-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .what-card p {
+      font-size: 0.83rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    /* ─── BENEFITS STRIP ─── */
+    .benefits-strip {
+      padding: 40px 32px;
+      background: var(--bg-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: center;
+    }
+    .benefit-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .benefit-item:last-child { border-right: none; }
+    .benefit-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .benefit-item span {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* ─── PRODUCTS ─── */
+    .products {
+      padding: 120px 64px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .products h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .products > p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 72px;
+      line-height: 1.7;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .product-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+      text-align: left;
+      transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+      cursor: default;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: 1;
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-card:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 12px 48px rgba(154,122,74,0.12);
+      transform: translateY(-6px);
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .product-body {
+      padding: 28px 28px 32px;
+    }
+    .product-tag {
+      font-size: 0.63rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .product-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .product-intent {
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .product-composition {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .product-composition strong {
+      display: block;
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+    .product-usage {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .product-usage strong {
+      display: block;
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+    .product-affirmation {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--gold-light);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+    .btn-buy {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-buy:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ─── HOW TO USE ─── */
+    .how-to-use {
+      padding: 120px 64px;
+      background: var(--bg-2);
+      text-align: center;
+    }
+    .how-to-use h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .how-to-use > p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 72px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .step {
+      padding: 48px 32px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      text-align: left;
+      position: relative;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      border-radius: 2px;
+    }
+    .step:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+    }
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .step p {
+      font-size: 0.83rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 120px 64px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 72px;
+      color: var(--text);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial {
+      padding: 44px 36px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      text-align: left;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      border-radius: 2px;
+    }
+    .testimonial:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 22px;
+    }
+    .testimonial blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .testimonial cite {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ─── FAQ ─── */
+    .faq {
+      padding: 120px 64px;
+      background: var(--bg-2);
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .faq-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 72px;
+      color: var(--text);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-align: left;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--gold);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-answer p {
+      padding-bottom: 24px;
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    /* ─── QUOTE BREAK ─── */
+    .quote-break {
+      padding: 100px 64px;
+      background: var(--bg-3);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .quote-break blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text);
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+    .quote-break cite {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      padding: 140px 64px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .cta-final h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .cta-final h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .cta-final p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      line-height: 1.85;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      padding: 120px 64px;
+      background: var(--bg-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+    .about-text p {
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .about-stat {
+      padding: 32px 36px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: box-shadow 0.3s;
+    }
+    .about-stat:hover { box-shadow: 0 4px 20px rgba(154,122,74,0.08); }
+    .about-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .about-stat-label {
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 64px 64px 48px;
+      background: var(--bg-3);
+      border-top: 1px solid var(--border);
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 14px;
+    }
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 280px;
+    }
+    .footer-links h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+    .footer-instagram {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+    .footer-instagram:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      nav { padding: 20px 32px; }
+      nav.scrolled { padding: 14px 32px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 0 32px; }
+      .what-we-do, .about { grid-template-columns: 1fr; gap: 56px; padding: 80px 32px; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .products { padding: 80px 32px; }
+      .how-to-use, .testimonials, .faq, .quote-break, .cta-final { padding: 80px 32px; }
+      footer { padding: 56px 32px 40px; }
+      .footer-top { flex-direction: column; }
+      .benefits-strip { padding: 32px 16px; grid-template-columns: repeat(3, 1fr); }
+      .benefit-item:nth-child(3) { border-right: none; }
+      .benefit-item:nth-child(3) ~ .benefit-item { border-top: 1px solid var(--border); }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo" style="color:#fff">Blanch</a>
+    <ul class="nav-links">
+      <li><a href="#o-que-fazemos">Aromaterapia</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#como-usar">Como Usar</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os óleos essenciais" class="nav-cta" target="_blank">Comprar agora</a>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="section-label">Blanch</p>
+      <h1 class="hero-title">
+        Autocuidado para o corpo,<br>
+        para a <em>mente</em> e para<br>
+        a <em>energia.</em>
+      </h1>
+      <p class="hero-subtitle">
+        A ciência age no seu sistema nervoso.<br>
+        A espiritualidade cuida do seu campo energético.<br>
+        Na Blanch, você não precisa escolher.
+      </p>
+      <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os óleos essenciais" class="btn-primary" target="_blank">
+        <span>Conhecer os produtos</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── BENEFITS STRIP ─── -->
+  <div class="benefits-strip">
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Equilíbrio emocional</span></div>
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Calma no sistema nervoso</span></div>
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Limpeza energética</span></div>
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Clareza mental</span></div>
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Bem-estar corpo e alma</span></div>
+    <div class="benefit-item"><div class="benefit-dot"></div><span>Reconexão com a essência</span></div>
+  </div>
+
+  <!-- ─── O QUE FAZEMOS ─── -->
+  <section class="what-we-do" id="o-que-fazemos">
+    <div class="what-we-do-text">
+      <p class="section-label">O que fazemos</p>
+      <h2>Neurociência e espiritualidade em cada gota.</h2>
+      <p>Criamos produtos de autocuidado que atuam no sistema nervoso e no campo energético. Unimos ingredientes estudados pela neurociência com práticas espirituais e energéticas para ajudar você a se reconectar com seu equilíbrio — por dentro e por fora.</p>
+    </div>
+    <div class="what-cards">
+      <div class="what-card">
+        <svg class="what-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <h3>Reduzir ansiedade e estresse</h3>
+          <p>Ingredientes com ação comprovada no sistema nervoso, formulados para trazer calma real ao corpo e à mente.</p>
+        </div>
+      </div>
+      <div class="what-card">
+        <svg class="what-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div>
+          <h3>Limpar e proteger sua energia</h3>
+          <p>Cada produto carrega uma intenção. Criados para fortalecer seu campo energético e criar uma camada de proteção no seu dia.</p>
+        </div>
+      </div>
+      <div class="what-card">
+        <svg class="what-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <div>
+          <h3>Fortalecer sua presença</h3>
+          <p>Fórmulas sensoriais, produção artesanal e intenção verdadeira — para criar momentos reais de autocuidado que você sente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUTOS ─── -->
+  <section class="products" id="produtos">
+    <p class="section-label" style="justify-content:center">Os Óleos</p>
+    <h2>Cinco intenções. Uma para cada momento.</h2>
+    <p>Óleos perfumados em roller de 10ml, formulados com essências puras e carregados com afirmações.<br>Cada um criado para uma intenção específica — escolha o seu.</p>
+
+    <div class="products-grid">
+
+      <div class="product-card">
+        <img src="produto-camomila-azul.png" alt="Camomila Azul" class="product-img" />
+        <div class="product-body">
+        <span class="product-tag">O perfume que desacelera</span>
+        <h3>Camomila Azul</h3>
+        <p class="product-intent">Ansiedade & Saúde Mental</p>
+        <div class="product-composition">
+          <strong>Composição</strong>
+          Lavanda Francesa · Bergamota · Camomila Romana · Flor de Algodão
+        </div>
+        <div class="product-usage">
+          <strong>Modo de usar</strong>
+          Aplique nas têmporas, pulsos e nuca.
+        </div>
+        <p class="product-affirmation">"Fecho as portas da agitação. Habito meu corpo em paz."</p>
+        <div class="product-footer">
+          <span class="product-price">R$ 27,00</span>
+          <a href="https://wa.me/5585920015254?text=Olá! Gostaria de comprar a Camomila Azul" class="btn-buy" target="_blank">Comprar</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="produto-chave-do-sol.png" alt="Chave do Sol" class="product-img" />
+        <div class="product-body">
+        <span class="product-tag">O perfume que destrava</span>
+        <h3>Chave do Sol</h3>
+        <p class="product-intent">Dinheiro, Prosperidade & Desbloqueio</p>
+        <div class="product-composition">
+          <strong>Composição</strong>
+          Laranja Doce · Canela · Gengibre · Âmbar Dourado · Baunilha
+        </div>
+        <div class="product-usage">
+          <strong>Modo de usar</strong>
+          Aplique no plexo solar, base da coluna e sola dos pés.
+        </div>
+        <p class="product-affirmation">"A energia se move. Os caminhos se abrem. Eu prospero."</p>
+        <div class="product-footer">
+          <span class="product-price">R$ 27,00</span>
+          <a href="https://wa.me/5585920015254?text=Olá! Gostaria de comprar o Chave do Sol" class="btn-buy" target="_blank">Comprar</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="produto-poder-olibano.png" alt="Poder do Olíbano" class="product-img" />
+        <div class="product-body">
+        <span class="product-tag">O perfume que protege</span>
+        <h3>Poder do Olíbano</h3>
+        <p class="product-intent">Proteção Energética & Emocional</p>
+        <div class="product-composition">
+          <strong>Composição</strong>
+          Alecrim · Olíbano · Cravo · Sândalo
+        </div>
+        <div class="product-usage">
+          <strong>Modo de usar</strong>
+          Aplique na nuca, umbigo, peito e pulsos.
+        </div>
+        <p class="product-affirmation">"Minha energia é sagrada. Estou protegida por dentro e por fora."</p>
+        <div class="product-footer">
+          <span class="product-price">R$ 27,00</span>
+          <a href="https://wa.me/5585920015254?text=Olá! Gostaria de comprar o Poder do Olíbano" class="btn-buy" target="_blank">Comprar</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="produto-salvia-branca.png" alt="Sálvia Branca" class="product-img" />
+        <div class="product-body">
+        <span class="product-tag">O perfume que renova</span>
+        <h3>Sálvia Branca</h3>
+        <p class="product-intent">Limpeza Espiritual & Recomeço</p>
+        <div class="product-composition">
+          <strong>Composição</strong>
+          Eucalipto · Limão Siciliano · Sálvia Esclareia · Flor Branca
+        </div>
+        <div class="product-usage">
+          <strong>Modo de usar</strong>
+          Aplique no umbigo, plexo solar, nuca e sola dos pés.
+        </div>
+        <p class="product-affirmation">"Eu me limpo. Eu me renovo."</p>
+        <div class="product-footer">
+          <span class="product-price">R$ 27,00</span>
+          <a href="https://wa.me/5585920015254?text=Olá! Gostaria de comprar a Sálvia Branca" class="btn-buy" target="_blank">Comprar</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="produto-eu-sou-luz.png" alt="Eu Sou Luz" class="product-img" />
+        <div class="product-body">
+        <span class="product-tag">O perfume que desperta</span>
+        <h3>Eu Sou Luz</h3>
+        <p class="product-intent">Autoestima & Amor Próprio</p>
+        <div class="product-composition">
+          <strong>Composição</strong>
+          Gerânio · Ylang-Ylang · Baunilha Natural · Ylang Floral Doce
+        </div>
+        <div class="product-usage">
+          <strong>Modo de usar</strong>
+          Aplique no peito, pescoço, pulsos e baixo ventre.
+        </div>
+        <p class="product-affirmation">"Eu floresço. Eu me escolho. Eu sou suficiente."</p>
+        <div class="product-footer">
+          <span class="product-price">R$ 27,00</span>
+          <a href="https://wa.me/5585920015254?text=Olá! Gostaria de comprar o Eu Sou Luz" class="btn-buy" target="_blank">Comprar</a>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── COMO USAR ─── -->
+  <section class="how-to-use" id="como-usar">
+    <p class="section-label" style="justify-content:center">Como usar</p>
+    <h2>Em quatro passos simples.</h2>
+    <p>Um ritual que demora menos de um minuto e transforma seu estado por horas.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Escolha sua intenção</h3>
+        <p>O que você quer cultivar hoje? Calma, proteção, prosperidade, limpeza ou amor próprio?</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Aplique nos pontos indicados</h3>
+        <p>Cada óleo tem seus pontos específicos — têmporas, pulsos, nuca, plexo solar ou peito.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Respire fundo</h3>
+        <p>Inspire profundamente após a aplicação. É nesse momento que as essências ativam o sistema nervoso.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Declare a afirmação</h3>
+        <p>Diga em voz alta ou mentalize a afirmação do óleo. A intenção + o aroma = o campo completo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEPOIMENTOS ─── -->
+  <section class="testimonials">
+    <p class="section-label" style="justify-content:center">Quem já usa</p>
+    <h2>O que muda quando você<br>aplica com intenção.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Nunca pensei que um óleo pudesse fazer diferença nos meus episódios de ansiedade. Uso a Camomila Azul toda manhã antes de sair de casa. Meu sistema nervoso agradece."</blockquote>
+        <cite>Camila R. — Fortaleza</cite>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"O Eu Sou Luz me acompanha faz três meses. É difícil de explicar o que acontece quando você aplica com a afirmação — mas algo muda. No corpo, na postura, no dia inteiro."</blockquote>
+        <cite>Mariana L. — Fortaleza</cite>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Comecei usando o Poder do Olíbano por curiosidade e hoje não saio de casa sem ele. A sensação de proteção é real — meu dia flui diferente, mais leve e mais centrado."</blockquote>
+        <cite>Juliana S. — Recife</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq">
+    <div class="faq-inner">
+      <p class="section-label" style="justify-content:center">Dúvidas</p>
+      <h2>Tudo que você precisa saber.</h2>
+      <div class="faq-item">
+        <button class="faq-question">
+          Os óleos são seguros para a pele?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-answer"><p>Sim. Todos os óleos Blanch são formulados com essências diluídas em base carreadora vegetal, seguros para aplicação direta na pele. Caso você tenha pele sensível, recomendamos testar em uma pequena área antes do uso regular.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Preciso acreditar em espiritualidade para usar?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-answer"><p>Não. Os benefícios aromáticos e a ação no sistema nervoso são reais e independem de crenças. As afirmações e intenções são um convite — use se ressoar com você, ignore se preferir. O aroma funciona de qualquer forma.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Quantas vezes por dia posso aplicar?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-answer"><p>Você pode aplicar 2 a 3 vezes ao dia. Muitos clientes usam pela manhã como ritual de intenção, no meio do dia para recarregar, e à noite como parte do ritual de relaxamento.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Os óleos têm cheiro forte?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-answer"><p>Os aromas são equilibrados — presentes e marcantes, mas não enjoativos. São desenvolvidos para serem usados no corpo durante o dia sem incomodar quem está ao seu redor. Cada óleo tem uma personalidade aromática única.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── QUOTE BREAK ─── -->
+  <div class="quote-break">
+    <blockquote>"Acreditamos que o verdadeiro autocuidado tem duas portas: a da ciência e a da fé. Na Blanch, unimos neurociência e espiritualidade para abrir as duas juntas."</blockquote>
+    <cite>— Blanch</cite>
+  </div>
+
+  <!-- ─── CTA FINAL ─── -->
+  <section class="cta-final">
+    <p class="section-label" style="justify-content:center">Comece agora</p>
+    <h2>Você já sabe qual<br><em>intenção</em> quer cultivar.</h2>
+    <p>Escolha um óleo. Respire fundo e siga o que seu corpo está pedindo. O primeiro passo é simples.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os óleos essenciais" class="btn-primary" target="_blank">
+        <span>Escolher meu óleo</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://instagram.com/blanchenergia" class="btn-secondary" target="_blank">Ver no Instagram</a>
+    </div>
+  </section>
+
+  <!-- ─── SOBRE ─── -->
+  <section class="about" id="sobre">
+    <div class="about-text">
+      <p class="section-label">Sobre a Blanch</p>
+      <h2>Neurociência e espiritualidade juntas.</h2>
+      <p>Criamos produtos sensoriais que unem neurociência e espiritualidade para acalmar o sistema nervoso, equilibrar a energia e reconectar você com a sua essência.</p>
+      <p>Cada fórmula nasce com propósito. Cada detalhe é pensado para ajudar você a se reconectar com seu equilíbrio. Porque cuidar de você vai além do físico. É corpo, mente e alma.</p>
+    </div>
+    <div class="about-visual">
+      <div class="about-stat">
+        <div class="about-stat-num">5</div>
+        <div class="about-stat-label">Óleos com intenção única</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">10ml</div>
+        <div class="about-stat-label">Roller compacto para o dia a dia</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">100%</div>
+        <div class="about-stat-label">Formulados com essências puras</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer id="contato">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Blanch</a>
+        <p>Produtos de autocuidado que unem neurociência e espiritualidade para transformar como você se sente.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#o-que-fazemos">Aromaterapia</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#como-usar">Como Usar</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5585920015254" target="_blank">WhatsApp</a></li>
+          <li><a href="https://instagram.com/blanchenergia" target="_blank">@blanchenergia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Blanch. Todos os direitos reservados.</p>
+      <a href="https://instagram.com/blanchenergia" class="footer-instagram" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @blanchenergia
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll — transition from white (over dark hero) to dark (over light page)
+    const navbar = document.getElementById('navbar');
+    const navLogo = navbar.querySelector('.nav-logo');
+    const navLinks = navbar.querySelectorAll('.nav-links a');
+    const navCta = navbar.querySelector('.nav-cta');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+      navLogo.style.color = scrolled ? '' : '#fff';
+      navLinks.forEach(a => { a.style.color = scrolled ? '' : 'rgba(255,255,255,0.7)'; });
+      if (navCta) navCta.style.borderColor = scrolled ? '' : 'rgba(255,255,255,0.5)';
+      if (navCta) navCta.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.product-card, .step, .testimonial, .what-card, .about-stat').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
