@@ -394,6 +394,25 @@
         max-width: 100%;
       }
     }
+    .banhos-grid {
+      max-width: 1000px;
+    }
+    .banhos-grid .product-card {
+      flex: 0 0 calc(33.333% - 16px);
+      max-width: calc(33.333% - 16px);
+    }
+    @media(max-width:800px) {
+      .banhos-grid .product-card {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+      }
+    }
+    @media(max-width:520px) {
+      .banhos-grid .product-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
     .product-card {
       position: relative;
       background: #fff;
@@ -1163,7 +1182,7 @@
       <em style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--gold);">Escolha o que você precisa viver hoje.</em>
     </p>
 
-    <div class="products-grid" style="max-width: 900px;">
+    <div class="products-grid banhos-grid">
 
       <div class="product-card">
         <img src="banho-recomeco.jpg" alt="Recomeço" class="product-img" />
