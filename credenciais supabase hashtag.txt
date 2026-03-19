@@ -1,0 +1,8 @@
+cliente joao: 
+id: e00dba48-0c74-4537-9de3-c26bc4bada10
+senha: teste123
+
+
+funcionaria maria
+id: ea132b14-4766-4fb9-a528-5b7dca0c0191
+senha: hashfood123
