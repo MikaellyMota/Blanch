@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/3tecnicas.html",
+      "destination": "/3tecnicas",
+      "permanent": true
+    }
+  ]
+}
