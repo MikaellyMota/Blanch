@@ -20,7 +20,7 @@
       --text:        #1e1810;
       --text-muted:  #7a6e62;
       --border:      rgba(154,122,74,0.2);
-      --shipping-bar-height: 38px;
+      --shipping-bar-height: 52px;
     }
 
     html { scroll-behavior: smooth; }
@@ -88,18 +88,20 @@
       display: inline-flex;
       flex-wrap: nowrap;
       white-space: nowrap;
-      animation: shipping-marquee-move 28s linear infinite;
+      animation: shipping-marquee-move 32s linear infinite;
       will-change: transform;
     }
-    .shipping-marquee span {
+    .shipping-marquee-block {
       display: inline-block;
-      padding: 0 2.5rem;
+      padding: 6px 2.5rem;
       font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      line-height: var(--shipping-bar-height);
+      line-height: 1.35;
+      text-align: center;
+      white-space: normal;
     }
     @keyframes shipping-marquee-move {
       0% { transform: translateX(0); }
@@ -112,7 +114,7 @@
         width: 100%;
         transform: none;
       }
-      .shipping-marquee span:last-child { display: none; }
+      .shipping-marquee .shipping-marquee-block:last-child { display: none; }
       .shipping-bar-inner { mask-image: none; -webkit-mask-image: none; }
     }
 
@@ -1216,11 +1218,11 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
-      :root { --shipping-bar-height: 36px; }
-      .shipping-marquee span {
-        font-size: 0.62rem;
-        letter-spacing: 0.08em;
-        padding: 0 1.25rem;
+      :root { --shipping-bar-height: 56px; }
+      .shipping-marquee-block {
+        font-size: 0.58rem;
+        letter-spacing: 0.06em;
+        padding: 6px 1.25rem;
       }
     }
     @media (max-width: 960px) {
@@ -1251,8 +1253,14 @@
   <div class="shipping-bar" role="region" aria-label="Promoção de frete">
     <div class="shipping-bar-inner">
       <div class="shipping-marquee">
-        <span>Frete grátis para todo o Brasil em compras acima de R$ 80,00</span>
-        <span aria-hidden="true">Frete grátis para todo o Brasil em compras acima de R$ 80,00</span>
+        <span class="shipping-marquee-block">
+          Condição especial para o Ceará Frete grátis a partir de R$45<br>
+          Frete grátis para todo o Brasil a partir de R$80
+        </span>
+        <span class="shipping-marquee-block" aria-hidden="true">
+          Condição especial para o Ceará Frete grátis a partir de R$45<br>
+          Frete grátis para todo o Brasil a partir de R$80
+        </span>
       </div>
     </div>
   </div>
