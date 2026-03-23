@@ -20,7 +20,7 @@
       --text:        #1e1810;
       --text-muted:  #7a6e62;
       --border:      rgba(154,122,74,0.2);
-      --shipping-bar-height: 52px;
+      --shipping-bar-height: 46px;
     }
 
     html { scroll-behavior: smooth; }
@@ -93,15 +93,16 @@
     }
     .shipping-marquee-block {
       display: inline-block;
-      padding: 6px 2.5rem;
+      padding: 0 2.75rem;
       font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      line-height: 1.35;
+      line-height: var(--shipping-bar-height);
       text-align: center;
-      white-space: normal;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     @keyframes shipping-marquee-move {
       0% { transform: translateX(0); }
@@ -1218,11 +1219,12 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
-      :root { --shipping-bar-height: 56px; }
+      :root { --shipping-bar-height: 44px; }
       .shipping-marquee-block {
-        font-size: 0.58rem;
-        letter-spacing: 0.06em;
-        padding: 6px 1.25rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        padding: 0 1.5rem;
+        line-height: var(--shipping-bar-height);
       }
     }
     @media (max-width: 960px) {
@@ -1254,12 +1256,10 @@
     <div class="shipping-bar-inner">
       <div class="shipping-marquee">
         <span class="shipping-marquee-block">
-          Condição especial para o Ceará Frete grátis a partir de R$45<br>
-          Frete grátis para todo o Brasil a partir de R$80
+          Condição especial para o Ceará (CE): frete grátis a partir de R$45 · Frete grátis para todo o Brasil a partir de R$80
         </span>
         <span class="shipping-marquee-block" aria-hidden="true">
-          Condição especial para o Ceará Frete grátis a partir de R$45<br>
-          Frete grátis para todo o Brasil a partir de R$80
+          Condição especial para o Ceará (CE): frete grátis a partir de R$45 · Frete grátis para todo o Brasil a partir de R$80
         </span>
       </div>
     </div>
