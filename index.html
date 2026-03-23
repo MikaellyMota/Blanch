@@ -48,6 +48,11 @@
       color: var(--gold);
       margin-bottom: 22px;
     }
+    /* Hero: mantém “Blanch” + traço na mesma linha (não empilha) */
+    .hero .section-label {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
     .section-label::before {
       content: '';
       display: block;
@@ -136,6 +141,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 12px;
       padding: 24px 64px;
       transition: background 0.5s, padding 0.4s, backdrop-filter 0.5s, box-shadow 0.5s;
     }
@@ -152,6 +159,9 @@
       letter-spacing: 0.14em;
       color: var(--text);
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.1;
     }
     .nav-links {
       display: flex;
@@ -186,6 +196,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-shrink: 0;
     }
     .nav-cart-btn {
       position: relative;
