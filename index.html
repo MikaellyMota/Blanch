@@ -20,6 +20,7 @@
       --text:        #1e1810;
       --text-muted:  #7a6e62;
       --border:      rgba(154,122,74,0.2);
+      --shipping-bar-height: 38px;
     }
 
     html { scroll-behavior: smooth; }
@@ -62,10 +63,64 @@
       margin: 0 auto 48px;
     }
 
+    /* ─── BARRA FRETE GRÁTIS ─── */
+    .shipping-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 260;
+      height: var(--shipping-bar-height);
+      background: linear-gradient(90deg, var(--gold) 0%, #7d6340 50%, var(--gold) 100%);
+      color: #faf7f2;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .shipping-bar-inner {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 2%, #000 98%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 2%, #000 98%, transparent 100%);
+    }
+    .shipping-marquee {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      animation: shipping-marquee-move 28s linear infinite;
+      will-change: transform;
+    }
+    .shipping-marquee span {
+      display: inline-block;
+      padding: 0 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: var(--shipping-bar-height);
+    }
+    @keyframes shipping-marquee-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .shipping-marquee {
+        animation: none;
+        justify-content: center;
+        width: 100%;
+        transform: none;
+      }
+      .shipping-marquee span:last-child { display: none; }
+      .shipping-bar-inner { mask-image: none; -webkit-mask-image: none; }
+    }
+
     /* ─── NAV ─── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--shipping-bar-height);
+      left: 0; right: 0;
       z-index: 200;
       display: flex;
       align-items: center;
@@ -1160,6 +1215,14 @@
     .footer-instagram:hover { color: var(--gold); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      :root { --shipping-bar-height: 36px; }
+      .shipping-marquee span {
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        padding: 0 1.25rem;
+      }
+    }
     @media (max-width: 960px) {
       nav { padding: 20px 32px; }
       nav.scrolled { padding: 14px 32px; }
@@ -1184,6 +1247,15 @@
   </style>
 </head>
 <body>
+
+  <div class="shipping-bar" role="region" aria-label="Promoção de frete">
+    <div class="shipping-bar-inner">
+      <div class="shipping-marquee">
+        <span>Frete grátis para todo o Brasil em compras acima de R$ 80,00</span>
+        <span aria-hidden="true">Frete grátis para todo o Brasil em compras acima de R$ 80,00</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ─── NAV ─── -->
   <nav id="navbar">
