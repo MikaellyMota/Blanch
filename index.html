@@ -29,15 +29,17 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --gold:        #9a7a4a;
-      --gold-light:  #b89a6a;
-      --gold-pale:   #e8d9c0;
-      --bg:          #faf7f2;
-      --bg-2:        #f2ede4;
-      --bg-3:        #e8e0d4;
+      --gold:        #a67c3c;
+      --gold-light:  #c49a58;
+      --gold-pale:   #e8d4b8;
+      --bg:          #fff9f3;
+      --bg-2:        #f2e6d8;
+      --bg-3:        #e5d4c4;
       --text:        #1e1810;
-      --text-muted:  #7a6e62;
-      --border:      rgba(154,122,74,0.2);
+      --text-muted:  #5a534a;
+      --border:      rgba(140, 108, 70, 0.32);
+      --card-shade:  rgba(88, 68, 46, 0.11);
+      --card-shade-strong: rgba(88, 68, 46, 0.16);
       --shipping-bar-height: 46px;
     }
 
@@ -95,7 +97,7 @@
       z-index: 260;
       height: var(--shipping-bar-height);
       background: linear-gradient(90deg, var(--gold) 0%, #7d6340 50%, var(--gold) 100%);
-      color: #faf7f2;
+      color: var(--bg);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -459,17 +461,17 @@
     }
     .kit-dupla-box {
       position: relative;
-      background: #fff;
+      background: linear-gradient(180deg, #fffefb 0%, #faf3ea 100%);
       border: 1px solid var(--border);
       border-radius: 2px;
       padding: 36px 36px 32px;
       text-align: left;
-      box-shadow: 0 8px 40px rgba(154,122,74,0.08);
+      box-shadow: 0 8px 40px var(--card-shade);
       transition: border-color 0.35s, box-shadow 0.35s;
     }
     .kit-dupla-box:hover {
       border-color: var(--gold-light);
-      box-shadow: 0 12px 48px rgba(154,122,74,0.12);
+      box-shadow: 0 12px 48px var(--card-shade-strong);
     }
     .kit-dupla-box::before {
       content: '';
@@ -771,12 +773,13 @@
       gap: 22px;
       padding: 28px 32px;
       border: 1px solid var(--border);
-      background: var(--bg);
+      background: linear-gradient(165deg, #fffefb 0%, var(--bg) 100%);
+      box-shadow: 0 3px 18px var(--card-shade);
       transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
     }
     .what-card:hover {
       border-color: var(--gold-light);
-      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+      box-shadow: 0 6px 28px var(--card-shade-strong);
     }
     .what-card-icon {
       width: 40px;
@@ -902,8 +905,9 @@
     }
     .product-card {
       position: relative;
-      background: #fff;
+      background: linear-gradient(180deg, #fffefb 0%, #faf3ea 100%);
       border: 1px solid var(--border);
+      box-shadow: 0 2px 14px var(--card-shade);
       text-align: left;
       transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
       cursor: default;
@@ -927,7 +931,7 @@
     .product-card:hover::before { transform: scaleX(1); }
     .product-card:hover {
       border-color: var(--gold-light);
-      box-shadow: 0 12px 48px rgba(154,122,74,0.12);
+      box-shadow: 0 14px 48px var(--card-shade-strong);
       transform: translateY(-6px);
     }
     .product-img {
@@ -1064,16 +1068,17 @@
     }
     .step {
       padding: 48px 32px;
-      background: var(--bg);
+      background: linear-gradient(165deg, #fffefb 0%, var(--bg) 100%);
       border: 1px solid var(--border);
       text-align: left;
       position: relative;
       transition: border-color 0.3s, box-shadow 0.3s;
       border-radius: 2px;
+      box-shadow: 0 2px 14px var(--card-shade);
     }
     .step:hover {
       border-color: var(--gold-light);
-      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+      box-shadow: 0 6px 28px var(--card-shade-strong);
     }
     .step-number {
       font-family: 'Cormorant Garamond', serif;
@@ -1118,15 +1123,16 @@
     }
     .testimonial {
       padding: 44px 36px;
-      background: var(--bg-2);
+      background: linear-gradient(165deg, #faf2e9 0%, var(--bg-2) 100%);
       border: 1px solid var(--border);
       text-align: left;
       transition: border-color 0.3s, box-shadow 0.3s;
       border-radius: 2px;
+      box-shadow: 0 2px 14px var(--card-shade);
     }
     .testimonial:hover {
       border-color: var(--gold-light);
-      box-shadow: 0 4px 24px rgba(154,122,74,0.08);
+      box-shadow: 0 6px 28px var(--card-shade-strong);
     }
     .stars {
       color: var(--gold);
@@ -1317,12 +1323,13 @@
     }
     .about-stat {
       padding: 32px 36px;
-      background: var(--bg);
+      background: linear-gradient(165deg, #fffefb 0%, var(--bg) 100%);
       border: 1px solid var(--border);
       border-radius: 2px;
+      box-shadow: 0 2px 12px var(--card-shade);
       transition: box-shadow 0.3s;
     }
-    .about-stat:hover { box-shadow: 0 4px 20px rgba(154,122,74,0.08); }
+    .about-stat:hover { box-shadow: 0 4px 22px var(--card-shade-strong); }
     .about-stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
