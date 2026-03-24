@@ -415,6 +415,107 @@
     .testi-card p { font-style: italic; font-size: 1.08rem; margin-bottom: 10px; line-height: 1.72; }
     .testi-author { font-family: sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--sage-dark); }
 
+    /* Depoimentos estilo WhatsApp (reutilizável — duplique .wa-phone e edite o texto) */
+    .testi-wa {
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+    }
+    .testi-wa-head {
+      font-family: sans-serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+      font-weight: 800;
+      color: var(--deep);
+      margin-bottom: 8px;
+    }
+    .testi-wa-note {
+      font-size: 0.98rem;
+      color: var(--gray);
+      max-width: 36rem;
+      margin: 0 auto 26px;
+      line-height: 1.55;
+    }
+    .testi-wa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .wa-phone {
+      max-width: 380px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 14px 42px rgba(47, 38, 35, 0.12);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #0a0a0a;
+    }
+    .wa-phone .wa-top {
+      background: #075e54;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    .wa-phone .wa-body {
+      background: #ece5dd;
+      padding: 12px 10px 16px;
+      min-height: 100px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .wa-day {
+      text-align: center;
+      font-size: 0.68rem;
+      color: rgba(0, 0, 0, 0.45);
+      margin: 8px 0 12px;
+    }
+    .wa-day span {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 4px 12px;
+      border-radius: 8px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);
+    }
+    .wa-row { display: flex; margin-bottom: 6px; }
+    .wa-row.in { justify-content: flex-start; }
+    .wa-row.out { justify-content: flex-end; }
+    .wa-bubble {
+      max-width: 92%;
+      padding: 6px 10px 6px 12px;
+      border-radius: 0 8px 8px 8px;
+      font-size: 0.84rem;
+      line-height: 1.48;
+      color: #111;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+      position: relative;
+    }
+    .wa-bubble.in {
+      background: #fff;
+    }
+    .wa-bubble.out {
+      background: #d9fdd3;
+      border-radius: 8px 0 8px 8px;
+      margin-left: auto;
+    }
+    .wa-bubble .wa-time {
+      display: block;
+      text-align: right;
+      font-size: 0.65rem;
+      color: #667781;
+      margin-top: 4px;
+      padding-left: 8px;
+    }
+    .wa-bubble .wa-time .wa-check {
+      color: #53bdeb;
+      margin-left: 2px;
+      letter-spacing: -2px;
+    }
+
     /* URGÊNCIA */
     .urgency { background: linear-gradient(125deg, var(--mahogany) 0%, var(--sage-dark) 50%, var(--deep) 100%); text-align: center; padding: 56px 20px; }
     .urgency h2 { font-size: clamp(1.45rem,4.2vw,2.05rem); color: var(--white); margin-bottom: 10px; }
@@ -1103,6 +1204,58 @@
         <p>"Aprendi a SENTIR durante a visualização. Essa foi a virada. Meu negócio deu um salto que eu não esperava tão cedo. Vale muito mais que R$ 27."</p>
         <span class="testi-author">— Larissa F., 44 anos</span>
       </div>
+    </div>
+
+    <div class="testi-wa">
+      <p class="testi-wa-head">Mensagens reais</p>
+      <p class="testi-wa-note">Trechos de conversas com quem aplicou o protocolo. Para adicionar outro depoimento no mesmo estilo, duplique um dos cartões <span style="font-family:monospace;font-size:0.88em">.wa-phone</span> no HTML e troque o texto.</p>
+      <div class="testi-wa-grid">
+        <div class="wa-phone">
+          <div class="wa-top">WhatsApp</div>
+          <div class="wa-body">
+            <div class="wa-day"><span>Hoje</span></div>
+            <div class="wa-row in">
+              <div class="wa-bubble in">
+                Eu estava me sentindo completamente travada, principalmente no dinheiro, por que eu estava desempregada. Comecei a aplicar o protocolo todos os dias e em 1 semana apareceu uma oportunidade que eu já estava tentando há meses. Gratidão a vocês 🙏
+                <span class="wa-time">12:26</span>
+              </div>
+            </div>
+            <div class="wa-row out">
+              <div class="wa-bubble out">
+                Obrigada pelo feedback!
+                <span class="wa-time">12:28 <span class="wa-check">✓✓</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wa-phone">
+          <div class="wa-top">WhatsApp</div>
+          <div class="wa-body">
+            <div class="wa-day"><span>Hoje</span></div>
+            <div class="wa-row in">
+              <div class="wa-bubble in">
+                Eu sempre tive a sensação de que nada dava certo pra mim.<br /><br />
+                Depois que comecei a seguir o protocolo, comecei a ver pequenas coisas acontecendo… oportunidades, encontros, respostas<br /><br />
+                Parece até que a &quot;sorte&quot; veio pra mim kkkkk
+                <span class="wa-time">17:06</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Novo depoimento (modelo): copie daqui até o fechamento do .wa-phone e cole em .testi-wa-grid
+        <div class="wa-phone">
+          <div class="wa-top">WhatsApp</div>
+          <div class="wa-body">
+            <div class="wa-day"><span>Hoje</span></div>
+            <div class="wa-row in">
+              <div class="wa-bubble in">Seu texto aqui.<span class="wa-time">00:00</span></div>
+            </div>
+          </div>
+        </div>
+        Resposta à direita: use wa-row out + wa-bubble out em vez de in.
+        Print em vez de HTML: coloque o arquivo em img/ e use <figure><img src="img/nome.png" alt="..." /></figure>
+      -->
     </div>
   </div>
 </section>
