@@ -224,7 +224,8 @@
     .hero-pill.sage { background: var(--sage); }
     .hero-pill.mahogany { background: var(--mahogany); }
     .hero h1 { font-size: clamp(1.85rem, 5.8vw, 3.25rem); font-weight: 700; line-height: 1.1; margin-bottom: 12px; color: var(--deep); position: relative; z-index: 1; }
-    .hero h1 em { color: var(--mahogany); font-style: normal; }
+    /* Não aplicar ao h1.hero-serif-title — a cor do <em> vem de .hero-serif-title em */
+    .hero h1:not(.hero-serif-title) em { color: var(--mahogany); font-style: normal; }
     .hero-kicker {
       font-size: clamp(1.02rem, 2.4vw, 1.2rem); color: var(--gray);
       max-width: 34rem; margin: 0 auto 20px; font-style: italic; line-height: 1.55;
@@ -581,6 +582,29 @@
       text-transform: uppercase;
       color: var(--mahogany-dark);
       margin-bottom: 8px;
+    }
+    .recognize-goodnews {
+      max-width: 36rem;
+      margin: 1.35rem auto 0;
+      padding: 1rem 1.15rem;
+      text-align: left;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--panel) 100%);
+      border-left: 4px solid var(--terracotta);
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(47, 38, 35, 0.06);
+    }
+    .recognize-goodnews p {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      color: var(--deep-soft);
+    }
+    .recognize-goodnews p + p {
+      margin-top: 0.45rem;
+    }
+    .recognize-goodnews strong {
+      color: var(--deep);
+      font-weight: 700;
     }
     .recognize-coda {
       text-align: center;
@@ -1010,7 +1034,14 @@
     }
 
     /* PROMESSA */
-    .promise { background: var(--cream-page); text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .promise {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-page) 100%);
+      text-align: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding-top: clamp(2rem, 5vw, 2.75rem);
+      padding-bottom: clamp(2rem, 5vw, 2.75rem);
+    }
     .promise-text { font-size: 1.14rem; color: var(--text); max-width: 40rem; margin: 0 auto 20px; line-height: 1.78; }
     .promise-lead { margin-bottom: 0.85rem !important; margin-top: 0.15rem !important; }
     .promise-line-tight {
@@ -1024,9 +1055,226 @@
       line-height: 1.55 !important;
       margin-bottom: 0.9rem !important;
     }
-    .promise-cta-wrap { margin-top: 2rem; }
+    .promise-cta-wrap { margin-top: 1.75rem; }
     .promise-subhead { margin-bottom: 12px !important; font-weight: 600; }
     .promise-final { margin-bottom: 0 !important; }
+    /* Secção solução — painel premium */
+    .promise-head {
+      margin-bottom: 1.5rem !important;
+    }
+    .promise-eyebrow {
+      margin-bottom: 0.35rem !important;
+    }
+    .promise-title {
+      text-align: center;
+      max-width: 22ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .promise-title em {
+      color: var(--sage-dark);
+      font-style: italic;
+    }
+    .promise-panel {
+      max-width: min(36rem, 94vw);
+      margin: 0 auto;
+      padding: 0;
+      text-align: left;
+      background: var(--white);
+      border: 1px solid rgba(196, 179, 163, 0.55);
+      border-radius: 16px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 12px 40px rgba(47, 38, 35, 0.08);
+      overflow: hidden;
+    }
+    .promise-panel::before {
+      content: "";
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--mahogany) 0%, var(--gold) 50%, var(--sage) 100%);
+      opacity: 0.9;
+    }
+    .promise-panel-inner {
+      padding: 1.35rem 1.25rem 1.4rem;
+    }
+    @media (min-width: 480px) {
+      .promise-panel-inner {
+        padding: 1.6rem 1.75rem 1.65rem;
+      }
+    }
+    .promise-lead-text {
+      margin: 0 0 1.15rem;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--deep-soft);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .promise-lead-text strong {
+      color: var(--mahogany-dark);
+      font-weight: 700;
+    }
+    .promise-block-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mahogany);
+      margin: 0 0 0.5rem;
+    }
+    .promise-block-label--muted {
+      margin-top: 0.35rem;
+      color: var(--gray-light);
+    }
+    .promise-pillars {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    @media (min-width: 520px) {
+      .promise-pillars {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+    }
+    .promise-pillars li {
+      margin: 0;
+      padding: 0.7rem 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--deep);
+      background: linear-gradient(165deg, #fffefb 0%, var(--lgold) 100%);
+      border: 1px solid rgba(184, 144, 82, 0.35);
+      border-radius: 10px;
+      line-height: 1.3;
+      box-shadow: 0 2px 8px rgba(47, 38, 35, 0.04);
+    }
+    .promise-highlight-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.65rem;
+      margin: 0 0 1.15rem;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--deep);
+      background: linear-gradient(135deg, rgba(184, 144, 82, 0.18) 0%, rgba(125, 154, 114, 0.12) 100%);
+      border: 1px solid rgba(184, 144, 82, 0.4);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .promise-highlight-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.65rem;
+      height: 1.65rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1;
+      margin-right: 0.15rem;
+    }
+    .promise-checks {
+      list-style: none;
+      margin: 0 0 1.2rem;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+    @media (min-width: 520px) {
+      .promise-checks {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.65rem;
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+    .promise-checks li {
+      position: relative;
+      margin: 0;
+      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: var(--deep-soft);
+      text-align: left;
+    }
+    @media (min-width: 520px) {
+      .promise-checks li {
+        padding: 0.75rem 0.65rem 0.75rem 1.55rem;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        min-height: 100%;
+        box-sizing: border-box;
+      }
+    }
+    .promise-checks li::before {
+      content: "✓";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.55rem;
+      font-weight: 800;
+      color: var(--sage-dark);
+      font-size: 0.85rem;
+    }
+    @media (min-width: 520px) {
+      .promise-checks li::before {
+        left: 0.5rem;
+        top: 0.85rem;
+      }
+    }
+    .promise-checks li + li {
+      border-top: 1px dashed rgba(196, 179, 163, 0.5);
+    }
+    @media (min-width: 520px) {
+      .promise-checks li + li {
+        border-top: none;
+      }
+    }
+    .promise-closing {
+      margin: 0;
+      padding: 1.15rem 1rem;
+      background: linear-gradient(180deg, var(--llav) 0%, rgba(246, 243, 248, 0.95) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(169, 155, 179, 0.35);
+      border-left: 4px solid var(--mahogany);
+      text-align: center;
+    }
+    .promise-closing-strong {
+      margin: 0 0 0.4rem;
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2.8vw, 1.18rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.35;
+    }
+    .promise-closing-sub {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--gray);
+      line-height: 1.55;
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .list-bullet--centered {
       margin-top: 0;
       margin-bottom: 1.45rem !important;
@@ -2096,6 +2344,135 @@
     .lp-eyebrow.light {
       color: rgba(255, 255, 255, 0.55);
     }
+    .hero-headline-video {
+      max-width: min(20rem, 92vw);
+      margin: 0 auto 1.35rem;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.25);
+    }
+    .hero-headline-video--stories {
+      max-width: min(30rem, 96vw);
+      margin: 0 auto 1.5rem;
+      border-radius: 18px;
+    }
+    .hero-headline-video__frame {
+      position: relative;
+      line-height: 0;
+    }
+    .hero-headline-video__media {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+    .hero-headline-video__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.55) 100%);
+      border-radius: inherit;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .hero-headline-video__frame.is-playing .hero-headline-video__overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .hero-headline-video__play-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      font-family: var(--font-ui);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .hero-headline-video__play-btn:hover {
+      transform: scale(1.03);
+      filter: brightness(1.08);
+    }
+    .hero-headline-video__play-btn:focus-visible {
+      outline: 2px solid var(--gold-soft, #e8c08a);
+      outline-offset: 4px;
+    }
+    .hero-headline-video__play-icon {
+      width: 4.25rem;
+      height: 4.25rem;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      border: 2px solid rgba(232, 192, 138, 0.65);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      line-height: 1;
+      padding-left: 0.25rem;
+    }
+    .hero-headline-video__play-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+    }
+    .hero-headline-video__pause-btn {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      background: rgba(0, 0, 0, 0.58);
+      color: rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .hero-headline-video__frame.is-playing .hero-headline-video__pause-btn {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .hero-headline-video__pause-btn:hover {
+      background: rgba(0, 0, 0, 0.75);
+      border-color: rgba(232, 192, 138, 0.5);
+    }
+    .hero-headline-video__pause-btn:focus-visible {
+      outline: 2px solid var(--gold-soft, #e8c08a);
+      outline-offset: 3px;
+    }
+    .hero-headline-video__pause-icon {
+      font-size: 0.85rem;
+      line-height: 1;
+      opacity: 0.95;
+    }
     .hero-serif-title {
       font-family: var(--font-hero);
       font-size: clamp(1.65rem, 5vw, 2.45rem);
@@ -2114,7 +2491,7 @@
     }
     .hero-serif-title em {
       font-style: italic;
-      color: rgba(255, 255, 255, 0.9);
+      color: #e8c08a;
     }
     .hero-dark-lead {
       font-size: clamp(1.02rem, 2.4vw, 1.15rem);
@@ -2151,20 +2528,6 @@
       font-style: italic;
       color: rgba(255, 255, 255, 0.82);
       margin-bottom: 1.25rem;
-    }
-    .hero-goodnews {
-      background: rgba(255, 255, 255, 0.07);
-      border-left: 3px solid var(--terracotta);
-      border-radius: 8px;
-      padding: 1rem 1.1rem;
-      max-width: 26rem;
-      margin: 1.25rem auto 1.5rem;
-      text-align: left;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .hero-goodnews strong {
-      color: #fff;
     }
     .hero-price-row {
       margin: 1.25rem auto 1rem;
@@ -2687,6 +3050,31 @@
     <p class="lp-eyebrow">✦ Protocolo Exclusivo · Neurociência &amp; Espiritualidade</p>
     <h1 class="hero-serif-title"><span class="hero-serif-title__plain">O primeiro protocolo de 20 minutos por dia que reprograma sua mente e</span> <em>destrava sua vida na prática.</em></h1>
     <div class="hero-title-bar" aria-hidden="true"></div>
+    <div class="hero-headline-video hero-headline-video--stories" role="region" aria-label="Vídeo do protocolo">
+      <div class="hero-headline-video__frame">
+        <video
+          class="hero-headline-video__media"
+          loop
+          playsinline
+          preload="metadata"
+          width="720"
+          height="1280"
+        >
+          <source src="media/IMG_1852.MOV" type="video/quicktime" />
+          <source src="media/IMG_1852.MOV" type="video/mp4" />
+        </video>
+        <div class="hero-headline-video__overlay">
+          <button type="button" class="hero-headline-video__play-btn" aria-label="Assistir o vídeo com som">
+            <span class="hero-headline-video__play-icon" aria-hidden="true">▶</span>
+            <span class="hero-headline-video__play-text">Assistir com som</span>
+          </button>
+        </div>
+        <button type="button" class="hero-headline-video__pause-btn" aria-label="Pausar vídeo">
+          <span class="hero-headline-video__pause-icon" aria-hidden="true">⏸</span>
+          <span class="hero-headline-video__pause-label">Pausar</span>
+        </button>
+      </div>
+    </div>
     <p class="hero-dark-lead">Se você não mudar o que faz nos próximos 20 minutos do seu dia…</p>
     <ul class="hero-dark-list">
       <li>👉 daqui a 3 meses, sua vida continua igual</li>
@@ -2697,10 +3085,6 @@
     <p class="hero-dark-hit">👉 É um protocolo baseado em neurociência + ativação emocional para quebrar o padrão que trava sua vida.</p>
     <p>Você não precisa de mais tempo.</p>
     <p class="hero-dark-italic"><em>Você precisa usar os mesmos 20 minutos — do jeito certo.</em></p>
-    <div class="hero-goodnews">
-      <p><strong>A boa notícia:</strong> padrão muda.</p>
-      <p>Com o método certo, muda em 20 minutos por dia.</p>
-    </div>
     <div class="hero-price-row">
       <del>De R$ 67,00</del>
       <div class="hero-price-big">R$ 27</div>
@@ -2743,6 +3127,10 @@
       <hr class="lp-hr" />
       <p>Não é azar.<br />Não é falta de capacidade.</p>
       <p class="lp-strong">👉 Você está repetindo o padrão errado todos os dias.</p>
+      <div class="recognize-goodnews">
+        <p><strong>A boa notícia:</strong> padrão muda.</p>
+        <p>Com o método certo, muda em 20 minutos por dia.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2772,26 +3160,35 @@
 <!-- 3. PRODUTO -->
 <section class="promise section">
   <div class="container container--center lp-flow lp-flow--wide">
-    <p class="section-eyebrow" style="text-align: center">✦ A solução</p>
-    <div class="section-head" style="margin-bottom: 0.5rem">
-      <h2 class="title-serif" style="text-align: center; max-width: 22ch; margin-left: auto; margin-right: auto">O protocolo de 20 minutos que começa a <em style="color: var(--sage-dark)">destravar sua vida</em></h2>
+    <p class="section-eyebrow promise-eyebrow" style="text-align: center">✦ A solução</p>
+    <div class="section-head promise-head">
+      <h2 class="title-serif promise-title">O protocolo de 20 minutos que começa a <em>destravar sua vida</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <div class="lp-prose lp-prose--center">
-      <p>O Destrave Sua Energia é um protocolo direto ao ponto que atua na raiz do que trava sua vida:</p>
-      <ul class="lp-prose-list lp-prose-list--inline-max">
-        <li>Seu subconsciente</li>
-        <li>Sua resposta emocional</li>
-        <li>Seu padrão diário</li>
-      </ul>
-      <p class="lp-strong">👉 Em menos de 20 minutos por dia</p>
-      <hr class="lp-hr" />
-      <p>Sem complicação</p>
-      <p>Sem teoria inútil</p>
-      <p>Sem depender de motivação</p>
-      <hr class="lp-hr" />
-      <p class="lp-strong">👉 Você não precisa de mais informação.</p>
-      <p>Você precisa aplicar o que funciona.</p>
+    <div class="promise-panel">
+      <div class="promise-panel-inner">
+        <p class="promise-lead-text">O Destrave Sua Energia é um protocolo direto ao ponto que atua na <strong>raiz</strong> do que trava sua vida:</p>
+        <p class="promise-block-label" id="promise-pillars-label">Onde atua</p>
+        <ul class="promise-pillars" aria-labelledby="promise-pillars-label">
+          <li>Seu subconsciente</li>
+          <li>Sua resposta emocional</li>
+          <li>Seu padrão diário</li>
+        </ul>
+        <div class="promise-highlight-bar" role="status">
+          <span class="promise-highlight-icon" aria-hidden="true">⏱</span>
+          <span>Em menos de 20 minutos por dia</span>
+        </div>
+        <p class="promise-block-label promise-block-label--muted" id="promise-checks-label">No seu dia a dia</p>
+        <ul class="promise-checks" aria-labelledby="promise-checks-label">
+          <li>Sem complicação</li>
+          <li>Sem teoria inútil</li>
+          <li>Sem depender de motivação</li>
+        </ul>
+        <div class="promise-closing">
+          <p class="promise-closing-strong">Você não precisa de mais informação.</p>
+          <p class="promise-closing-sub">Você precisa aplicar o que funciona.</p>
+        </div>
+      </div>
     </div>
     <div class="promise-cta-wrap">
       <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">👉 Quero começar hoje</a>
@@ -3239,6 +3636,49 @@
     showToast();
     loop();
   }, 4000);
+})();
+</script>
+<script>
+(function () {
+  var frame = document.querySelector(".hero-headline-video__frame");
+  var video = document.querySelector(".hero-headline-video__media");
+  var btn = document.querySelector(".hero-headline-video__play-btn");
+  var pauseBtn = document.querySelector(".hero-headline-video__pause-btn");
+  var pauseLabel = document.querySelector(".hero-headline-video__pause-label");
+  var pauseIcon = document.querySelector(".hero-headline-video__pause-icon");
+  if (!frame || !video || !btn || !pauseBtn || !pauseLabel || !pauseIcon) return;
+
+  function syncPauseControl() {
+    if (video.paused) {
+      pauseLabel.textContent = "Continuar";
+      pauseIcon.textContent = "▶";
+      pauseBtn.setAttribute("aria-label", "Continuar vídeo");
+    } else {
+      pauseLabel.textContent = "Pausar";
+      pauseIcon.textContent = "⏸";
+      pauseBtn.setAttribute("aria-label", "Pausar vídeo");
+    }
+  }
+
+  btn.addEventListener("click", function () {
+    video.muted = false;
+    video.volume = 1;
+    video.play().then(function () {
+      frame.classList.add("is-playing");
+      syncPauseControl();
+    }).catch(function () {});
+  });
+
+  pauseBtn.addEventListener("click", function () {
+    if (video.paused) {
+      video.play().catch(function () {});
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", syncPauseControl);
+  video.addEventListener("pause", syncPauseControl);
 })();
 </script>
 
