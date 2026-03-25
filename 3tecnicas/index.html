@@ -2485,19 +2485,81 @@
       color: var(--sage-dark);
     }
     .bonus-369 {
-      margin-top: 1rem;
-      max-width: 26rem;
+      margin-top: 1.85rem;
+      max-width: 28rem;
       margin-left: auto;
       margin-right: auto;
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem 1rem;
-      border: 1px solid var(--line);
+      position: relative;
       text-align: left;
+      padding: 1.35rem 1.25rem 1.35rem 1.4rem;
+      border-radius: 14px;
+      background: linear-gradient(155deg, #fffefb 0%, #fff6ec 45%, #fdf0e4 100%);
+      border: 1px solid rgba(184, 144, 82, 0.45);
+      border-left: 5px solid var(--terracotta);
+      box-shadow:
+        0 10px 36px rgba(47, 38, 35, 0.14),
+        0 2px 10px rgba(196, 112, 74, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
     }
-    .bonus-369 strong {
-      font-size: 1.02rem;
+    .bonus-369-badge {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #c4704a, #a85a3a);
+      padding: 0.42rem 0.9rem;
+      border-radius: 6px;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 2px 10px rgba(160, 80, 55, 0.35);
+    }
+    .bonus-369-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.38rem, 4vw, 1.72rem);
+      font-weight: 700;
+      line-height: 1.18;
       color: var(--deep);
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .bonus-369-title .bonus-369-accent {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+    .bonus-369-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .bonus-369-chips span {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(184, 144, 82, 0.2);
+      color: var(--mahogany-dark);
+      border: 1px solid rgba(184, 144, 82, 0.4);
+    }
+    .bonus-369-body {
+      font-size: 1.02rem;
+      line-height: 1.62;
+      color: var(--deep-soft);
+      margin: 0;
+    }
+    .bonus-369-body strong {
+      color: var(--deep);
+      font-weight: 700;
+    }
+    .bonus-369-body em {
+      color: var(--mahogany);
+      font-style: italic;
+      font-weight: 600;
     }
     .decision-v2 {
       background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-deep) 100%);
@@ -2808,8 +2870,17 @@
       <p style="margin-top: 0.75rem; font-size: 0.95rem">👉 Você não só aprende — você faz, usa e sente a mudança.</p>
     </div>
     <div class="bonus-369">
-      <p><strong>⚡ Técnica 369 estruturada (33 dias)</strong></p>
-      <p style="margin-top: 0.5rem; font-size: 0.92rem; color: var(--gray)">Direcionamento diário claro — tira você do &quot;eu tento&quot; e coloca no <em>&quot;eu faço&quot;</em>.</p>
+      <span class="bonus-369-badge">Bônus · manifestação guiada</span>
+      <h3 class="bonus-369-title">Técnica <span class="bonus-369-accent">369</span> estruturada</h3>
+      <div class="bonus-369-chips" aria-hidden="true">
+        <span>33 dias</span>
+        <span>Roteiro diário</span>
+        <span>Alto impacto</span>
+      </div>
+      <p class="bonus-369-body">
+        <strong>⚡ Você recebe o passo a passo completo:</strong> o que fazer, em que ordem e por quanto tempo — cada dia, por 33 dias.
+        Direcionamento claro que tira você do &quot;eu tento&quot; e coloca no <em>&quot;eu faço&quot;</em>.
+      </p>
     </div>
   </div>
 </section>
