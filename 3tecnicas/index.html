@@ -7,7 +7,7 @@
   <meta name="description" content="Protocolo de 20 minutos por dia. Neurociência + ativação emocional. Quebre o padrão que trava dinheiro, energia e resultados. PDF + bônus. De R$67 por R$27 · garantia 7 dias." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <!-- Meta Pixel exclusivo desta LP (/3tecnicas). O Pixel da home está só em index.html — não misturar. -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -53,13 +53,19 @@
       --white: #fff;
       --prose: 34rem;
       --prose-wide: 38rem;
-      --pad-section-y: clamp(2.35rem, 5vw, 3.75rem);
+      --pad-section-y: clamp(1.75rem, 4vw, 2.85rem);
       --pad-section-x: clamp(1rem, 3.5vw, 1.35rem);
       --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
       --tech-line: rgba(47, 38, 35, 0.09);
       --tech-glow: rgba(61, 154, 138, 0.12);
       --surface-glass: rgba(255, 255, 255, 0.78);
+      --forest: #2a3d34;
+      --forest-mid: #314a40;
+      --forest-card: rgba(255, 255, 255, 0.06);
+      --cream-warm: #f2e8dd;
+      --terracotta: #c4704a;
+      --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; font-size: 16px; }
     @media (min-width: 480px) { html { font-size: 17px; } }
@@ -75,16 +81,16 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* STICKY */
+    /* STICKY — barra fixa inferior (verde, alinhado ao hero) */
     .sticky {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
-      background: linear-gradient(180deg, rgba(26, 21, 18, 0.92) 0%, rgba(15, 13, 12, 0.97) 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(180deg, rgba(52, 78, 64, 0.97) 0%, rgba(37, 61, 52, 0.99) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(184, 155, 106, 0.35);
       padding: 13px 20px;
       display: flex; align-items: center; justify-content: center; gap: 14px;
-      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 -10px 36px rgba(15, 40, 28, 0.4);
     }
     .sticky-inner {
       display: flex;
@@ -228,35 +234,84 @@
     }
     .hero-below { margin-top: 14px; font-family: var(--font-ui); font-size: 0.95rem; color: var(--gray-light); position: relative; z-index: 1; }
     .hero-below span { color: var(--mahogany); font-weight: 700; }
-    /* Prova social: pessoas na página agora */
+    /* Prova social: pessoas na página agora — chip de destaque */
     .hero-live-viewers {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin: 18px auto 0;
+      margin: 1.35rem auto 0;
       max-width: 22rem;
-      font-family: var(--font-ui);
-      font-size: 0.88rem;
-      line-height: 1.35;
       position: relative;
       z-index: 1;
     }
+    .hero-live-card {
+      width: 100%;
+      max-width: 20.5rem;
+      padding: 0.75rem 1rem 0.85rem;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(72, 48, 38, 0.92) 0%, rgba(42, 28, 22, 0.96) 100%);
+      border: 1px solid rgba(200, 165, 110, 0.55);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.07) inset,
+        0 4px 22px rgba(0, 0, 0, 0.38),
+        0 0 32px rgba(184, 144, 82, 0.22);
+      text-align: center;
+    }
+    .hero-live-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 0.45rem;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8cf9a;
+    }
     .hero-live-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #16a34a;
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+      background: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
       flex-shrink: 0;
       animation: heroLivePulse 2s ease-in-out infinite;
     }
     @keyframes heroLivePulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(0.92); }
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5); }
+      50% { opacity: 0.92; transform: scale(1.15); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.28); }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-live-dot { animation: none; }
+    }
+    .hero-live-line {
+      margin: 0;
+      line-height: 1.2;
+    }
+    .hero-live-num {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: clamp(1.85rem, 6vw, 2.35rem);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      color: #fff8ee;
+      text-shadow: 0 2px 18px rgba(200, 165, 110, 0.45);
+      margin-bottom: 0.2rem;
+    }
+    .hero-live-num .js-live-count {
+      color: inherit;
+    }
+    .hero-live-sub {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.35;
     }
     .hero-live-eye {
       width: 20px;
@@ -617,8 +672,8 @@
       margin: 0 auto;
       text-align: center;
     }
-    .section-head .title { margin-bottom: 0.65rem; }
-    .section-head .gold-bar { margin-bottom: 1.25rem; }
+    .section-head .title { margin-bottom: 0.45rem; }
+    .section-head .gold-bar { margin-bottom: 0.85rem; }
     .title {
       font-size: clamp(1.35rem, 3.8vw, 2rem);
       font-weight: 600;
@@ -1010,7 +1065,71 @@
     }
 
     /* DEPOIMENTOS */
-    .testi { background: var(--lgold); }
+    .testi {
+      background: var(--lgold);
+      padding-top: clamp(1.35rem, 3.5vw, 2rem);
+    }
+    .testi .section-eyebrow {
+      margin-bottom: 0.4rem;
+    }
+    .testi .section-head {
+      margin-bottom: 0.35rem;
+    }
+    .testi .section-head .gold-bar {
+      margin-bottom: 0.65rem;
+    }
+    .testi .container.lp-flow {
+      max-width: min(920px, 96vw);
+    }
+    .testi-print-wrap {
+      margin-top: 0.35rem;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      padding: 0 4px;
+      box-sizing: border-box;
+    }
+    .testi-print-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.65rem, 2vw, 1.15rem);
+      align-items: start;
+    }
+    .testi-print {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 28px rgba(47, 38, 35, 0.1);
+      min-width: 0;
+    }
+    .testi-print img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .testi-print-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.65rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 8px;
+        margin: 0 -6px;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .testi-print {
+        flex: 0 0 min(82vw, 280px);
+        max-width: min(82vw, 280px);
+        scroll-snap-align: start;
+      }
+    }
     .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; margin-top: 28px; }
     .testi-card {
       background: var(--white); border-radius: 14px; padding: 24px;
@@ -1022,99 +1141,16 @@
     .testi-card.lp-testi .testi-label { font-style: normal; margin-bottom: 0.5rem; }
     .testi-card.lp-testi blockquote { font-size: 1.05rem; line-height: 1.72; }
 
-    /* Depoimentos estilo WhatsApp — cartões compactos */
-    .testi-wa {
-      margin-top: 40px;
-      padding-top: 36px;
-      border-top: 1px solid var(--line);
-    }
-    .testi-wa--only {
-      margin-top: 0.5rem;
-      padding-top: 0;
-      border-top: none;
-    }
-    .testi-wa-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px 12px;
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: left;
-      align-items: start;
-    }
-    .wa-phone {
-      max-width: 280px;
-      margin: 0 auto;
-      width: 100%;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 8px 22px rgba(47, 38, 35, 0.1);
-      border: 1px solid rgba(0, 0, 0, 0.07);
-      background: #ece5dd;
-    }
-    .wa-phone .wa-top {
-      background: #075e54;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 6px 10px;
+    .lp-protocol-teaser {
+      font-family: var(--font-ui);
+      font-size: clamp(0.86rem, 2.2vw, 0.95rem);
+      line-height: 1.5;
+      color: var(--deep-soft);
+      max-width: 28rem;
+      margin: 0 auto 18px;
       text-align: center;
     }
-    .wa-phone .wa-body {
-      background: #ece5dd;
-      padding: 8px 7px 10px;
-      min-height: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    .wa-day {
-      text-align: center;
-      font-size: 0.56rem;
-      color: rgba(0, 0, 0, 0.45);
-      margin: 4px 0 6px;
-    }
-    .wa-day span {
-      background: rgba(255, 255, 255, 0.92);
-      padding: 2px 8px;
-      border-radius: 6px;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);
-    }
-    .wa-row { display: flex; margin-bottom: 4px; }
-    .wa-row.in { justify-content: flex-start; }
-    .wa-row.out { justify-content: flex-end; }
-    .wa-bubble {
-      max-width: 94%;
-      padding: 5px 8px 5px 9px;
-      border-radius: 0 7px 7px 7px;
-      font-size: 0.68rem;
-      line-height: 1.4;
-      color: #111;
-      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
-      position: relative;
-    }
-    .wa-bubble.in {
-      background: #fff;
-    }
-    .wa-bubble.out {
-      background: #d9fdd3;
-      border-radius: 7px 0 7px 7px;
-      margin-left: auto;
-    }
-    .wa-bubble .wa-time {
-      display: block;
-      text-align: right;
-      font-size: 0.54rem;
-      color: #667781;
-      margin-top: 3px;
-      padding-left: 6px;
-    }
-    .wa-bubble .wa-time .wa-check {
-      color: #53bdeb;
-      margin-left: 2px;
-      letter-spacing: -2px;
-    }
+    .lp-protocol-teaser strong { color: var(--mahogany-dark); font-weight: 700; }
 
     /* URGÊNCIA */
     .urgency { background: linear-gradient(125deg, var(--mahogany) 0%, var(--sage-dark) 50%, var(--deep) 100%); text-align: center; padding: 56px 20px; }
@@ -1134,11 +1170,11 @@
     }
 
     /* GARANTIA */
-    .guarantee { background: var(--lgold); text-align: center; padding: 60px 20px; }
-    .guarantee-box { max-width: 500px; margin: 0 auto; border: 2px dashed var(--gold); border-radius: 18px; padding: 36px; }
-    .guarantee-box .icon { font-size: 3rem; margin-bottom: 14px; }
-    .guarantee-box h3 { font-size: 1.25rem; color: var(--deep); margin-bottom: 10px; }
-    .guarantee-box p { font-size: 1.08rem; line-height: 1.72; }
+    .guarantee { background: var(--lgold); text-align: center; padding: 44px 20px; }
+    .guarantee .lp-prose {
+      max-width: 32rem;
+      margin-top: 0;
+    }
 
     /* PRICING — oferta estilo stack premium */
     .pricing {
@@ -1363,6 +1399,27 @@
       color: rgba(255, 255, 255, 0.52);
       margin: 0 0 12px;
       line-height: 1.42;
+    }
+    .offer-protocol-teaser {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 14px;
+      text-align: center;
+      padding: 0 2px;
+    }
+    .offer-protocol-teaser strong {
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 700;
+    }
+    .offer-protocol-teaser .protocol-hint {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.76rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.04em;
     }
     .offer-today .btn-gold {
       width: 100%;
@@ -1834,18 +1891,7 @@
       color: var(--mahogany-dark);
     }
 
-    .testi-wa .testi-wa-kicker {
-      font-family: var(--font-ui);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--mahogany-dark);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    /* Blocos claros (LP — sem tema escuro) */
+    /* Fluxo de texto — sem caixas / cartões */
     .lp-flow {
       max-width: 38rem;
       margin: 0 auto;
@@ -1853,210 +1899,85 @@
     .lp-flow--wide {
       max-width: min(42rem, 94vw);
     }
-    .lp-panel {
-      background: linear-gradient(165deg, #fffefb 0%, #fff6ec 100%);
-      border: 1px solid color-mix(in srgb, var(--line) 88%, var(--mahogany) 12%);
-      border-radius: 10px;
-      padding: 0.65rem 0.78rem;
-      margin: 0.65rem 0 0;
+    .lp-prose {
+      max-width: 38rem;
+      margin: 0.75rem auto 0;
       text-align: left;
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85) inset,
-        0 3px 16px rgba(74, 50, 40, 0.07),
-        0 1px 6px rgba(74, 50, 40, 0.04);
-    }
-    .lp-panel--tint {
-      background: linear-gradient(165deg, #efe4d8 0%, #e5d6c6 100%);
-      border-color: color-mix(in srgb, var(--line) 75%, var(--mahogany) 25%);
-    }
-    .lp-panel--sm {
-      max-width: 30rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0.6rem 0.78rem;
-      font-size: 0.92rem;
-    }
-    .lp-panel--narrow {
-      max-width: 28rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .lp-panel--lg {
-      max-width: none;
-      width: 100%;
-      padding: clamp(0.75rem, 2vw, 1.05rem) clamp(0.72rem, 2.2vw, 1rem);
-      margin-top: 0.75rem;
-    }
-    .lp-panel--lg > p:first-of-type {
-      margin-top: 0;
-    }
-    .lp-panel-split {
-      height: 0;
-      margin: 0.55rem 0 0.5rem;
-      border: none;
-      border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--mahogany) 18%);
-      opacity: 0.95;
-    }
-    .lp-panel p {
-      margin: 0 0 0.32rem;
       color: var(--deep-soft);
-      line-height: 1.45;
       font-size: 0.94rem;
+      line-height: 1.55;
     }
-    .lp-panel p:last-child {
-      margin-bottom: 0;
+    .lp-prose--center {
+      text-align: center;
     }
-    .lp-panel .lp-strong {
-      font-weight: 700;
-      color: var(--deep);
-    }
-    .lp-list {
-      list-style: none;
-      margin: 0.2rem 0 0;
-      padding: 0;
-    }
-    .lp-list li {
-      position: relative;
-      padding: 0.12rem 0 0.12rem 0.95rem;
-      font-size: 0.92rem;
-      line-height: 1.4;
-      color: var(--deep-soft);
-    }
-    .lp-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.55em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--mahogany);
-      opacity: 0.9;
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--mahogany) 25%, transparent);
-    }
-    .lp-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.4rem;
-      margin-top: 0.25rem;
-    }
-    .lp-mini-card {
-      background: linear-gradient(180deg, #fffdfb 0%, #f5ebe2 100%);
-      border: 1px solid color-mix(in srgb, var(--line) 88%, var(--mahogany) 12%);
-      border-radius: 8px;
-      padding: 0.48rem 0.58rem;
-      font-size: 0.86rem;
-      line-height: 1.34;
-      color: var(--deep-soft);
-    }
-    .lp-mini-card .lp-strong {
-      font-weight: 700;
-      color: var(--deep);
-    }
-    .lp-tight-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0.35rem;
-      margin-top: 0.3rem;
-      max-width: 100%;
-    }
-    .lp-tight-row .lp-tight-cell {
-      margin: 0;
-      font-size: 0.84rem;
-      line-height: 1.32;
-      padding: 0.42rem 0.5rem;
-      background: color-mix(in srgb, var(--white) 50%, var(--panel) 50%);
-      border-radius: 7px;
-      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
-      color: var(--deep-soft);
-    }
-    .lp-panel .lp-tight-row {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .lp-passos {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.45rem;
+    .hero .lp-prose {
       margin-top: 0.35rem;
     }
-    .lp-passos .lp-passo:nth-child(3) {
-      grid-column: 1 / -1;
+    .lp-prose p {
+      margin: 0 0 0.65rem;
     }
-    @media (max-width: 520px) {
-      .lp-passos {
-        grid-template-columns: 1fr;
-      }
-      .lp-passos .lp-passo:nth-child(3) {
-        grid-column: auto;
-      }
+    .lp-prose p:last-child {
+      margin-bottom: 0;
     }
-    .lp-passo {
-      background: linear-gradient(180deg, #fffdfb 0%, #faf3ea 100%);
-      border: 1px solid color-mix(in srgb, var(--line) 85%, var(--gold) 15%);
-      border-radius: 8px;
-      padding: 0.55rem 0.62rem 0.58rem;
-      box-shadow: 0 1px 8px rgba(74, 50, 40, 0.05);
-      border-top: 2px solid color-mix(in srgb, var(--mahogany) 55%, var(--gold) 45%);
+    .lp-prose--steps p {
+      margin-bottom: 0.5rem;
     }
-    .lp-passo h3 {
-      font-family: var(--font-ui);
-      font-size: 0.74rem;
+    .lp-prose .lp-strong {
       font-weight: 700;
-      color: var(--mahogany-dark);
-      margin: 0 0 0.22rem;
-      letter-spacing: 0.02em;
+      color: var(--deep);
     }
-    .lp-passo p {
-      margin: 0;
-      font-size: 0.84rem;
-      line-height: 1.36;
-      color: var(--gray);
+    .lp-prose-list {
+      list-style: none;
+      margin: 0.35rem auto 0.75rem;
+      padding: 0;
+      max-width: 24rem;
     }
-    .lp-grid-2 {
+    .lp-prose--center .lp-prose-list {
+      text-align: left;
+    }
+    .lp-prose-list li {
+      position: relative;
+      padding: 0.12rem 0 0.12rem 1rem;
+      text-align: left;
+    }
+    .lp-prose-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--mahogany);
+      font-weight: 700;
+    }
+    .lp-prose-list--inline-max {
+      max-width: 22rem;
+    }
+    .lp-hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0.85rem auto;
+      max-width: 14rem;
+      opacity: 0.85;
+    }
+    .lp-decision-plain {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.45rem;
-      margin-top: 0.45rem;
+      gap: 1.5rem 2rem;
+      max-width: 36rem;
+      margin: 0 auto 1rem;
+      text-align: left;
     }
     @media (max-width: 600px) {
-      .lp-grid-2 {
+      .lp-decision-plain {
         grid-template-columns: 1fr;
       }
     }
-    @media (max-width: 440px) {
-      .lp-mini-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .lp-decision-col {
-      border: 1px solid color-mix(in srgb, var(--line) 80%, var(--mahogany) 20%);
-      border-radius: 10px;
-      padding: 0.65rem 0.78rem;
-      background: linear-gradient(180deg, #faf2e9 0%, #f0e4d6 100%);
-      box-shadow: 0 2px 12px rgba(74, 50, 40, 0.06);
-    }
-    .lp-decision-col h3 {
-      font-size: 0.78rem;
+    .lp-decision-h {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
       font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
       color: var(--mahogany-dark);
-      margin: 0 0 0.5rem;
-    }
-    .lp-decision-col ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .lp-decision-col li {
-      font-size: 0.88rem;
-      padding: 0.22rem 0;
-      color: var(--deep-soft);
-      border-bottom: 1px solid var(--line);
-    }
-    .lp-decision-col li:last-child {
-      border-bottom: none;
+      margin: 0 0 0.4rem;
     }
     .lp-ou {
       text-align: center;
@@ -2102,42 +2023,538 @@
       color: var(--deep) !important;
     }
     .bonus.bonus--light {
-      background: linear-gradient(165deg, #f0e5d8 0%, #e2d2c0 55%, #dcc9b5 100%);
+      background: color-mix(in srgb, var(--panel) 55%, var(--cream-page) 45%);
       text-align: center;
-      border-top: 1px solid color-mix(in srgb, var(--line) 70%, var(--gold) 30%);
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, var(--gold) 30%);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
     .bonus.bonus--light .title {
       color: var(--mahogany-dark);
+    }
+
+    /* —— LP artefato: hero escuro, seções ✦, passos, depoimentos texto —— */
+    .hero.hero--dark {
+      background: radial-gradient(ellipse 100% 90% at 50% 0%, rgba(105, 145, 118, 0.34) 0%, transparent 52%),
+        linear-gradient(165deg, #2d4438 0%, #253d34 48%, #1f342c 100%);
+      color: #ebe6dc;
+      border-bottom: none;
+      padding: clamp(1.5rem, 4vw, 2.35rem) 18px clamp(1.85rem, 4vw, 2.65rem);
+    }
+    .hero.hero--dark::before,
+    .hero.hero--dark::after {
+      display: none;
+    }
+    .lp-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+    .lp-eyebrow.light {
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .hero-serif-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.65rem, 5vw, 2.45rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #f5f0e8;
+      margin-bottom: 1rem;
+      max-width: 22ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-serif-title em {
+      font-style: italic;
+      color: #e8c08a;
+    }
+    .hero-dark-lead {
+      font-size: clamp(1.02rem, 2.4vw, 1.15rem);
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 36rem;
+      margin: 0 auto 1rem;
+      line-height: 1.55;
+    }
+    .hero-dark-list {
+      list-style: none;
+      text-align: left;
+      max-width: 28rem;
+      margin: 0 auto 1.25rem;
+      padding: 0;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .hero-dark-list li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .hero-dark-list li:last-child {
+      border-bottom: none;
+    }
+    .hero-dark-hit {
+      font-weight: 700;
+      color: #fff;
+      margin: 1rem auto 1rem;
+      max-width: 34rem;
+      line-height: 1.5;
+    }
+    .hero-dark-italic {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 1.25rem;
+    }
+    .hero-goodnews {
+      background: rgba(255, 255, 255, 0.07);
+      border-left: 3px solid var(--terracotta);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      max-width: 26rem;
+      margin: 1.25rem auto 1.5rem;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .hero-goodnews strong {
+      color: #fff;
+    }
+    .hero-price-row {
+      margin: 1.25rem auto 1rem;
+    }
+    .hero-price-row del {
+      display: block;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.25rem;
+    }
+    .hero-price-big {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 3.5rem);
+      font-weight: 700;
+      color: var(--gold-soft);
+      line-height: 1;
+    }
+    .hero-price-note {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.5rem;
+    }
+    .btn-hero-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #c4704a, #a85a3a);
+      color: #fff !important;
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: clamp(0.82rem, 2.6vw, 0.95rem);
+      line-height: 1.25;
+      padding: 14px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-top: 0.5rem;
+    }
+    .btn-hero-cta:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+    .hero-trust-badges {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 1.25rem;
+      line-height: 1.6;
+    }
+    .hero.hero--dark .hero-live-viewers {
+      margin-top: 1.35rem;
+      max-width: 24rem;
+    }
+    .campaign-strip {
+      background: linear-gradient(90deg, #8b4a32, #c4704a);
+      color: #fff;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-size: clamp(0.78rem, 2vw, 0.88rem);
+      font-weight: 700;
+      padding: 0.65rem 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .section-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.65rem;
+    }
+    .title-serif {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 4.5vw, 2.15rem);
+      font-weight: 700;
+      color: var(--deep);
+      line-height:1.15;
+      margin-bottom: 0.75rem;
+    }
+    .title-serif em {
+      color: var(--sage-dark);
+      font-style: italic;
+    }
+    .reality {
+      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      color: rgba(255, 255, 255, 0.88);
+      padding: var(--pad-section-y) var(--pad-section-x);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .reality .title-serif.white {
+      color: #f5f0e8;
+    }
+    .reality .title-serif.white em {
+      color: #e8c08a;
+    }
+    .reality-sub {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 1.25rem;
+    }
+    .reality-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      max-width: 36rem;
+      margin: 0 auto 1.5rem;
+    }
+    @media (max-width: 560px) {
+      .reality-timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+    .reality-box {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: 0.85rem 0.65rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .reality-box strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.35rem;
+    }
+    .reality-box span {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .reality-list {
+      list-style: none;
+      max-width: 28rem;
+      margin: 0 auto 1rem;
+      padding: 0;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .reality-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .reality-list li:last-child {
+      border-bottom: none;
+    }
+    .como-funciona--dark {
+      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      color: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .como-funciona--dark .title {
+      color: #f5f0e8;
+    }
+    .como-funciona--dark .title em {
+      font-style: italic;
+      color: #e8c08a;
+    }
+    .como-funciona--dark .gold-bar {
+      background: rgba(184, 155, 106, 0.45);
+    }
+    .how-lead {
+      text-align: center;
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 28rem;
+      margin: 0 auto 0.15rem;
+    }
+    .how-lead-strong {
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      max-width: 28rem;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      max-width: 26rem;
+      margin: 0 auto;
+      text-align: left;
+    }
+    @media (min-width: 900px) {
+      .how-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+        gap: 1rem;
+      }
+    }
+    .how-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem 1.1rem 1rem;
+      overflow: hidden;
+    }
+    .how-num {
+      position: absolute;
+      top: 0.35rem;
+      left: 0.5rem;
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .how-badge {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(196, 112, 74, 0.9);
+      color: #fff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 0.65rem;
+    }
+    .how-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .how-card p {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 0.45rem;
+    }
+    .how-time {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    .how-outro {
+      text-align: center;
+      max-width: 32rem;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .how-outro .muted {
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .bonus-feature {
+      max-width: 28rem;
+      margin: 1rem auto 0;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.25rem 1.1rem;
+      position: relative;
+    }
+    .bonus-feature-banner {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .bonus-feature h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--sage-dark);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .bonus-feature .bonus-check {
+      margin-top: 0.5rem;
+    }
+    .bonus.bonus--light .bonus-feature .bonus-check li {
+      color: var(--deep-soft);
+      font-size: 0.95rem;
+    }
+    .bonus.bonus--light .bonus-feature .bonus-check li::before {
+      color: var(--sage-dark);
+    }
+    .bonus-369 {
+      margin-top: 1rem;
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1rem;
+      border: 1px solid var(--line);
+      text-align: left;
+    }
+    .bonus-369 strong {
+      font-size: 1.02rem;
+      color: var(--deep);
+    }
+    .decision-v2 {
+      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      color: rgba(255, 255, 255, 0.88);
+      padding: var(--pad-section-y) var(--pad-section-x);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .decision-v2 .section-head .title {
+      color: #f5f0e8;
+    }
+    .decision-v2 .gold-bar {
+      background: rgba(184, 155, 106, 0.45);
+    }
+    .decision-v2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 44rem;
+      margin: 1.25rem auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    @media (max-width: 600px) {
+      .decision-v2-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .decision-v2-col {
+      padding: 1.25rem 1.1rem;
+      text-align: left;
+    }
+    .decision-v2-col.bad {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .decision-v2-col.good {
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .decision-v2-col h3 {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.75rem;
+    }
+    .decision-v2-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .decision-v2-col li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .decision-v2-col li:last-child {
+      border-bottom: none;
+    }
+    .decision-v2-col.bad li::before {
+      content: "✕ ";
+      color: #e57373;
+      font-weight: 800;
+    }
+    .decision-v2-col.good li::before {
+      content: "✓ ";
+      color: #81c784;
+      font-weight: 800;
+    }
+    .decision-v2-outro {
+      max-width: 30rem;
+      margin: 1.5rem auto 0;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .decision-v2-outro .hit {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 1rem;
+    }
+    .decision-v2-outro .final {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 3vw, 1.45rem);
+      font-weight: 700;
+      color: #fff;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
 
-<div class="top-orange-bar" role="region" aria-label="Encerra em breve. Desconto especial. Último dia da campanha.">
-  <div class="top-orange-marqueeWrap" aria-hidden="true">
-    <div class="top-orange-marquee">
-      <span class="top-orange-group">ENCERRA EM BREVE · DESCONTO ESPECIAL · ÚLTIMO DIA DA CAMPANHA · NÃO PERCA</span>
-      <span class="top-orange-group">ENCERRA EM BREVE · DESCONTO ESPECIAL · ÚLTIMO DIA DA CAMPANHA · NÃO PERCA</span>
-    </div>
-  </div>
-</div>
-
-<!-- Faixa topo: marquee + gradiente (texto completo no aria-label para leitores de tela) -->
-<div class="top-urgency" role="region" aria-label="Campanha ativa neste link. De R$67 por R$27. PDF no e-mail em minutos. Garantia 7 dias.">
+<!-- Faixa topo: marquee (texto completo no aria-label para leitores de tela) -->
+<div class="top-urgency" role="region" aria-label="Acesso imediato após o pagamento. Garantia total de 7 dias. De R$67 por R$27. PDF no e-mail em minutos. Protocolo exclusivo neurociência e espiritualidade.">
   <div class="top-urgency-marqueeWrap" aria-hidden="true">
     <div class="top-urgency-marquee">
       <div class="top-urgency-group">
-        <span>Campanha ativa neste link</span><span class="dot">·</span>
-        <span>De R$67 por R$27</span><span class="dot">·</span>
-        <span>PDF no e-mail em minutos</span><span class="dot">·</span>
-        <span>Garantia 7 dias</span>
+        <span>✦ Acesso imediato após o pagamento</span><span class="dot">·</span>
+        <span>Garantia total de 7 dias</span><span class="dot">·</span>
+        <span>De R$67 por apenas R$27</span><span class="dot">·</span>
+        <span>PDF no seu e-mail em minutos</span><span class="dot">·</span>
+        <span>Protocolo exclusivo — neurociência &amp; espiritualidade</span>
       </div>
       <div class="top-urgency-group">
-        <span>Campanha ativa neste link</span><span class="dot">·</span>
-        <span>De R$67 por R$27</span><span class="dot">·</span>
-        <span>PDF no e-mail em minutos</span><span class="dot">·</span>
-        <span>Garantia 7 dias</span>
+        <span>✦ Acesso imediato após o pagamento</span><span class="dot">·</span>
+        <span>Garantia total de 7 dias</span><span class="dot">·</span>
+        <span>De R$67 por apenas R$27</span><span class="dot">·</span>
+        <span>PDF no seu e-mail em minutos</span><span class="dot">·</span>
+        <span>Protocolo exclusivo — neurociência &amp; espiritualidade</span>
       </div>
     </div>
   </div>
@@ -2155,117 +2572,158 @@
 </div>
 
 <!-- 1. HERO -->
-<section class="hero">
+<section class="hero hero--dark">
   <div class="container lp-flow">
-    <h1 class="hero-title-split hero-title-split--lp">O primeiro protocolo de 20 minutos por dia que reprograma sua mente e destrava sua vida na prática.</h1>
-    <div class="hero-goldbar" aria-hidden="true"></div>
-    <div class="lp-panel lp-panel--tint">
-      <p>Se você não mudar o que faz nos próximos 20 minutos do seu dia…</p>
-      <ul class="lp-list">
-        <li>daqui a 3 meses, sua vida continua igual</li>
-        <li>daqui a 6 meses, você ainda está travada</li>
-        <li>daqui a 1 ano… a mesma ansiedade, o mesmo dinheiro travado</li>
-      </ul>
+    <p class="lp-eyebrow">✦ Protocolo Exclusivo · Neurociência &amp; Espiritualidade</p>
+    <h1 class="hero-serif-title">O primeiro protocolo de 20 minutos por dia que reprograma sua mente e <em>destrava</em> sua vida na prática.</h1>
+    <p class="hero-dark-lead">Se você não mudar o que faz nos próximos 20 minutos do seu dia…</p>
+    <ul class="hero-dark-list">
+      <li>👉 daqui a 3 meses, sua vida continua igual</li>
+      <li>👉 daqui a 6 meses, você ainda está travada</li>
+      <li>👉 daqui a 1 ano… a mesma ansiedade, o mesmo dinheiro travado</li>
+    </ul>
+    <p>Isso não é motivação.<br />Não é teoria.</p>
+    <p class="hero-dark-hit">👉 É um protocolo baseado em neurociência + ativação emocional para quebrar o padrão que trava sua vida.</p>
+    <p>Você não precisa de mais tempo.</p>
+    <p class="hero-dark-italic"><em>Você precisa usar os mesmos 20 minutos — do jeito certo.</em></p>
+    <div class="hero-goodnews">
+      <p><strong>A boa notícia:</strong> padrão muda.</p>
+      <p>Com o método certo, muda em 20 minutos por dia.</p>
     </div>
-    <div class="lp-panel lp-panel--sm">
-      <p>Isso não é motivação.<br />Não é teoria.</p>
-      <p class="lp-strong">É um protocolo baseado em neurociência + ativação emocional para quebrar o padrão que trava sua vida.</p>
+    <div class="hero-price-row">
+      <del>De R$ 67,00</del>
+      <div class="hero-price-big">R$ 27</div>
+      <p class="hero-price-note">pagamento único · acesso imediato</p>
     </div>
-    <div class="lp-panel lp-panel--narrow">
-      <p>Você não precisa de mais tempo.</p>
-      <p>Você precisa usar os mesmos 20 minutos — do jeito certo.</p>
+    <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-hero-cta">👉 Quero quebrar meu padrão agora</a>
+    <p class="hero-trust-badges">🔒 Pagamento seguro · ⚡ Acesso imediato · 🛡️ Garantia 7 dias</p>
+    <div class="hero-live-viewers" aria-live="polite">
+      <div class="hero-live-card">
+        <div class="hero-live-tag">
+          <span class="hero-live-dot" aria-hidden="true"></span>
+          <span>Ao vivo agora</span>
+        </div>
+        <p class="hero-live-line">
+          <span class="hero-live-num"><span class="js-live-count">200</span></span>
+          <span class="hero-live-sub">pessoas nesta página agora</span>
+        </p>
+      </div>
     </div>
-    <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">Quero quebrar meu padrão agora</a>
-    <p class="hero-below" style="margin-top: 1rem">acesso imediato • garantia de 7 dias</p>
   </div>
 </section>
+
+<div class="campaign-strip" role="note">🔥 Campanha ativa neste link. De R$67 por apenas R$27 — por tempo limitado.</div>
 
 <!-- 2. IDENTIFICAÇÃO -->
 <section class="recognize section">
   <div class="container recognize-pro lp-flow lp-flow--wide">
-    <div class="section-head">
-      <h2 class="title">Você não está travada por falta de esforço.</h2>
-      <div class="gold-bar"></div>
-    </div>
-    <div class="lp-panel lp-panel--lg">
-      <p>Você tenta.<br />Você se esforça.<br />Você quer mudar.</p>
+    <p class="section-eyebrow">✦ Você se reconhece aqui?</p>
+    <h2 class="title-serif">Você não está travada<br /><em>por falta de esforço.</em></h2>
+    <div class="lp-prose" style="margin-top: 1rem">
+      <p>Você tenta. Você se esforça. Você quer mudar.</p>
       <p><strong>Mas…</strong></p>
-      <ul class="lp-list">
+      <ul class="lp-prose-list">
         <li>O dinheiro não flui</li>
         <li>Sua mente não desacelera</li>
         <li>Você se sente cansada e ansiosa</li>
         <li>Parece que tudo trava</li>
       </ul>
-      <p style="margin-top: 0.4rem; margin-bottom: 0"><strong>E você não entende o porquê.</strong></p>
-      <div class="lp-panel-split" aria-hidden="true"></div>
-      <p style="margin-bottom: 0.25rem">Não é azar.<br />Não é falta de capacidade.</p>
-      <p class="lp-strong" style="margin-top: 0; margin-bottom: 0">Você está repetindo o padrão errado todos os dias.</p>
+      <p><strong>E você não entende o porquê.</strong></p>
+      <hr class="lp-hr" />
+      <p>Não é azar.<br />Não é falta de capacidade.</p>
+      <p class="lp-strong">👉 Você está repetindo o padrão errado todos os dias.</p>
     </div>
+  </div>
+</section>
+
+<!-- A REALIDADE -->
+<section class="reality section">
+  <div class="container lp-flow">
+    <p class="lp-eyebrow light">✦ A realidade</p>
+    <h2 class="title-serif white">Se você continuar assim…<br /><em>sua vida já está decidida.</em></h2>
+    <p class="reality-sub">Pode ser duro, mas é real:</p>
+    <div class="reality-timeline">
+      <div class="reality-box"><strong>3 meses</strong><span>Tudo igual</span></div>
+      <div class="reality-box"><strong>6 meses</strong><span>Os mesmos problemas</span></div>
+      <div class="reality-box"><strong>1 ano</strong><span>A mesma frustração</span></div>
+    </div>
+    <ul class="reality-list">
+      <li>Você acorda do mesmo jeito</li>
+      <li>Pensa do mesmo jeito</li>
+      <li>Reage do mesmo jeito</li>
+    </ul>
+    <p style="text-align: center; margin-bottom: 0.75rem">👉 E espera um resultado diferente.</p>
+    <p style="text-align: center; color: rgba(255,255,255,0.65); font-size: 0.95rem">Se nada muda no seu dia…</p>
+    <p style="text-align: center; font-weight: 700">👉 nada muda na sua vida.</p>
   </div>
 </section>
 
 <!-- 3. PRODUTO -->
 <section class="promise section">
   <div class="container container--center lp-flow lp-flow--wide">
-    <div class="section-head">
-      <h2 class="title">O protocolo de 20 minutos que começa a destravar sua vida</h2>
+    <p class="section-eyebrow" style="text-align: center">✦ A solução</p>
+    <div class="section-head" style="margin-bottom: 0.5rem">
+      <h2 class="title-serif" style="text-align: center; max-width: 22ch; margin-left: auto; margin-right: auto">O protocolo de 20 minutos que começa a <em style="color: var(--sage-dark)">destravar sua vida</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <div class="lp-panel lp-panel--lg" style="text-align: center">
-      <p style="margin-bottom: 0.45rem; text-align: center; max-width: 32rem; margin-left: auto; margin-right: auto">
-        O Destrave Sua Energia é um protocolo direto ao ponto que atua na raiz do que trava sua vida:
-      </p>
-      <ul class="lp-list" style="text-align: left; max-width: 24rem; margin-left: auto; margin-right: auto">
+    <div class="lp-prose lp-prose--center">
+      <p>O Destrave Sua Energia é um protocolo direto ao ponto que atua na raiz do que trava sua vida:</p>
+      <ul class="lp-prose-list lp-prose-list--inline-max">
         <li>Seu subconsciente</li>
         <li>Sua resposta emocional</li>
         <li>Seu padrão diário</li>
       </ul>
-      <p class="lp-strong" style="margin-top: 0.4rem; margin-bottom: 0; text-align: center">Em menos de 20 minutos por dia</p>
-      <div class="lp-panel-split" aria-hidden="true"></div>
-      <div class="lp-tight-row" style="max-width: 26rem">
-        <p class="lp-tight-cell">Sem complicação</p>
-        <p class="lp-tight-cell">Sem teoria inútil</p>
-        <p class="lp-tight-cell">Sem depender de motivação</p>
-      </div>
-      <div class="lp-panel-split" aria-hidden="true"></div>
-      <p class="lp-strong" style="text-align: center">Você não precisa de mais informação</p>
-      <p style="text-align: center; margin-bottom: 0">Você precisa aplicar o que funciona</p>
+      <p class="lp-strong">👉 Em menos de 20 minutos por dia</p>
+      <hr class="lp-hr" />
+      <p>Sem complicação</p>
+      <p>Sem teoria inútil</p>
+      <p>Sem depender de motivação</p>
+      <hr class="lp-hr" />
+      <p class="lp-strong">👉 Você não precisa de mais informação.</p>
+      <p>Você precisa aplicar o que funciona.</p>
     </div>
     <div class="promise-cta-wrap">
-      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">Quero começar hoje</a>
+      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">👉 Quero começar hoje</a>
     </div>
   </div>
 </section>
 
 <!-- 4. COMO FUNCIONA -->
-<section class="como-funciona section">
+<section class="como-funciona como-funciona--dark section">
   <div class="container container--center lp-flow">
+    <p class="lp-eyebrow" style="text-align: center">✦ Como funciona</p>
     <div class="section-head">
-      <h2 class="title">Um protocolo simples que muda seu padrão</h2>
+      <h2 class="title">Um protocolo simples que <em>muda seu padrão</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <p class="body-text" style="text-align: center; max-width: 32rem; margin: 0 auto 0.15rem">Você não precisa fazer várias coisas.</p>
-    <p class="body-text" style="text-align: center; max-width: 32rem; margin: 0 auto 1rem"><strong>Você precisa fazer o certo, todos os dias.</strong></p>
-    <div class="lp-passos">
-      <div class="lp-passo">
-        <h3>Clareza</h3>
-        <p>Você define o que quer destravar</p>
-      </div>
-      <div class="lp-passo">
-        <h3>Ativação</h3>
-        <p>Você aplica técnicas guiadas no seu subconsciente</p>
-      </div>
-      <div class="lp-passo">
-        <h3>Repetição</h3>
-        <p>Você reforça o novo padrão até virar automático</p>
-      </div>
+    <p class="how-lead">Você não precisa fazer várias coisas.</p>
+    <p class="how-lead-strong">Você precisa fazer o certo, todos os dias.</p>
+    <div class="how-grid">
+      <article class="how-card">
+        <span class="how-num" aria-hidden="true">01</span>
+        <span class="how-badge">Noite &amp; Manhã</span>
+        <h3>Taça de Água</h3>
+        <p>Nos momentos mais receptivos do dia — antes de dormir e ao acordar — você programa seu subconsciente com intenção e precisão. O cérebro absorve a mensagem de forma profunda quando o filtro consciente está em repouso.</p>
+        <p class="how-time">⏱ 5 minutos</p>
+      </article>
+      <article class="how-card">
+        <span class="how-num" aria-hidden="true">02</span>
+        <span class="how-badge">Todo dia</span>
+        <h3>Espelho — EU SOU</h3>
+        <p>Quando você olha nos seus próprios olhos e declara em voz alta, seu cérebro cria conexões neurais novas e poderosas. Com a repetição diária, essas conexões se solidificam — o que você declara, você começa a ser.</p>
+        <p class="how-time">⏱ 2 minutos</p>
+      </article>
+      <article class="how-card">
+        <span class="how-num" aria-hidden="true">03</span>
+        <span class="how-badge">3x por semana</span>
+        <h3>Visualização Emocional</h3>
+        <p>Baseada na neurociência de Joe Dispenza: seu cérebro não distingue o que é real do que é vividamente imaginado. Sentir como se já tivesse acontecido reprograma o subconsciente de verdade. A emoção é a chave.</p>
+        <p class="how-time">⏱ 10–15 minutos</p>
+      </article>
     </div>
-    <div class="lp-panel lp-panel--tint">
-      <p style="margin-bottom: 0.22rem"><strong>Resultado</strong></p>
-      <p>Você começa a pensar diferente, agir diferente e sua vida começa a responder diferente</p>
-    </div>
-    <div class="lp-panel lp-panel--sm">
-      <p class="lp-strong">Se você continuar fazendo do jeito errado… nada muda</p>
+    <div class="how-outro" style="margin-top: 2rem">
+      <p>Você começa a pensar diferente,<br />agir diferente,<br />e sua vida começa a responder diferente.</p>
+      <p class="muted">👉 Se você continuar fazendo do jeito errado… nada muda.</p>
     </div>
   </div>
 </section>
@@ -2273,32 +2731,27 @@
 <!-- 5. BÔNUS -->
 <section class="bonus bonus--light">
   <div class="container lp-flow">
+    <p class="section-eyebrow" style="text-align: center">✦ Bônus exclusivo</p>
     <div class="section-head">
-      <h2 class="title">Bônus exclusivo: acelere seus resultados</h2>
+      <h2 class="title-serif" style="text-align: center">Acelere seus <em style="color: var(--sage-dark)">resultados</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <p class="body-text" style="text-align: center; max-width: 32rem; margin: 0 auto 0.5rem">
+    <p class="body-text" style="text-align: center; max-width: 32rem; margin: 0 auto 1rem">
       Além do protocolo, você recebe um guia prático para potencializar sua energia e destravar dinheiro mais rápido:
     </p>
-    <div class="lp-panel">
-      <p class="lp-strong" style="margin-bottom: 0.32rem">Faça seu próprio perfume energético</p>
-      <ul class="lp-list">
-        <li>Receita simples</li>
-        <li>Como preparar</li>
+    <div class="bonus-feature">
+      <span class="bonus-feature-banner">✦ Incluído sem custo adicional</span>
+      <h3>✨ Faça seu próprio Perfume Energético</h3>
+      <ul class="bonus-check">
+        <li>Receita simples — ingredientes acessíveis</li>
+        <li>Como preparar corretamente</li>
         <li>Como usar para ativar dinheiro e oportunidades</li>
       </ul>
+      <p style="margin-top: 0.75rem; font-size: 0.95rem">👉 Você não só aprende — você faz, usa e sente a mudança.</p>
     </div>
-    <div class="lp-panel lp-panel--sm">
-      <p>Você não só aprende — você faz, usa e sente a mudança</p>
-    </div>
-    <div class="lp-grid-2">
-      <div class="lp-panel lp-panel--tint" style="margin-top: 0">
-        <p class="lp-strong" style="margin-bottom: 0.22rem">Técnica 369 estruturada (33 dias)</p>
-        <p>Direcionamento diário claro</p>
-      </div>
-      <div class="lp-panel lp-panel--tint" style="margin-top: 0">
-        <p class="lp-strong">Isso tira você do “eu tento” e te coloca no “eu faço”.</p>
-      </div>
+    <div class="bonus-369">
+      <p><strong>⚡ Técnica 369 estruturada (33 dias)</strong></p>
+      <p style="margin-top: 0.5rem; font-size: 0.92rem; color: var(--gray)">Direcionamento diário claro — tira você do &quot;eu tento&quot; e coloca no <em>&quot;eu faço&quot;</em>.</p>
     </div>
   </div>
 </section>
@@ -2306,159 +2759,38 @@
 <!-- 6. PROVA -->
 <section class="testi">
   <div class="container container--center lp-flow">
+    <p class="section-eyebrow" style="text-align: center">✦ Resultados reais</p>
     <div class="section-head">
-      <h2 class="title">Depoimentos</h2>
+      <h2 class="title">Quem aplicou — e sentiu a diferença</h2>
       <div class="gold-bar"></div>
     </div>
-
-    <div class="testi-wa testi-wa--only">
-      <div class="testi-wa-grid">
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Travada no dinheiro, desempregada. Em 1 semana apareceu uma oportunidade que eu buscava há meses. Gratidão.
-                <span class="wa-time">12:26</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Obrigada por compartilhar — isso motiva demais a gente.
-                <span class="wa-time">12:28</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Nada dava certo pra mim. Com o protocolo começaram oportunidades e respostas. A &quot;sorte&quot; chegou kkk
-                <span class="wa-time">17:06</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Amamos ler isso. Continue firme na prática diária.
-                <span class="wa-time">17:08</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Taça de água 21 dias. No 18º dia veio proposta de emprego. Coincidência não existe mais pra mim.
-                <span class="wa-time">09:41</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Você aplicou com consistência — resultado vem.
-                <span class="wa-time">09:44</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Técnica do espelho mudou minha energia em 2 semanas. As pessoas perceberam antes de eu falar.
-                <span class="wa-time">14:22</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Energia muda tudo ao redor também. Parabéns.
-                <span class="wa-time">14:25</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Visualização com SENTIR foi a virada. Negócio deu salto. Vale muito mais que R$27.
-                <span class="wa-time">16:05</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Quando sente de verdade, o jogo muda. Obrigada pelo retorno.
-                <span class="wa-time">16:07</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Comprei de noite e o PDF chegou na hora. Já li no celular — simples de seguir.
-                <span class="wa-time">21:18</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Acesso na hora mesmo — qualquer dúvida sobre o PDF, chama aqui.
-                <span class="wa-time">21:19</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                20 min por dia eu consigo encaixar. Em 1 semana já senti diferença no jeito de reagir às coisas.
-                <span class="wa-time">08:33</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                Ritmo leve e todo dia — é isso que fecha o ciclo.
-                <span class="wa-time">08:35</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wa-phone">
-          <div class="wa-top">WhatsApp</div>
-          <div class="wa-body">
-            <div class="wa-day"><span>Hoje</span></div>
-            <div class="wa-row in">
-              <div class="wa-bubble in">
-                Tinha medo de ser mais uma coisa parada na gaveta. Bônus 369 me deu passo a passo. Recomendo demais.
-                <span class="wa-time">11:50</span>
-              </div>
-            </div>
-            <div class="wa-row out">
-              <div class="wa-bubble out">
-                O 369 ajuda a não perder o fio. Obrigada por indicar.
-                <span class="wa-time">11:52</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="testi-print-wrap">
+      <div class="testi-print-grid">
+        <figure class="testi-print">
+          <img
+            src="img/depoimento-1.png"
+            alt="WhatsApp: depoimento de cliente que estava travada no dinheiro e desempregada; após aplicar o protocolo todos os dias, em uma semana apareceu uma oportunidade que já buscava há meses."
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="testi-print">
+          <img
+            src="img/depoimento-2.png"
+            alt="WhatsApp: depoimento sobre a sensação de que nada dava certo e, depois do protocolo, pequenas mudanças — oportunidades, encontros e respostas."
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="testi-print">
+          <img
+            src="img/depoimento-3.png"
+            alt="WhatsApp: depoimento longo sobre contratação após entrevista com mais segurança e recebimento de dinheiro que deviam há muito tempo."
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
-      <!-- Duplique .wa-phone e edite: wa-row in = cliente, wa-row out = resposta da equipe. -->
     </div>
   </div>
 </section>
@@ -2469,24 +2801,24 @@
 </section>
 
 <!-- 7. DECISÃO -->
-<section class="decision section">
+<section class="decision-v2 section">
   <div class="container lp-flow">
+    <p class="lp-eyebrow light" style="text-align: center">✦ Sua escolha</p>
     <div class="section-head">
       <h2 class="title">Agora é escolha sua</h2>
       <div class="gold-bar"></div>
     </div>
-    <p class="body-text" style="text-align: center; max-width: 24rem; margin: 0 auto 1rem"><strong>Você pode:</strong></p>
-    <div class="lp-grid-2">
-      <div class="lp-decision-col">
-        <h3>Se continuar igual</h3>
+    <div class="decision-v2-grid">
+      <div class="decision-v2-col bad">
+        <h3>Continuar assim</h3>
         <ul>
           <li>Continuar travada</li>
           <li>Repetir o mesmo padrão</li>
           <li>Esperar algo mudar</li>
         </ul>
       </div>
-      <div class="lp-decision-col">
-        <h3>Ou mudar</h3>
+      <div class="decision-v2-col good">
+        <h3>Começar hoje</h3>
         <ul>
           <li>Começar agora</li>
           <li>Aplicar o protocolo</li>
@@ -2494,19 +2826,19 @@
         </ul>
       </div>
     </div>
-    <div class="lp-panel lp-panel--narrow">
-      <p class="lp-strong">O “depois eu vejo” custa caro — é mais um dia no mesmo padrão</p>
+    <div class="decision-v2-outro">
+      <p class="hit">👉 O &quot;depois eu vejo&quot; custa caro.<br />É mais um dia no mesmo padrão.</p>
+      <p>Daqui a 21 dias você pode estar exatamente no mesmo lugar —<br />ou pode ter quebrado o padrão que te trava há anos.</p>
+      <p class="final">A escolha é agora.</p>
     </div>
   </div>
 </section>
 
 <!-- GARANTIA -->
 <section class="guarantee">
-  <div class="container">
-    <div class="guarantee-box">
-      <h3>Garantia Total de 7 Dias</h3>
-      <p>Se por qualquer motivo você não ficar satisfeita, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
-    </div>
+  <div class="container lp-prose lp-prose--center">
+    <h3 class="title" style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 0.75rem">Garantia Total de 7 Dias</h3>
+    <p class="body-text" style="margin-bottom: 0">Se por qualquer motivo você não ficar satisfeita, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
   </div>
 </section>
 
@@ -2572,6 +2904,7 @@
         <p class="offer-today-kicker">Seu preço hoje</p>
         <p class="offer-today-price">R$ 27</p>
         <p class="offer-today-note">Pagamento único · PIX ou cartão · acesso imediato · risco zero por 7 dias</p>
+        <p class="offer-protocol-teaser">Você recebe o protocolo completo com <strong>Taça de Água</strong>, <strong>Técnica do Espelho</strong> e <strong>Visualização guiada</strong> — na ordem certa, para aplicar no mesmo dia.<span class="protocol-hint">São as três frentes que o PDF organiza pra você.</span></p>
         <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">Quero destravar minha vida agora</a>
       </div>
       <p class="microcopy-final">Você não precisa acreditar. Só precisa aplicar.</p>
