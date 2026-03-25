@@ -2805,9 +2805,28 @@
 </section>
 <script>
 (function () {
-  /* Usa document.baseURI (não location.origin): em file:// origin vira a string "null" e quebra o src. */
+  /**
+   * Base para caminhos relativos: em URLs como .../3tecnicas (sem "/" no fim), o browser
+   * resolve "img/x" para .../img/x (pasta errada). Forçamos pasta do documento.
+   */
+  function testimonialDirBase() {
+    var raw = document.baseURI || window.location.href;
+    try {
+      var u = new URL(raw);
+      var path = u.pathname || "/";
+      if (path.endsWith("/")) return raw;
+      if (/\.html?$/i.test(path)) {
+        u.pathname = path.replace(/[^/]+$/, "");
+        return u.href;
+      }
+      u.pathname = path + "/";
+      return u.href;
+    } catch (e) {
+      return raw;
+    }
+  }
   function fixTestimonialImgSrc() {
-    var base = document.baseURI || window.location.href;
+    var base = testimonialDirBase();
     var imgs = document.querySelectorAll(".testi-print-img");
     for (var i = 0; i < imgs.length; i++) {
       var img = imgs[i];
