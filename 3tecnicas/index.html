@@ -7,7 +7,7 @@
   <meta name="description" content="Protocolo de 20 minutos por dia. Neurociência + ativação emocional. Quebre o padrão que trava dinheiro, energia e resultados. PDF + bônus. De R$67 por R$27 · garantia 7 dias." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
   <!-- Meta Pixel exclusivo desta LP (/3tecnicas). O Pixel da home está só em index.html — não misturar. -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -66,6 +66,10 @@
       --cream-warm: #f2e8dd;
       --terracotta: #c4704a;
       --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --font-hero: "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --forest-hero-top: #334d42;
+      --forest-hero-mid: #2a3d34;
+      --forest-hero-deep: #1e2f28;
     }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; font-size: 16px; }
     @media (min-width: 480px) { html { font-size: 17px; } }
@@ -81,16 +85,16 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* STICKY — barra fixa inferior (verde, alinhado ao hero) */
+    /* STICKY — verde-floresta (sem preto; CTA terracota como referência) */
     .sticky {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
-      background: linear-gradient(180deg, rgba(52, 78, 64, 0.97) 0%, rgba(37, 61, 52, 0.99) 100%);
+      background: linear-gradient(180deg, rgba(47, 72, 62, 0.98) 0%, rgba(32, 52, 45, 0.99) 100%);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-top: 1px solid rgba(184, 155, 106, 0.35);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding: 13px 20px;
       display: flex; align-items: center; justify-content: center; gap: 14px;
-      box-shadow: 0 -10px 36px rgba(15, 40, 28, 0.4);
+      box-shadow: 0 -12px 40px rgba(18, 42, 34, 0.45);
     }
     .sticky-inner {
       display: flex;
@@ -103,8 +107,8 @@
     .sticky-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 14px;
+      justify-content: space-between;
+      gap: 12px;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -115,8 +119,8 @@
       margin-top: 4px; letter-spacing: 0.04em;
     }
     .sticky a {
-      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
-      color: var(--deep);
+      background: linear-gradient(135deg, #c4704a, #a85a3a);
+      color: #fff;
       font-family: var(--font-ui);
       font-weight: 700;
       font-size: clamp(0.88rem, 3.8vw, 1rem);
@@ -125,11 +129,33 @@
       text-decoration: none;
       white-space: nowrap;
       letter-spacing: 0.02em;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 18px rgba(60, 35, 28, 0.35);
+    }
+    .sticky-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      text-align: left;
+      min-width: 0;
+    }
+    .sticky-brand strong {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.2;
+    }
+    .sticky-brand span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.03em;
     }
     @media(max-width:480px){
       .sticky small { display: none; }
       .sticky p { font-size: 0.82rem; }
+      .sticky-brand strong { font-size: 0.82rem; }
     }
 
     /* HERO */
@@ -255,6 +281,15 @@
         0 4px 22px rgba(0, 0, 0, 0.38),
         0 0 32px rgba(184, 144, 82, 0.22);
       text-align: center;
+    }
+    /* Hero escuro: card “ao vivo” em vidro verde (sem castanho/preto) */
+    .hero.hero--dark .hero-live-card {
+      background: linear-gradient(155deg, rgba(58, 88, 76, 0.92) 0%, rgba(38, 62, 54, 0.96) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 8px 28px rgba(12, 38, 30, 0.42),
+        0 0 24px rgba(105, 145, 118, 0.18);
     }
     .hero-live-tag {
       display: inline-flex;
@@ -1634,32 +1669,20 @@
       .top-orange-group:first-child { white-space: normal; text-align: center; padding: 0 12px; }
     }
 
-    /* Faixa de urgência — marquee + gradiente vivo */
+    /* Faixa topo — terracota (referência mobile, sem marrom/preto) */
     .top-urgency {
       position: relative;
-      background: linear-gradient(
-        110deg,
-        var(--mahogany-dark) 0%,
-        #5c4035 25%,
-        var(--deep) 50%,
-        #4a3228 75%,
-        var(--mahogany-dark) 100%
-      );
-      background-size: 220% 100%;
-      animation: topBarGradientShift 14s ease-in-out infinite;
-      color: rgba(255,255,255,0.95);
+      background: linear-gradient(90deg, #a85a42 0%, var(--terracotta) 45%, #b8644a 100%);
+      animation: none;
+      color: rgba(255, 255, 255, 0.98);
       font-family: var(--font-ui);
-      font-size: clamp(0.74rem, 2.2vw, 0.86rem);
+      font-size: clamp(0.68rem, 2vw, 0.8rem);
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 11px 0;
-      border-bottom: 1px solid rgba(184,155,106,0.35);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       overflow: hidden;
-    }
-    @keyframes topBarGradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
     }
     .top-urgency-marqueeWrap {
       overflow: hidden;
@@ -1692,7 +1715,7 @@
       opacity: 0.95;
     }
     @media (prefers-reduced-motion: reduce) {
-      .top-urgency { animation: none; background: linear-gradient(90deg, var(--mahogany-dark), var(--deep)); }
+      .top-urgency { animation: none; background: linear-gradient(90deg, #a85a42, var(--terracotta)); }
       .top-urgency-marquee {
         animation: none;
         justify-content: center;
@@ -2032,17 +2055,43 @@
       color: var(--mahogany-dark);
     }
 
-    /* —— LP artefato: hero escuro, seções ✦, passos, depoimentos texto —— */
+    /* —— LP artefato: hero verde-floresta (referência v4 — sem preto puro) —— */
     .hero.hero--dark {
-      background: radial-gradient(ellipse 100% 90% at 50% 0%, rgba(105, 145, 118, 0.34) 0%, transparent 52%),
-        linear-gradient(165deg, #2d4438 0%, #253d34 48%, #1f342c 100%);
-      color: #ebe6dc;
+      background:
+        radial-gradient(ellipse 95% 75% at 50% 0%, rgba(105, 155, 125, 0.22) 0%, transparent 55%),
+        linear-gradient(180deg, var(--forest-hero-top) 0%, var(--forest-hero-mid) 42%, var(--forest-hero-deep) 100%);
+      color: rgba(255, 255, 255, 0.9);
       border-bottom: none;
       padding: clamp(1.5rem, 4vw, 2.35rem) 18px clamp(1.85rem, 4vw, 2.65rem);
     }
     .hero.hero--dark::before,
     .hero.hero--dark::after {
       display: none;
+    }
+    .hero.hero--dark .lp-eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.78) !important;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      margin-bottom: 1.15rem;
+    }
+    .hero-title-bar {
+      width: 44px;
+      height: 2px;
+      margin: 0 auto 1.15rem;
+      border-radius: 2px;
+      background: linear-gradient(90deg, transparent, var(--terracotta) 20%, #d4896a 50%, var(--terracotta) 80%, transparent);
+      opacity: 0.95;
+    }
+    .hero.hero--dark .container > p:not([class]) {
+      color: rgba(255, 255, 255, 0.76);
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.55;
     }
     .lp-eyebrow {
       font-family: var(--font-ui);
@@ -2057,19 +2106,24 @@
       color: rgba(255, 255, 255, 0.55);
     }
     .hero-serif-title {
-      font-family: var(--font-serif);
+      font-family: var(--font-hero);
       font-size: clamp(1.65rem, 5vw, 2.45rem);
       font-weight: 700;
-      line-height: 1.12;
-      color: #f5f0e8;
-      margin-bottom: 1rem;
+      line-height: 1.14;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 0;
       max-width: 22ch;
       margin-left: auto;
       margin-right: auto;
+      letter-spacing: -0.02em;
+    }
+    .hero-serif-title__plain {
+      color: #ffffff;
+      font-weight: 700;
     }
     .hero-serif-title em {
       font-style: italic;
-      color: #e8c08a;
+      color: rgba(255, 255, 255, 0.9);
     }
     .hero-dark-lead {
       font-size: clamp(1.02rem, 2.4vw, 1.15rem);
@@ -2159,7 +2213,7 @@
       text-decoration: none;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 8px 28px rgba(45, 28, 22, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.12);
       margin-top: 0.5rem;
     }
@@ -2213,7 +2267,7 @@
       font-style: italic;
     }
     .reality {
-      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-mid) 55%, var(--forest-hero-deep) 100%);
       color: rgba(255, 255, 255, 0.88);
       padding: var(--pad-section-y) var(--pad-section-x);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -2279,7 +2333,7 @@
       border-bottom: none;
     }
     .como-funciona--dark {
-      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-deep) 100%);
       color: rgba(255, 255, 255, 0.9);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -2446,7 +2500,7 @@
       color: var(--deep);
     }
     .decision-v2 {
-      background: linear-gradient(165deg, #2d4438 0%, #253d34 100%);
+      background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-deep) 100%);
       color: rgba(255, 255, 255, 0.88);
       padding: var(--pad-section-y) var(--pad-section-x);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -2564,8 +2618,11 @@
 <div class="sticky">
   <div class="sticky-inner">
     <div class="sticky-row">
-      <p><strong>R$27</strong> · bônus · garantia 7 dias</p>
-      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer">Quero quebrar meu padrão agora</a>
+      <div class="sticky-brand">
+        <strong>Destrave Sua Energia</strong>
+        <span>R$27 · acesso imediato · bônus · garantia 7 dias</span>
+      </div>
+      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer">Comprar agora →</a>
     </div>
     <small>Acesso imediato · PDF no e-mail · campanha ativa neste link</small>
   </div>
@@ -2575,7 +2632,8 @@
 <section class="hero hero--dark">
   <div class="container lp-flow">
     <p class="lp-eyebrow">✦ Protocolo Exclusivo · Neurociência &amp; Espiritualidade</p>
-    <h1 class="hero-serif-title">O primeiro protocolo de 20 minutos por dia que reprograma sua mente e <em>destrava</em> sua vida na prática.</h1>
+    <h1 class="hero-serif-title"><span class="hero-serif-title__plain">O primeiro protocolo de 20 minutos por dia que reprograma sua mente e</span> <em>destrava sua vida na prática.</em></h1>
+    <div class="hero-title-bar" aria-hidden="true"></div>
     <p class="hero-dark-lead">Se você não mudar o que faz nos próximos 20 minutos do seu dia…</p>
     <ul class="hero-dark-list">
       <li>👉 daqui a 3 meses, sua vida continua igual</li>
