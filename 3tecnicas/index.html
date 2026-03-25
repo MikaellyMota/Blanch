@@ -2768,25 +2768,34 @@
       <div class="testi-print-grid">
         <figure class="testi-print">
           <img
+            class="testi-print-img"
             src="img/depoimento-1.png"
             alt="WhatsApp: depoimento de cliente que estava travada no dinheiro e desempregada; após aplicar o protocolo todos os dias, em uma semana apareceu uma oportunidade que já buscava há meses."
-            loading="lazy"
+            width="390"
+            height="844"
+            loading="eager"
             decoding="async"
           />
         </figure>
         <figure class="testi-print">
           <img
+            class="testi-print-img"
             src="img/depoimento-2.png"
             alt="WhatsApp: depoimento sobre a sensação de que nada dava certo e, depois do protocolo, pequenas mudanças — oportunidades, encontros e respostas."
-            loading="lazy"
+            width="390"
+            height="844"
+            loading="eager"
             decoding="async"
           />
         </figure>
         <figure class="testi-print">
           <img
+            class="testi-print-img"
             src="img/depoimento-3.png"
             alt="WhatsApp: depoimento longo sobre contratação após entrevista com mais segurança e recebimento de dinheiro que deviam há muito tempo."
-            loading="lazy"
+            width="390"
+            height="844"
+            loading="eager"
             decoding="async"
           />
         </figure>
@@ -2794,6 +2803,25 @@
     </div>
   </div>
 </section>
+<script>
+(function () {
+  /* Usa document.baseURI (não location.origin): em file:// origin vira a string "null" e quebra o src. */
+  function fixTestimonialImgSrc() {
+    var base = document.baseURI || window.location.href;
+    var imgs = document.querySelectorAll(".testi-print-img");
+    for (var i = 0; i < imgs.length; i++) {
+      var img = imgs[i];
+      var rel = img.getAttribute("src");
+      if (!rel || /^https?:\/\//i.test(rel) || /^data:/i.test(rel) || /^file:/i.test(rel))
+        continue;
+      try {
+        img.src = new URL(rel, base).href;
+      } catch (e) {}
+    }
+  }
+  fixTestimonialImgSrc();
+})();
+</script>
 
 <!-- CONFIANÇA (checkout) -->
 <section class="trust-strip" aria-label="Segurança na compra">
