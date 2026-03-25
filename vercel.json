@@ -4,6 +4,11 @@
       "source": "/3tecnicas.html",
       "destination": "/3tecnicas",
       "permanent": true
+    },
+    {
+      "source": "/3tecnicas",
+      "destination": "/3tecnicas/",
+      "permanent": true
     }
   ]
 }

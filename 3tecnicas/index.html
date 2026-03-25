@@ -3648,6 +3648,23 @@
   var pauseIcon = document.querySelector(".hero-headline-video__pause-icon");
   if (!frame || !video || !btn || !pauseBtn || !pauseLabel || !pauseIcon) return;
 
+  function mediaUrlFromPage() {
+    var u = new URL(window.location.href);
+    var p = u.pathname;
+    if (p.endsWith("/")) return u.href;
+    if (/\.html$/i.test(p)) {
+      u.pathname = p.replace(/[^/]+$/, "");
+      return u.href;
+    }
+    u.pathname = p + "/";
+    return u.href;
+  }
+  var resolved = new URL("media/IMG_1852.MOV", mediaUrlFromPage()).href;
+  Array.prototype.forEach.call(video.querySelectorAll("source"), function (s) {
+    s.src = resolved;
+  });
+  video.load();
+
   function syncPauseControl() {
     if (video.paused) {
       pauseLabel.textContent = "Continuar";
