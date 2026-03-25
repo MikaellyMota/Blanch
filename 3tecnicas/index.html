@@ -2399,6 +2399,8 @@
       padding: 0.5rem 1rem;
       border-radius: 12px;
       transition: transform 0.2s ease, filter 0.2s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .hero-headline-video__play-btn:hover {
       transform: scale(1.03);
@@ -2429,6 +2431,19 @@
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.88);
       text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+    }
+    .hero-headline-video__err {
+      display: none;
+      margin-top: 0.75rem;
+      max-width: 16rem;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: rgba(255, 220, 200, 0.95);
+      text-align: center;
+    }
+    .hero-headline-video__overlay.has-error .hero-headline-video__err {
+      display: block;
     }
     .hero-headline-video__pause-btn {
       position: absolute;
@@ -3057,17 +3072,18 @@
           loop
           playsinline
           preload="metadata"
-          width="720"
-          height="1280"
+          width="1080"
+          height="1920"
         >
+          <source src="media/IMG_1852.mp4" type="video/mp4" />
           <source src="media/IMG_1852.MOV" type="video/quicktime" />
-          <source src="media/IMG_1852.MOV" type="video/mp4" />
         </video>
         <div class="hero-headline-video__overlay">
           <button type="button" class="hero-headline-video__play-btn" aria-label="Assistir o vídeo com som">
             <span class="hero-headline-video__play-icon" aria-hidden="true">▶</span>
             <span class="hero-headline-video__play-text">Assistir com som</span>
           </button>
+          <p class="hero-headline-video__err" role="status"></p>
         </div>
         <button type="button" class="hero-headline-video__pause-btn" aria-label="Pausar vídeo">
           <span class="hero-headline-video__pause-icon" aria-hidden="true">⏸</span>
@@ -3648,6 +3664,9 @@
   var pauseIcon = document.querySelector(".hero-headline-video__pause-icon");
   if (!frame || !video || !btn || !pauseBtn || !pauseLabel || !pauseIcon) return;
 
+  var overlay = frame.querySelector(".hero-headline-video__overlay");
+  var errEl = frame.querySelector(".hero-headline-video__err");
+
   function mediaUrlFromPage() {
     var u = new URL(window.location.href);
     var p = u.pathname;
@@ -3659,11 +3678,20 @@
     u.pathname = p + "/";
     return u.href;
   }
-  var resolved = new URL("media/IMG_1852.MOV", mediaUrlFromPage()).href;
-  Array.prototype.forEach.call(video.querySelectorAll("source"), function (s) {
-    s.src = resolved;
-  });
+  var base = mediaUrlFromPage();
+  var srcMp4 = new URL("media/IMG_1852.mp4", base).href;
+  var srcMov = new URL("media/IMG_1852.MOV", base).href;
+  var sources = video.querySelectorAll("source");
+  if (sources[0]) sources[0].src = srcMp4;
+  if (sources[1]) sources[1].src = srcMov;
   video.load();
+
+  function showPlayError(msg) {
+    if (overlay && errEl) {
+      errEl.textContent = msg;
+      overlay.classList.add("has-error");
+    }
+  }
 
   function syncPauseControl() {
     if (video.paused) {
@@ -3677,13 +3705,23 @@
     }
   }
 
-  btn.addEventListener("click", function () {
+  function startPlayback() {
+    if (overlay) overlay.classList.remove("has-error");
+    if (errEl) errEl.textContent = "";
     video.muted = false;
     video.volume = 1;
     video.play().then(function () {
       frame.classList.add("is-playing");
       syncPauseControl();
-    }).catch(function () {});
+    }).catch(function () {
+      showPlayError("Não foi possível reproduzir. Atualize a página ou tente em outro navegador.");
+    });
+  }
+
+  btn.addEventListener("click", startPlayback);
+
+  video.addEventListener("error", function () {
+    showPlayError("Vídeo indisponível neste aparelho. Verifique a conexão ou tente outro navegador.");
   });
 
   pauseBtn.addEventListener("click", function () {
