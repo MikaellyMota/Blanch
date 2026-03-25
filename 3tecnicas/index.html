@@ -744,6 +744,13 @@
       background: linear-gradient(90deg, transparent, rgba(196, 176, 138, 0.9) 50%, transparent);
     }
     .gold-bar--soft { opacity: 0.92; }
+    .gold-bar--hero {
+      width: min(7.5rem, 32vw);
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 1.35rem !important;
+      background: linear-gradient(90deg, transparent, var(--mahogany) 15%, var(--gold) 50%, var(--sage-dark) 85%, transparent);
+    }
     .body-text { font-size: 1.02rem; color: var(--text); line-height: 1.72; margin-bottom: 14px; }
 
     /* DOR */
@@ -1274,6 +1281,155 @@
       max-width: 26rem;
       margin-left: auto;
       margin-right: auto;
+    }
+    .lp-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.4), transparent);
+      margin: 1.35rem auto;
+      max-width: 14rem;
+    }
+    .promise-dash-list {
+      list-style: none;
+      margin: 0 0 1.1rem;
+      padding: 0;
+      text-align: left;
+    }
+    .promise-dash-list li {
+      position: relative;
+      padding: 0.35rem 0 0.35rem 0.95rem;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      color: var(--deep-soft);
+    }
+    .promise-dash-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: var(--mahogany);
+    }
+    .promise-why-body {
+      text-align: left;
+      max-width: 32rem;
+      margin: 0 auto;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--deep-soft);
+    }
+    .promise-why-body p {
+      margin: 0 0 0.65rem;
+    }
+    .promise-why-hook {
+      font-weight: 700;
+      color: var(--mahogany-dark);
+      margin-top: 0.35rem !important;
+    }
+    /* A solução — bloco escuro, editorial (contraste após “realidade”) */
+    .promise--solve {
+      position: relative;
+      text-align: center;
+      padding: clamp(2.75rem, 7vw, 4rem) 18px;
+      background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-deep) 100%);
+      color: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .promise--solve .promise-head {
+      margin-bottom: 1.65rem !important;
+    }
+    .promise--solve .gold-bar {
+      margin-bottom: 1.5rem !important;
+    }
+    .promise-lead-text--solve {
+      margin: 0 auto 1rem;
+      max-width: 28rem;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(232, 192, 138, 0.92);
+    }
+    .promise-roots {
+      list-style: none;
+      max-width: 28rem;
+      margin: 0 auto 1.65rem;
+      padding: 0;
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .promise-root-line {
+      padding: 0.95rem 1.15rem;
+      font-family: var(--font-serif);
+      font-size: clamp(1.02rem, 2.4vw, 1.14rem);
+      font-weight: 600;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      letter-spacing: -0.02em;
+    }
+    .promise-root-line:last-child {
+      border-bottom: none;
+    }
+    .promise--solve .lp-divider {
+      max-width: 16rem;
+      margin: 1.35rem auto;
+      background: linear-gradient(90deg, transparent, rgba(232, 192, 138, 0.4), transparent);
+    }
+    .promise-why-solve {
+      max-width: 30rem;
+      margin: 0 auto 0.25rem;
+      padding: 1.25rem 1.2rem 1.2rem;
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid rgba(232, 192, 138, 0.28);
+      background: rgba(0, 0, 0, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .promise-why-solve-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8c08a;
+      margin: 0 0 0.75rem;
+    }
+    .promise-why-solve .promise-why-body {
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.84);
+    }
+    .promise-why-solve .promise-why-body p {
+      margin: 0 0 0.6rem;
+    }
+    .promise-why-solve .promise-why-hook {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0 !important;
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .promise--solve .promise-cta-wrap {
+      margin-top: 1.35rem;
+    }
+    .promise--solve .promise-cta-wrap .btn-gold {
+      width: 100%;
+      max-width: 26rem;
+      padding: 1rem 1.5rem;
+      font-size: clamp(1.02rem, 2.6vw, 1.12rem);
+      border-radius: 11px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+    @media (min-width: 480px) {
+      .promise--solve .promise-cta-wrap .btn-gold {
+        width: auto;
+        min-width: min(22rem, 88vw);
+      }
     }
     .list-bullet--centered {
       margin-top: 0;
@@ -2293,6 +2449,92 @@
     .bonus.bonus--light .title {
       color: var(--mahogany-dark);
     }
+    .bonus-excl-lead {
+      text-align: center;
+      max-width: 36rem;
+      margin: 0 auto 1.85rem;
+      font-size: 1.05rem;
+      line-height: 1.72;
+      color: var(--deep-soft);
+    }
+    .bonus-excl-stack {
+      max-width: 32rem;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .bonus-excl-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(184, 144, 82, 0.38);
+      border-radius: 14px;
+      padding: 1.35rem 1.2rem 1.35rem;
+      box-shadow: 0 10px 32px rgba(47, 38, 35, 0.07);
+    }
+    .bonus-excl-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mahogany);
+      margin: 0 0 0.75rem;
+    }
+    .bonus-excl-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.22rem, 3.2vw, 1.48rem);
+      font-weight: 700;
+      color: var(--deep);
+      margin: 0 0 0.4rem;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+    .bonus-excl-sub {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gray);
+      margin: 0 0 0.9rem;
+    }
+    .bonus-excl-body {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--deep-soft);
+      margin: 0 0 0.95rem;
+    }
+    .bonus-excl-list {
+      list-style: none;
+      margin: 0 0 1rem;
+      padding: 0;
+    }
+    .bonus-excl-list li {
+      padding: 0.5rem 0;
+      font-size: 0.96rem;
+      line-height: 1.45;
+      color: var(--deep-soft);
+      border-bottom: 1px solid rgba(196, 179, 163, 0.45);
+    }
+    .bonus-excl-list li:last-child {
+      border-bottom: none;
+    }
+    .bonus-excl-callout {
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--mahogany-dark);
+      margin: 0.35rem 0 0;
+    }
+    .bonus-excl-meta {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--deep-soft);
+      margin: 0 0 0.85rem;
+      line-height: 1.5;
+    }
+    .bonus.bonus--light .bonus-excl-stack .lp-divider {
+      margin: 1.5rem auto;
+      max-width: 14rem;
+    }
 
     /* —— LP artefato: hero verde-floresta (referência v4 — sem preto puro) —— */
     .hero.hero--dark {
@@ -2635,6 +2877,21 @@
       color: var(--sage-dark);
       font-style: italic;
     }
+    .promise--solve .title-serif {
+      color: #f5f0e8;
+    }
+    .promise--solve .title-serif em {
+      color: #e8c08a;
+      font-style: italic;
+    }
+    .promise--solve h2.title-serif.promise-title--solve {
+      font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: min(20rem, 94vw);
+      margin-left: auto;
+      margin-right: auto;
+    }
     .reality {
       background: linear-gradient(165deg, var(--forest-hero-top) 0%, var(--forest-hero-mid) 55%, var(--forest-hero-deep) 100%);
       color: rgba(255, 255, 255, 0.88);
@@ -2813,6 +3070,97 @@
       color: rgba(255, 255, 255, 0.55);
       margin-top: 0.75rem;
       font-size: 0.9rem;
+    }
+    .como-funciona--dark .promise-block-label {
+      color: rgba(232, 192, 138, 0.95);
+      text-align: left;
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .como-funciona--dark .lp-eyebrow {
+      color: rgba(232, 192, 138, 0.88);
+    }
+    .como-funciona--dark .how-lead-strong--left {
+      text-align: left;
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .how-practice-stack {
+      max-width: 34rem;
+      margin: 0 auto 0.35rem;
+      text-align: left;
+    }
+    .how-practice-item {
+      margin-bottom: 1.15rem;
+    }
+    .how-practice-item:last-of-type {
+      margin-bottom: 0.65rem;
+    }
+    .how-practice-item strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #e8c08a;
+      margin-bottom: 0.4rem;
+    }
+    .how-practice-item p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .how-time-callout {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0.35rem auto 0.5rem;
+      padding: 0.65rem 1rem;
+      max-width: 22rem;
+      border: 1px solid rgba(232, 192, 138, 0.45);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .how-change-list {
+      list-style: none;
+      margin: 0.5rem auto 1rem;
+      padding: 0;
+      max-width: 34rem;
+      text-align: left;
+    }
+    .how-change-list li {
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .how-change-list li:last-child {
+      border-bottom: none;
+    }
+    .how-outro-line {
+      text-align: center;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0.35rem auto 0;
+      max-width: 30rem;
+    }
+    .how-outro-line--emph {
+      font-weight: 700;
+      color: #fff;
+      margin-top: 0.75rem;
+    }
+    .como-funciona--dark .lp-divider {
+      background: linear-gradient(90deg, transparent, rgba(232, 192, 138, 0.35), transparent);
     }
     .bonus-feature {
       max-width: 28rem;
@@ -3173,41 +3521,32 @@
   </div>
 </section>
 
-<!-- 3. PRODUTO -->
-<section class="promise section">
+<!-- 3. PRODUTO — solução (bloco escuro, leitura clara) -->
+<section class="promise promise--solve section">
   <div class="container container--center lp-flow lp-flow--wide">
-    <p class="section-eyebrow promise-eyebrow" style="text-align: center">✦ A solução</p>
+    <p class="lp-eyebrow light" style="text-align: center">A solução</p>
     <div class="section-head promise-head">
-      <h2 class="title-serif promise-title">O protocolo de 20 minutos que começa a <em>destravar sua vida</em></h2>
-      <div class="gold-bar"></div>
+      <h2 class="title-serif promise-title promise-title--solve">O protocolo de 20 minutos que começa a <em>destravar sua vida</em></h2>
+      <div class="gold-bar gold-bar--on-dark"></div>
     </div>
-    <div class="promise-panel">
-      <div class="promise-panel-inner">
-        <p class="promise-lead-text">O Destrave Sua Energia é um protocolo direto ao ponto que atua na <strong>raiz</strong> do que trava sua vida:</p>
-        <p class="promise-block-label" id="promise-pillars-label">Onde atua</p>
-        <ul class="promise-pillars" aria-labelledby="promise-pillars-label">
-          <li>Seu subconsciente</li>
-          <li>Sua resposta emocional</li>
-          <li>Seu padrão diário</li>
-        </ul>
-        <div class="promise-highlight-bar" role="status">
-          <span class="promise-highlight-icon" aria-hidden="true">⏱</span>
-          <span>Em menos de 20 minutos por dia</span>
-        </div>
-        <p class="promise-block-label promise-block-label--muted" id="promise-checks-label">No seu dia a dia</p>
-        <ul class="promise-checks" aria-labelledby="promise-checks-label">
-          <li>Sem complicação</li>
-          <li>Sem teoria inútil</li>
-          <li>Sem depender de motivação</li>
-        </ul>
-        <div class="promise-closing">
-          <p class="promise-closing-strong">Você não precisa de mais informação.</p>
-          <p class="promise-closing-sub">Você precisa aplicar o que funciona.</p>
-        </div>
+    <p class="promise-lead-text promise-lead-text--solve">Atua direto na raiz do que te trava</p>
+    <ul class="promise-roots">
+      <li class="promise-root-line">Seu subconsciente</li>
+      <li class="promise-root-line">Sua resposta emocional</li>
+      <li class="promise-root-line">Seu padrão diário</li>
+    </ul>
+    <hr class="lp-divider" />
+    <div class="promise-why-solve">
+      <p class="promise-why-solve-label" id="promise-why-label">Por que sua vida não muda</p>
+      <div class="promise-why-body" aria-labelledby="promise-why-label">
+        <p>Seu cérebro funciona por padrão.</p>
+        <p>Você reage igual.<br />Você sente igual.<br />Você decide igual.</p>
+        <p class="promise-why-hook">E por isso… nada muda.</p>
       </div>
     </div>
+    <hr class="lp-divider" />
     <div class="promise-cta-wrap">
-      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">👉 Quero começar hoje</a>
+      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">Quero destravar minha vida agora</a>
     </div>
   </div>
 </section>
@@ -3215,39 +3554,45 @@
 <!-- 4. COMO FUNCIONA -->
 <section class="como-funciona como-funciona--dark section">
   <div class="container container--center lp-flow">
-    <p class="lp-eyebrow" style="text-align: center">✦ Como funciona</p>
+    <p class="lp-eyebrow" style="text-align: center">Como funciona</p>
     <div class="section-head">
-      <h2 class="title">Um protocolo simples que <em>muda seu padrão</em></h2>
+      <h2 class="title">Um protocolo guiado para quebrar o padrão que <em>trava sua vida</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <p class="how-lead">Você não precisa fazer várias coisas.</p>
-    <p class="how-lead-strong">Você precisa fazer o certo, todos os dias.</p>
-    <div class="how-grid">
-      <article class="how-card">
-        <span class="how-num" aria-hidden="true">01</span>
-        <span class="how-badge">Noite &amp; Manhã</span>
-        <h3>Taça de Água</h3>
-        <p>Nos momentos mais receptivos do dia — antes de dormir e ao acordar — você programa seu subconsciente com intenção e precisão. O cérebro absorve a mensagem de forma profunda quando o filtro consciente está em repouso.</p>
-        <p class="how-time">⏱ 5 minutos</p>
-      </article>
-      <article class="how-card">
-        <span class="how-num" aria-hidden="true">02</span>
-        <span class="how-badge">Todo dia</span>
-        <h3>Espelho — EU SOU</h3>
-        <p>Quando você olha nos seus próprios olhos e declara em voz alta, seu cérebro cria conexões neurais novas e poderosas. Com a repetição diária, essas conexões se solidificam — o que você declara, você começa a ser.</p>
-        <p class="how-time">⏱ 2 minutos</p>
-      </article>
-      <article class="how-card">
-        <span class="how-num" aria-hidden="true">03</span>
-        <span class="how-badge">3x por semana</span>
-        <h3>Visualização Emocional</h3>
-        <p>Baseada na neurociência de Joe Dispenza: seu cérebro não distingue o que é real do que é vividamente imaginado. Sentir como se já tivesse acontecido reprograma o subconsciente de verdade. A emoção é a chave.</p>
-        <p class="how-time">⏱ 10–15 minutos</p>
-      </article>
+    <p class="how-lead" style="max-width: 34rem">
+      Dentro do e-book, você recebe um passo a passo simples para seguir todos os dias e reprogramar seu subconsciente, sua resposta emocional e seu padrão diário.
+    </p>
+    <hr class="lp-divider" />
+    <p class="promise-block-label" id="how-practice-label">Na prática, você vai:</p>
+    <div class="how-practice-stack" aria-labelledby="how-practice-label">
+      <div class="how-practice-item">
+        <strong>Ao acordar e antes de dormir</strong>
+        <p>ativar seu subconsciente nos momentos de maior receptividade.</p>
+      </div>
+      <div class="how-practice-item">
+        <strong>Todos os dias</strong>
+        <p>reforçar um novo padrão com repetições estratégicas.</p>
+      </div>
+      <div class="how-practice-item">
+        <strong>Em dias específicos da semana</strong>
+        <p>aprofundar essa mudança com ativações guiadas.</p>
+      </div>
     </div>
-    <div class="how-outro" style="margin-top: 2rem">
-      <p>Você começa a pensar diferente,<br />agir diferente,<br />e sua vida começa a responder diferente.</p>
-      <p class="muted">👉 Se você continuar fazendo do jeito errado… nada muda.</p>
+    <hr class="lp-divider" />
+    <p class="how-time-callout">Menos de 20 minutos por dia</p>
+    <hr class="lp-divider" />
+    <p class="promise-block-label" id="how-impact-label">O que isso muda</p>
+    <p class="how-lead-strong how-lead-strong--left" style="margin-bottom: 0.5rem">Você começa a:</p>
+    <ul class="how-change-list" aria-labelledby="how-impact-label">
+      <li>regular sua mente</li>
+      <li>mudar sua resposta interna</li>
+      <li>criar um novo padrão</li>
+    </ul>
+    <p class="how-outro-line how-outro-line--emph">e sua vida responde diferente.</p>
+    <p class="how-outro-line" style="margin-top: 1.25rem">O processo já está pronto.</p>
+    <p class="how-lead-strong" style="margin-top: 0.75rem; margin-bottom: 1.25rem">Você só precisa seguir</p>
+    <div class="promise-cta-wrap">
+      <a href="https://pay.kiwify.com.br/LUn9cFg" target="_blank" rel="noopener noreferrer" class="btn-gold">Quero começar agora</a>
     </div>
   </div>
 </section>
@@ -3255,36 +3600,44 @@
 <!-- 5. BÔNUS -->
 <section class="bonus bonus--light">
   <div class="container lp-flow">
-    <p class="section-eyebrow" style="text-align: center">✦ Bônus exclusivo</p>
+    <p class="section-eyebrow" style="text-align: center">Bônus exclusivo</p>
     <div class="section-head">
       <h2 class="title-serif" style="text-align: center">Acelere seus <em style="color: var(--sage-dark)">resultados</em></h2>
       <div class="gold-bar"></div>
     </div>
-    <p class="body-text" style="text-align: center; max-width: 32rem; margin: 0 auto 1rem">
-      Além do protocolo, você recebe um guia prático para potencializar sua energia e destravar dinheiro mais rápido:
+    <p class="bonus-excl-lead">
+      Além do protocolo, você recebe ferramentas que potencializam sua energia e aceleram a mudança no seu padrão.
     </p>
-    <div class="bonus-feature">
-      <span class="bonus-feature-banner">✦ Incluído sem custo adicional</span>
-      <h3>✨ Faça seu próprio Perfume Energético</h3>
-      <ul class="bonus-check">
-        <li>Receita simples — ingredientes acessíveis</li>
-        <li>Como preparar corretamente</li>
-        <li>Como usar para ativar dinheiro e oportunidades</li>
-      </ul>
-      <p style="margin-top: 0.75rem; font-size: 0.95rem">👉 Você não só aprende — você faz, usa e sente a mudança.</p>
-    </div>
-    <div class="bonus-369">
-      <span class="bonus-369-badge">Bônus · manifestação guiada</span>
-      <h3 class="bonus-369-title">Técnica <span class="bonus-369-accent">369</span> estruturada</h3>
-      <div class="bonus-369-chips" aria-hidden="true">
-        <span>33 dias</span>
-        <span>Roteiro diário</span>
-        <span>Alto impacto</span>
-      </div>
-      <p class="bonus-369-body">
-        <strong>⚡ Você recebe o passo a passo completo:</strong> o que fazer, em que ordem e por quanto tempo — cada dia, por 33 dias.
-        Direcionamento claro que tira você do &quot;eu tento&quot; e coloca no <em>&quot;eu faço&quot;</em>.
-      </p>
+    <div class="bonus-excl-stack">
+      <article class="bonus-excl-card">
+        <p class="bonus-excl-label">Bônus 1 — Perfume energético</p>
+        <h3 class="bonus-excl-title">Faça seu próprio Perfume Energético</h3>
+        <p class="bonus-excl-sub">(incluso sem custo adicional)</p>
+        <p class="bonus-excl-body">
+          Uma forma prática de ativar sua energia todos os dias e aumentar sua conexão com dinheiro e oportunidades.
+        </p>
+        <ul class="bonus-excl-list">
+          <li>Ingredientes acessíveis</li>
+          <li>Passo a passo de preparo</li>
+          <li>Como usar para ativar dinheiro e prosperidade.</li>
+        </ul>
+        <p class="bonus-excl-callout">Você não só aplica o protocolo você coloca ele no seu corpo</p>
+      </article>
+      <hr class="lp-divider" />
+      <article class="bonus-excl-card">
+        <p class="bonus-excl-label">Bônus 2 — Técnica 369</p>
+        <h3 class="bonus-excl-title">Técnica 369 estruturada</h3>
+        <p class="bonus-excl-meta">33 dias · roteiro diário · alto impacto</p>
+        <p class="bonus-excl-body">
+          Uma técnica de repetição guiada que reprograma seu subconsciente através de escrita e ativação emocional.
+        </p>
+        <ul class="bonus-excl-list">
+          <li>Direcionamento claro do que fazer</li>
+          <li>Sequência organizada</li>
+          <li>Aplicação diária por 33 dias</li>
+        </ul>
+        <p class="bonus-excl-callout">Você treina seu cérebro para pensar, sentir e agir diferente</p>
+      </article>
     </div>
   </div>
 </section>
@@ -3456,15 +3809,15 @@
         </div>
         <div class="offer-line">
           <div>
-            <strong>Bônus: perfume energético + lua crescente</strong>
-            <span class="offer-line-desc">Rituais e direcionamento por fase</span>
+            <strong>Bônus: Perfume Energético (guia completo)</strong>
+            <span class="offer-line-desc">Preparo, uso e conexão com prosperidade</span>
           </div>
           <del>R$ 47,00</del>
         </div>
         <div class="offer-line">
           <div>
-            <strong>Bônus: técnica 369 estruturada (33 dias)</strong>
-            <span class="offer-line-desc">Roteiro diário do que fazer e quando</span>
+            <strong>Bônus: Técnica 369 estruturada (33 dias)</strong>
+            <span class="offer-line-desc">Roteiro diário · escrita e ativação emocional</span>
           </div>
           <del>R$ 39,00</del>
         </div>
