@@ -577,6 +577,121 @@
       color: var(--text);
       letter-spacing: 0.02em;
     }
+    .kit-banho-photo-row {
+      display: flex;
+      gap: 0.65rem;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+    }
+    .kit-banho-photo-row .kit-banho-thumb {
+      flex: 1;
+      min-width: 0;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    @media (max-width: 600px) {
+      .kit-banho-photo-row .kit-banho-thumb { height: 120px; }
+    }
+    .kit-desbloqueio-wide {
+      max-width: 920px;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    .kit-desbloqueio-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .kit-desbloqueio-heading {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 1.35rem 0 0.85rem;
+    }
+    .kit-desbloqueio-list {
+      margin: 0 0 1.25rem 0;
+      padding: 0;
+      list-style: none;
+    }
+    .kit-desbloqueio-list li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .kit-desbloqueio-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .kit-desbloqueio-list strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+    .kit-desbloqueio-list .product-intent {
+      margin: 0 0 10px 0;
+      font-size: 0.76rem;
+    }
+    .kit-desbloqueio-list .product-composition,
+    .kit-desbloqueio-list .product-usage {
+      margin-bottom: 10px;
+      padding-top: 10px;
+    }
+    .kit-desbloqueio-list .product-composition:first-of-type {
+      border-top: 1px solid var(--border);
+      margin-top: 6px;
+    }
+    .kit-banho-detalhes {
+      margin: 0 0 28px 0;
+    }
+    .kit-banho-mini {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .kit-banho-mini:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .kit-banho-mini-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 6px 0;
+    }
+    .kit-banho-mini .product-intent {
+      margin-bottom: 12px;
+    }
+    .kit-banho-mini .product-composition {
+      padding-top: 12px;
+      margin-bottom: 12px;
+    }
+    .kit-banho-mini .product-usage {
+      padding-top: 12px;
+      margin-bottom: 0;
+    }
+    .kit-banho-mini .product-affirmation {
+      margin: 14px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .kit-desbloqueio-list .product-affirmation {
+      margin: 14px 0 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
     .btn-kit {
       display: inline-block;
       font-family: 'Jost', sans-serif;
@@ -1761,77 +1876,159 @@
       Os banhos da Blanch são feitos com ervas selecionadas em sachês de 20g, formulados com blends exclusivos, pensados para atuar na sua energia, na sua mente e nas suas emoções.<br><br>
       Cada um foi criado com um propósito claro — para você sentir, na prática, a diferença no seu dia.<br><br>
       Sem complicação. Sem excesso. Só o essencial que funciona.<br><br>
-      <em style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--gold);">Escolha o que você precisa viver hoje.</em>
+      <em style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--gold);">Dupla de sachês ou kit completo com os três — você escolhe o ritmo.</em>
     </p>
 
-    <div class="products-grid banhos-grid">
-
-      <div class="product-card">
-        <img src="banho-recomeco.jpg" alt="Recomeço" class="product-img" />
-        <div class="product-body">
-          <span class="product-tag">O banho que liberta</span>
-          <h3>Recomeço</h3>
-          <p class="product-intent">Limpeza Espiritual & Virada de Ciclo</p>
-          <div class="product-composition">
-            <strong>Composição</strong>
-            Hortelã · Blend exclusivo de ervas
-          </div>
-          <div class="product-usage">
-            <strong>Para quem é</strong>
-            Se você está sobrecarregada, cansada ou carregando coisas que já não fazem mais sentido. Ideal para momentos de virada, recomeços e quando você sente que precisa "limpar tudo".
-          </div>
-          <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
-          <div class="product-footer">
-            <span class="product-price">R$ 15,90</span>
-            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="HYYISSXOU0" data-product-name="Banho Recomeço" data-price="15.90">Adicionar</button>
+    <div class="kit-dupla-wrap" id="kit-dupla-banho">
+      <div class="kit-dupla-box">
+        <span class="kit-dupla-badge">Oferta</span>
+        <h3>Dupla de Banhos Blanch — escolha seus dois sachês</h3>
+        <div class="kit-dupla-photo-wrap">
+          <div class="kit-banho-photo-row" aria-hidden="true">
+            <img src="banho-recomeco.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
+            <img src="banho-circulo-sagrado.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
+            <img src="banho-caminhos-abertos.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
           </div>
         </div>
-      </div>
-
-      <div class="product-card">
-        <img src="banho-circulo-sagrado.jpg" alt="Círculo Sagrado" class="product-img" />
-        <div class="product-body">
-          <span class="product-tag">O banho que protege</span>
-          <h3>Círculo Sagrado</h3>
-          <p class="product-intent">Proteção Energética & Emocional</p>
-          <div class="product-composition">
-            <strong>Composição</strong>
-            Alecrim · Erva-doce · Blend exclusivo de ervas
+        <p class="kit-dupla-sub">Quer variar a intenção?</p>
+        <ul class="kit-dupla-guide">
+          <li>Limpeza e recomeço → Recomeço</li>
+          <li>Proteção → Círculo Sagrado</li>
+          <li>Prosperidade e caminhos → Caminhos Abertos</li>
+        </ul>
+        <p class="kit-desbloqueio-heading">Composição e para quem é cada um</p>
+        <div class="kit-banho-detalhes">
+          <div class="kit-banho-mini">
+            <h4 class="kit-banho-mini-title">Recomeço</h4>
+            <p class="product-intent">Limpeza Espiritual & Virada de Ciclo</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Hortelã · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Se você está sobrecarregada, cansada ou carregando coisas que já não fazem mais sentido. Ideal para momentos de virada, recomeços e quando você sente que precisa "limpar tudo".
+            </div>
+            <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
           </div>
-          <div class="product-usage">
-            <strong>Para quem é</strong>
-            Ideal para dias de exposição, ambientes pesados ou quando você sente sua energia sendo drenada. Use quando precisar se proteger e se fortalecer.
+          <div class="kit-banho-mini">
+            <h4 class="kit-banho-mini-title">Círculo Sagrado</h4>
+            <p class="product-intent">Proteção Energética & Emocional</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Alecrim · Erva-doce · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Ideal para dias de exposição, ambientes pesados ou quando você sente sua energia sendo drenada. Use quando precisar se proteger e se fortalecer.
+            </div>
+            <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
           </div>
-          <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
-          <div class="product-footer">
-            <span class="product-price">R$ 15,90</span>
-            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="6ZBZE8UEY4" data-product-name="Banho Círculo Sagrado" data-price="15.90">Adicionar</button>
+          <div class="kit-banho-mini">
+            <h4 class="kit-banho-mini-title">Caminhos Abertos</h4>
+            <p class="product-intent">Prosperidade & Dinheiro</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Louro · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Ideal para momentos em que você quer destravar sua vida, atrair oportunidades e prosperar. Use quando quiser abrir caminhos e permitir que o novo chegue até você.
+            </div>
+            <p class="product-affirmation">"O fluxo volta. Os caminhos se abrem. Eu prospero."</p>
           </div>
         </div>
-      </div>
-
-      <div class="product-card">
-        <img src="banho-caminhos-abertos.jpg" alt="Caminhos Abertos" class="product-img" />
-        <div class="product-body">
-          <span class="product-tag">O banho que destrava</span>
-          <h3>Caminhos Abertos</h3>
-          <p class="product-intent">Prosperidade & Dinheiro</p>
-          <div class="product-composition">
-            <strong>Composição</strong>
-            Louro · Blend exclusivo de ervas
+        <p class="kit-dupla-lead">Escolha 2 banhos de ervas (20g cada) e leve com valor especial.</p>
+        <p class="kit-dupla-shipping">Combine intenções e aproveite o frete grátis nas compras acima de R$ 20,00.</p>
+        <div class="kit-dupla-selects">
+          <div class="kit-dupla-field">
+            <label for="kit-banho-1">Primeiro banho</label>
+            <select id="kit-banho-1" aria-label="Primeiro banho do kit">
+              <option value="">Escolha…</option>
+              <option value="HYYISSXOU0">Recomeço</option>
+              <option value="6ZBZE8UEY4">Círculo Sagrado</option>
+              <option value="QS6CMKPESF">Caminhos Abertos</option>
+            </select>
           </div>
-          <div class="product-usage">
-            <strong>Para quem é</strong>
-            Ideal para momentos em que você quer destravar sua vida, atrair oportunidades e prosperar. Use quando quiser abrir caminhos e permitir que o novo chegue até você.
-          </div>
-          <p class="product-affirmation">"O fluxo volta. Os caminhos se abrem. Eu prospero."</p>
-          <div class="product-footer">
-            <span class="product-price">R$ 15,90</span>
-            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="QS6CMKPESF" data-product-name="Banho Caminhos Abertos" data-price="15.90">Adicionar</button>
+          <div class="kit-dupla-field">
+            <label for="kit-banho-2">Segundo banho</label>
+            <select id="kit-banho-2" aria-label="Segundo banho do kit">
+              <option value="">Escolha…</option>
+              <option value="HYYISSXOU0">Recomeço</option>
+              <option value="6ZBZE8UEY4">Círculo Sagrado</option>
+              <option value="QS6CMKPESF">Caminhos Abertos</option>
+            </select>
           </div>
         </div>
+        <div class="kit-dupla-pricing">
+          <span class="kit-dupla-price-main" aria-label="Preço do kit de banhos"><span id="kit-banho-price-display">R$ 30,00</span></span>
+        </div>
+        <button type="button" class="btn-kit" id="btn-add-kit-banho" data-yampi-kit-token="F7CJ21AOVA">Adicionar kit ao carrinho</button>
       </div>
+    </div>
 
+    <div class="kit-dupla-wrap kit-desbloqueio-wide" id="kit-desbloqueio-completo">
+      <div class="kit-dupla-box">
+        <span class="kit-dupla-badge">Três sachês · 20g cada</span>
+        <h3>Kit Desbloqueio Completo</h3>
+        <p class="kit-dupla-lead">Limpe. Proteja. Prospere.</p>
+        <div class="kit-dupla-photo-wrap">
+          <img src="kit-desbloqueio-completo.jpeg" alt="Kit Desbloqueio Completo: três sachês de banho de ervas Blanch — Recomeço, Círculo Sagrado e Caminhos Abertos, 20g cada." class="kit-dupla-photo" width="1200" height="675" loading="lazy" decoding="async" />
+        </div>
+        <p class="kit-desbloqueio-text">Se a sua vida não anda, não é só falta de esforço — é energia desalinhada.</p>
+        <p class="kit-desbloqueio-heading">O que vem no kit</p>
+        <ul class="kit-desbloqueio-list">
+          <li>
+            <strong>1. Recomeço — Limpeza espiritual</strong>
+            <p class="product-intent">Limpeza Espiritual & Virada de Ciclo</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Hortelã · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Se você está sobrecarregada, cansada ou carregando coisas que já não fazem mais sentido. Ideal para momentos de virada, recomeços e quando você sente que precisa "limpar tudo".
+            </div>
+            <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
+          </li>
+          <li>
+            <strong>2. Círculo Sagrado — Proteção energética</strong>
+            <p class="product-intent">Proteção Energética & Emocional</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Alecrim · Erva-doce · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Ideal para dias de exposição, ambientes pesados ou quando você sente sua energia sendo drenada. Use quando precisar se proteger e se fortalecer.
+            </div>
+            <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
+          </li>
+          <li>
+            <strong>3. Caminhos Abertos — Prosperidade e dinheiro</strong>
+            <p class="product-intent">Prosperidade & Dinheiro</p>
+            <div class="product-composition">
+              <strong>Composição</strong>
+              Louro · Blend exclusivo de ervas
+            </div>
+            <div class="product-usage">
+              <strong>Para quem é</strong>
+              Ideal para momentos em que você quer destravar sua vida, atrair oportunidades e prosperar. Use quando quiser abrir caminhos e permitir que o novo chegue até você.
+            </div>
+            <p class="product-affirmation">"O fluxo volta. Os caminhos se abrem. Eu prospero."</p>
+          </li>
+        </ul>
+        <p class="kit-desbloqueio-heading">Esse kit foi criado para agir em 3 níveis</p>
+        <ul class="kit-dupla-guide">
+          <li>Remover o que te trava</li>
+          <li>Proteger sua energia</li>
+          <li>Abrir caminhos para prosperidade</li>
+        </ul>
+        <div class="kit-dupla-pricing">
+          <span class="kit-dupla-price-main" aria-label="Preço do kit completo"><span id="kit-desbloqueio-price-display">R$ 39,90</span></span>
+        </div>
+        <button type="button" class="btn-kit" id="btn-add-kit-desbloqueio" data-yampi-kit-token="HMK7D7H9SO">Adicionar ao carrinho</button>
+      </div>
     </div>
   </section>
 
@@ -1976,14 +2173,14 @@
   <section class="cta-final">
     <p class="section-label" style="justify-content:center">Comece agora</p>
     <h2>Você já sabe qual<br><em>intenção</em> quer cultivar.</h2>
-    <p>Escolha um roll-on terapêutico ou um banho. Respire fundo e siga o que seu corpo está pedindo. O primeiro passo é simples.</p>
+    <p>Escolha um roll-on terapêutico ou um kit de banhos (dupla de sachês ou kit completo com os três). Respire fundo e siga o que seu corpo está pedindo. O primeiro passo é simples.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os roll-ons terapêuticos Blanch" class="btn-primary" target="_blank">
         <span>Escolher meu roll-on</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os banhos de ervas" class="btn-primary" target="_blank">
-        <span>Escolher meu banho</span>
+      <a href="#banhos" class="btn-primary">
+        <span>Ver kits de banhos</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a href="https://instagram.com/The.blanch" class="btn-secondary" target="_blank">Ver no Instagram</a>
@@ -2064,7 +2261,7 @@
       <button type="button" class="cart-close" id="cart-close" aria-label="Fechar carrinho">&times;</button>
     </div>
     <div class="cart-drawer-body">
-      <p id="cart-empty" class="cart-empty">Seu carrinho está vazio.<br>Adicione roll-ons terapêuticos ou banhos nos cards acima.</p>
+      <p id="cart-empty" class="cart-empty">Seu carrinho está vazio.<br>Adicione roll-ons ou um dos kits (Dupla Essencial, Dupla de Banhos ou Kit Desbloqueio Completo) acima.</p>
       <div id="cart-items"></div>
     </div>
     <div class="cart-drawer-footer">
@@ -2118,6 +2315,12 @@
     /* Token do produto Kit Dupla (2 roll-ons) na Yampi (link seguro.theblanch.com/r/...) */
     var YAMPI_KIT_DUPLA_TOKEN = 'GMT01RN7KN';
     var KIT_DUPLA_PRICE = 69.90;
+    /* Kit 2 banhos na Yampi — https://seguro.theblanch.com/r/F7CJ21AOVA */
+    var YAMPI_KIT_BANHO_TOKEN = 'F7CJ21AOVA';
+    var KIT_BANHO_DUPLA_PRICE = 30.00;
+    /* Kit 3 banhos — https://seguro.theblanch.com/r/HMK7D7H9SO */
+    var YAMPI_KIT_DESBLOQUEIO_TOKEN = 'HMK7D7H9SO';
+    var KIT_DESBLOQUEIO_PRICE = 39.90;
     const cartBackdrop = document.getElementById('cart-backdrop');
     const cartDrawer = document.getElementById('cart-drawer');
     const cartItemsEl = document.getElementById('cart-items');
@@ -2147,6 +2350,10 @@
     (function syncKitPriceLabels() {
       var p = document.getElementById('kit-price-display');
       if (p) p.textContent = formatBRL(KIT_DUPLA_PRICE);
+      var pb = document.getElementById('kit-banho-price-display');
+      if (pb) pb.textContent = formatBRL(KIT_BANHO_DUPLA_PRICE);
+      var pd = document.getElementById('kit-desbloqueio-price-display');
+      if (pd) pd.textContent = formatBRL(KIT_DESBLOQUEIO_PRICE);
     })();
     function buildYampiUrl(items) {
       if (!items.length) return '#';
@@ -2274,6 +2481,69 @@
       } else {
         var msg = 'Olá! Quero a Dupla Essencial Blanch (2 roll-ons): ' + n1 + ' + ' + n2 + ' — valor promocional R$ ' + KIT_DUPLA_PRICE.toFixed(2).replace('.', ',') + ' (em vez de comprar os dois separados).';
         window.open('https://wa.me/5585920015254?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
+      }
+    });
+
+    document.getElementById('btn-add-kit-banho').addEventListener('click', function () {
+      var btnBanho = document.getElementById('btn-add-kit-banho');
+      var tokBanho = (btnBanho.getAttribute('data-yampi-kit-token') || '').trim() || String(YAMPI_KIT_BANHO_TOKEN || '').trim();
+      var s1 = document.getElementById('kit-banho-1');
+      var s2 = document.getElementById('kit-banho-2');
+      if (!s1.value || !s2.value) {
+        alert('Selecione os dois banhos do kit.');
+        return;
+      }
+      if (s1.value === s2.value) {
+        alert('Escolha dois banhos diferentes.');
+        return;
+      }
+      var n1 = s1.options[s1.selectedIndex].text;
+      var n2 = s2.options[s2.selectedIndex].text;
+      var pairKey = 'kit-banho-' + [s1.value, s2.value].sort().join('-');
+      var kitName = 'Dupla de Banhos Blanch · ' + n1 + ' + ' + n2;
+      if (tokBanho.length >= 8) {
+        var kitItems = loadCart();
+        var kidx = kitItems.findIndex(function (x) { return x.token === pairKey; });
+        if (kidx >= 0) kitItems[kidx].qty += 1;
+        else {
+          kitItems.push({
+            token: pairKey,
+            checkoutToken: tokBanho,
+            name: kitName,
+            price: KIT_BANHO_DUPLA_PRICE,
+            qty: 1
+          });
+        }
+        saveCart(kitItems);
+        renderCart();
+        openCart();
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'AddToCart', { content_name: kitName, value: KIT_BANHO_DUPLA_PRICE, currency: 'BRL' });
+        }
+      } else {
+        var msgB = 'Olá! Quero a Dupla de Banhos Blanch (2 sachês): ' + n1 + ' + ' + n2 + ' — valor promocional R$ ' + KIT_BANHO_DUPLA_PRICE.toFixed(2).replace('.', ',') + '.';
+        window.open('https://wa.me/5585920015254?text=' + encodeURIComponent(msgB), '_blank', 'noopener,noreferrer');
+      }
+    });
+
+    document.getElementById('btn-add-kit-desbloqueio').addEventListener('click', function () {
+      var btnK = document.getElementById('btn-add-kit-desbloqueio');
+      var tokK = (btnK.getAttribute('data-yampi-kit-token') || '').trim() || String(YAMPI_KIT_DESBLOQUEIO_TOKEN || '').trim();
+      var nomeKit = 'Kit Desbloqueio Completo (3 banhos de ervas)';
+      if (tokK.length >= 8) {
+        var it = loadCart();
+        var ix = it.findIndex(function (x) { return x.token === tokK && !x.checkoutToken; });
+        if (ix >= 0) it[ix].qty += 1;
+        else it.push({ token: tokK, name: nomeKit, price: KIT_DESBLOQUEIO_PRICE, qty: 1 });
+        saveCart(it);
+        renderCart();
+        openCart();
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'AddToCart', { content_name: nomeKit, value: KIT_DESBLOQUEIO_PRICE, currency: 'BRL' });
+        }
+      } else {
+        var msgK = 'Olá! Quero o ' + nomeKit + ' — valor R$ ' + KIT_DESBLOQUEIO_PRICE.toFixed(2).replace('.', ',') + '.';
+        window.open('https://wa.me/5585920015254?text=' + encodeURIComponent(msgK), '_blank', 'noopener,noreferrer');
       }
     });
 
