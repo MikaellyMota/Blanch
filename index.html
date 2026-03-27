@@ -4,24 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blanch — Roll-ons terapêuticos</title>
-  <!-- Meta Pixel exclusivo desta LP (theblanch.com). O Pixel da página /3tecnicas está só em 3tecnicas/index.html — não altere lá. -->
-  <script>
-  var LP_PRINCIPAL_META_PIXEL_ID = '1259323398929604';
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  if (/^[0-9]{10,20}$/.test(LP_PRINCIPAL_META_PIXEL_ID)) {
-    fbq('init', LP_PRINCIPAL_META_PIXEL_ID);
-    fbq('track', 'PageView');
-  }
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1259323398929604&ev=PageView&noscript=1" alt="" /></noscript>
+  <!-- Meta Pixel: carregado no final do body para não bloquear pintura em WebViews (ex.: Instagram) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -2094,6 +2077,25 @@
     </div>
   </aside>
 
+  <!-- Meta Pixel exclusivo desta LP (theblanch.com). O Pixel da página /3tecnicas está só em 3tecnicas/index.html — não altere lá. -->
+  <script>
+  var LP_PRINCIPAL_META_PIXEL_ID = '1259323398929604';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  if (/^[0-9]{10,20}$/.test(LP_PRINCIPAL_META_PIXEL_ID)) {
+    fbq('init', LP_PRINCIPAL_META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1259323398929604&ev=PageView&noscript=1" alt="" /></noscript>
+
   <script>
     // Nav scroll — transition from white (over dark hero) to dark (over light page)
     const navbar = document.getElementById('navbar');
@@ -2135,7 +2137,9 @@
       } catch (e) { return []; }
     }
     function saveCart(items) {
-      localStorage.setItem(CART_KEY, JSON.stringify(items));
+      try {
+        localStorage.setItem(CART_KEY, JSON.stringify(items));
+      } catch (e) { /* WebView / modo privado pode bloquear storage */ }
     }
     function formatBRL(n) {
       return Number(n).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -2338,22 +2342,41 @@
       });
     });
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.product-card, .kit-dupla-box, .step, .testimonial, .what-card, .about-stat').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-      observer.observe(el);
-    });
+    // Scroll reveal — em WebViews (ex.: Instagram) o IntersectionObserver pode não disparar; conteúdo ficava invisível (tela “branca”)
+    (function () {
+      var revealSel = '.product-card, .kit-dupla-box, .step, .testimonial, .what-card, .about-stat';
+      function revealAll() {
+        document.querySelectorAll(revealSel).forEach(function (el) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }
+      var nodes = document.querySelectorAll(revealSel);
+      if (!nodes.length) return;
+      if (typeof IntersectionObserver === 'undefined') {
+        revealAll();
+        return;
+      }
+      try {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px 12% 0px' });
+        nodes.forEach(function (el) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(24px)';
+          el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+          observer.observe(el);
+        });
+        setTimeout(revealAll, 2800);
+      } catch (err) {
+        revealAll();
+      }
+    })();
   </script>
 
 </body>
