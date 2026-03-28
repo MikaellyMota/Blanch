@@ -44,16 +44,16 @@ const SolutionSection = () => (
         viewport={{ once: true }}
         className="text-center mb-8"
       >
-        <span className="text-energy-teal text-sm font-body tracking-[0.25em] uppercase mb-4 block">
+        <span className="text-energy-teal text-base md:text-lg font-body tracking-[0.22em] uppercase mb-5 block">
           ✦ O método que vai mudar tudo
         </span>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-5 leading-tight">
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-[1.08]">
           O Protocolo de 20 Minutos que{" "}
-          <em className="text-gradient-energy not-italic block mt-1">
+          <em className="text-gradient-energy not-italic block mt-2">
             Destrava Sua Energia de Vez
           </em>
         </h2>
-        <p className="text-muted-foreground font-body text-lg md:text-xl max-w-2xl mx-auto">
+        <p className="text-muted-foreground font-body text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
           Não é meditação genérica. Não é pensamento positivo.
           É um <strong className="text-foreground">sistema comprovado</strong> que atua direto na raiz do problema.
         </p>
@@ -66,9 +66,11 @@ const SolutionSection = () => (
         viewport={{ once: true }}
         className="flex justify-center mb-14"
       >
-        <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-energy-teal/30 bg-energy-teal/5 backdrop-blur-sm">
-          <span className="text-energy-teal text-2xl">⭐</span>
-          <span className="font-body text-sm text-foreground">
+        <div className="inline-flex items-center gap-4 px-7 py-4 rounded-full border border-energy-teal/30 bg-energy-teal/5 backdrop-blur-sm max-w-[min(100%,36rem)]">
+          <span className="text-energy-teal text-3xl shrink-0" aria-hidden>
+            ⭐
+          </span>
+          <span className="font-body text-base md:text-lg text-foreground text-left leading-snug">
             <strong>+2.400 mulheres</strong> já transformaram sua energia com este protocolo
           </span>
         </div>
@@ -85,18 +87,18 @@ const SolutionSection = () => (
             transition={{ delay: i * 0.15 }}
             className="relative group"
           >
-            <div className="h-full p-7 rounded-2xl bg-card/80 backdrop-blur-sm border border-energy-violet/15 hover:border-energy-violet/40 transition-all duration-500 hover:shadow-energy">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-energy-violet/20 to-energy-magenta/10 flex items-center justify-center text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">
+            <div className="h-full p-8 rounded-2xl bg-card/80 backdrop-blur-sm border border-energy-violet/15 hover:border-energy-violet/40 transition-all duration-500 hover:shadow-energy">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-energy-violet/20 to-energy-magenta/10 flex items-center justify-center text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 {pillar.icon}
               </div>
-              <h3 className="font-display font-bold text-2xl text-foreground mb-3">
+              <h3 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-4 leading-tight">
                 {pillar.title}
               </h3>
-              <p className="font-body text-muted-foreground text-base md:text-lg leading-relaxed mb-4">
+              <p className="font-body text-muted-foreground text-lg md:text-xl leading-relaxed mb-5">
                 {pillar.desc}
               </p>
-              <div className="px-3 py-1.5 rounded-full bg-energy-teal/10 border border-energy-teal/20 inline-block">
-                <p className="font-body text-energy-teal text-sm font-medium">
+              <div className="px-4 py-2 rounded-full bg-energy-teal/10 border border-energy-teal/20 inline-block">
+                <p className="font-body text-energy-teal text-base font-medium leading-snug">
                   {pillar.highlight}
                 </p>
               </div>
