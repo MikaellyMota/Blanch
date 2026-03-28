@@ -153,4 +153,27 @@
   .animate-orb-delay-2 {
     animation: orbFloat 12s ease-in-out infinite 4s;
   }
+
+  @keyframes heroLivePulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
+    }
+    50% {
+      opacity: 0.92;
+      transform: scale(1.15);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.28);
+    }
+  }
+
+  .animate-hero-live-dot {
+    animation: heroLivePulse 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-live-dot {
+      animation: none;
+    }
+  }
 }

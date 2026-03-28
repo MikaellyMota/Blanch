@@ -10,6 +10,7 @@ import ChoiceSection from "@/components/ChoiceSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import StickyBar from "@/components/StickyBar";
+import PurchaseToast from "@/components/PurchaseToast";
 
 const Index = () => (
   <div className="min-h-screen bg-background pb-16">
@@ -24,6 +25,7 @@ const Index = () => (
     <ChoiceSection />
     <FAQSection />
     <FinalCTA />
+    <PurchaseToast />
     <StickyBar />
   </div>
 );

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import CTAButton from "./CTAButton";
+import HeroHeadlineVideo from "./HeroHeadlineVideo";
+import LiveViewersChip from "./LiveViewersChip";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const EnergyOrb = ({ className }: { className: string }) => (
@@ -40,6 +42,15 @@ const HeroSection = () => (
         O protocolo de 20 minutos que reprograma sua mente e{" "}
         <em className="text-gradient-energy not-italic">destrava sua energia.</em>
       </motion.h1>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.35 }}
+        className="mb-8"
+      >
+        <HeroHeadlineVideo />
+      </motion.div>
 
       <motion.p
         initial={{ opacity: 0 }}
@@ -82,6 +93,14 @@ const HeroSection = () => (
         <span className="flex items-center gap-1.5">🔒 Pagamento seguro</span>
         <span className="flex items-center gap-1.5">⚡ Acesso imediato</span>
         <span className="flex items-center gap-1.5">🛡️ Garantia 7 dias</span>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <LiveViewersChip />
       </motion.div>
     </div>
   </section>

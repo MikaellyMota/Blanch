@@ -1,0 +1,8 @@
+{
+  "name": "blanch",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix nova-lp",
+    "build": "npm run build --prefix nova-lp"
+  }
+}
