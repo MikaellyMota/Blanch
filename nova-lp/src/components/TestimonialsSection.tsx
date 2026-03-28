@@ -141,15 +141,12 @@ const TestimonialsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-energy-magenta text-sm font-body tracking-[0.2em] uppercase mb-4 block">
-          ✦ Sem filtro, sem edição
-        </span>
         <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
           Vidas que mudaram{" "}
           <em className="text-gradient-violet not-italic">em dias, não meses</em>
         </h2>
         <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
-          Prints reais do WhatsApp — sem edição, sem filtro. Essas mulheres estavam exatamente onde você está agora.
+          Essas mulheres estavam exatamente onde você está agora.
         </p>
       </motion.div>
 
