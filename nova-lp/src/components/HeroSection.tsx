@@ -58,9 +58,10 @@ const HeroSection = () => (
         transition={{ duration: 0.8, delay: 0.5 }}
         className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto font-body leading-relaxed"
       >
-        Se você não mudar o que faz nos próximos 20 minutos do seu dia…
-        daqui a 1 ano, sua vida continua{" "}
-        <strong className="text-foreground">exatamente igual.</strong>
+        A dor que você sente hoje não vai embora sozinha.{" "}
+        <strong className="text-foreground">Cada dia que passa, ela se aprofunda.</strong>{" "}
+        Você merece mais — e são apenas 20 minutos para{" "}
+        <strong className="text-gradient-energy">quebrar esse ciclo de vez.</strong>
       </motion.p>
 
       <motion.div
