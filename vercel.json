@@ -15,7 +15,12 @@
     },
     {
       "source": "/nova",
-      "destination": "/nova/",
+      "destination": "/3tecnicas/",
+      "permanent": true
+    },
+    {
+      "source": "/nova/",
+      "destination": "/3tecnicas/",
       "permanent": true
     },
     {

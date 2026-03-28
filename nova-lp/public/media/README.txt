@@ -18,7 +18,7 @@ O PLAYER SÓ FUNCIONA SE O FICHEIRO ESTIVER AQUI (não basta estar noutra pasta 
 3. Reinicie o servidor: na pasta nova-lp → npm run dev
 
 4. Teste no browser abrindo diretamente:
-   http://localhost:8080/nova/media/IMG_1852.mp4
+   http://localhost:8080/3tecnicas/media/IMG_1852.mp4
    Se pedir download ou mostrar o vídeo, o caminho está certo.
 
 5. Para verificar no terminal: npm run check-media

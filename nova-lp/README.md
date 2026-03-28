@@ -1,9 +1,9 @@
-# Destrave Sua Energia (landing React)
+# Nova LP (Blanch)
 
-Código espelhado do repositório **[joyful-sales-engine](https://github.com/MikaellyMota/joyful-sales-engine)** (Lovable). Ajustes só para publicar no site Blanch em **`/nova/`**:
+Código espelhado do repositório **[joyful-sales-engine](https://github.com/MikaellyMota/joyful-sales-engine)** (Lovable). Ajustes para publicar no site Blanch em **`/3tecnicas/`**:
 
-- `vite.config.ts`: `base: "/nova/"` e build em `../nova`
-- `App.tsx`: `BrowserRouter basename="/nova"`
+- `vite.config.ts`: `base: "/3tecnicas/"` e build em `../3tecnicas`
+- `App.tsx`: `BrowserRouter basename="/3tecnicas"`
 
 ## Desenvolvimento
 
@@ -13,17 +13,19 @@ npm install
 npm run dev
 ```
 
-- Use **`http://localhost:8080/nova/`** (com `/nova/` no fim). Só `http://localhost:8080/` redireciona para lá no dev.
-- Se abrir em branco: confira o console (F12) e use **`http://127.0.0.1:8080/nova/`** se `localhost` falhar.
+- Use **`http://localhost:8080/3tecnicas/`** (com `/3tecnicas/` no fim). Só `http://localhost:8080/` redireciona para lá no dev.
+- Se abrir em branco: confira o console (F12) e use **`http://127.0.0.1:8080/3tecnicas/`** se `localhost` falhar.
 
-## Produção (theblanch.com)
+A pasta **`3tecnicas/`** na raiz do repositório (saída do build) precisa estar **no Git** e no deploy (Vercel). A URL pública é **`https://www.theblanch.com/3tecnicas/`**.
 
-A pasta **`nova/`** na raiz do repositório precisa estar **no Git** e no deploy (Vercel). A URL é **`https://theblanch.com/nova/`** (ou seu domínio).
+## Build (atualiza a pasta estática `../3tecnicas/`)
 
-## Build (atualiza a pasta estática `../nova/`)
+Na raiz do repo:
 
 ```bash
 npm run build
 ```
 
-Para sincronizar com o GitHub do Lovable, faça pull no repositório `joyful-sales-engine` e copie os ficheiros para cá, ou conecte este monorepo ao fluxo que preferir.
+Ou em `nova-lp`: `npm run build`.
+
+Quem tiver links antigos em **`/nova/`**, a Vercel redireciona para **`/3tecnicas/`**.
