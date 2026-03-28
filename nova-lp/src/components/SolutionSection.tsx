@@ -89,14 +89,14 @@ const SolutionSection = () => (
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-energy-violet/20 to-energy-magenta/10 flex items-center justify-center text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">
                 {pillar.icon}
               </div>
-              <h3 className="font-display font-bold text-xl text-foreground mb-3">
+              <h3 className="font-display font-bold text-2xl text-foreground mb-3">
                 {pillar.title}
               </h3>
-              <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
+              <p className="font-body text-muted-foreground text-base md:text-lg leading-relaxed mb-4">
                 {pillar.desc}
               </p>
               <div className="px-3 py-1.5 rounded-full bg-energy-teal/10 border border-energy-teal/20 inline-block">
-                <p className="font-body text-energy-teal text-xs font-medium">
+                <p className="font-body text-energy-teal text-sm font-medium">
                   {pillar.highlight}
                 </p>
               </div>
@@ -117,7 +117,7 @@ const SolutionSection = () => (
             O que acontece quando sua energia{" "}
             <span className="text-gradient-energy">destrava:</span>
           </h3>
-          <p className="font-body text-muted-foreground text-sm">
+          <p className="font-body text-muted-foreground text-base">
             Resultados reais relatados por quem já aplicou o protocolo
           </p>
         </div>
@@ -172,10 +172,10 @@ const SolutionSection = () => (
               {item.step}
             </span>
             <span className="text-3xl mb-3 block">{item.icon}</span>
-            <p className="font-body font-bold text-energy-violet text-sm uppercase tracking-[0.15em] mb-2">
+            <p className="font-body font-bold text-energy-violet text-base uppercase tracking-[0.15em] mb-2">
               {item.time}
             </p>
-            <p className="font-body text-foreground text-sm leading-relaxed">{item.desc}</p>
+            <p className="font-body text-foreground text-base md:text-lg leading-relaxed">{item.desc}</p>
           </motion.div>
         ))}
       </div>
