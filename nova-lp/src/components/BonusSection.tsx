@@ -31,7 +31,7 @@ const BonusSection = () => (
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <span className="text-energy-violet text-sm font-body tracking-[0.2em] uppercase mb-4 block">✦ Bônus exclusivos</span>
+        <span className="text-energy-violet text-base font-body tracking-[0.2em] uppercase mb-4 block">✦ Bônus exclusivos</span>
         <h2 className="text-3xl md:text-5xl font-display font-bold">
           Acelere seus <em className="text-gradient-energy not-italic">resultados</em>
         </h2>
@@ -48,23 +48,23 @@ const BonusSection = () => (
             className={`relative p-7 rounded-2xl bg-card/80 backdrop-blur-sm border ${bonus.borderColor} transition-all duration-300`}
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-xs font-body font-bold text-energy-violet bg-energy-violet/10 px-3 py-1.5 rounded-full uppercase tracking-wider">
+              <span className="text-sm font-body font-bold text-energy-violet bg-energy-violet/10 px-3 py-1.5 rounded-full uppercase tracking-wider">
                 {bonus.badge}
               </span>
-              <span className="text-sm font-body text-muted-foreground line-through">{bonus.price}</span>
+              <span className="text-base font-body text-muted-foreground line-through">{bonus.price}</span>
             </div>
             <div className="text-4xl mb-4 animate-float" style={{ animationDelay: `${i * 1}s` }}>{bonus.icon}</div>
-            <h3 className="text-lg font-display font-bold text-foreground mb-3">{bonus.title}</h3>
-            <p className="text-sm font-body text-muted-foreground mb-5 leading-relaxed">{bonus.desc}</p>
+            <h3 className="text-xl md:text-2xl font-display font-bold text-foreground mb-3">{bonus.title}</h3>
+            <p className="text-base md:text-lg font-body text-muted-foreground mb-5 leading-relaxed">{bonus.desc}</p>
             <ul className="space-y-2.5">
               {bonus.items.map((item, j) => (
-                <li key={j} className="flex items-center gap-2.5 text-sm font-body text-secondary-foreground">
-                  <span className="text-energy-teal text-xs">✦</span>
+                <li key={j} className="flex items-center gap-2.5 text-base font-body text-secondary-foreground">
+                  <span className="text-energy-teal text-sm">✦</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <div className="absolute top-0 right-0 bg-gradient-cta text-foreground text-[10px] font-body font-bold px-4 py-1.5 rounded-bl-2xl rounded-tr-2xl uppercase tracking-wider">
+            <div className="absolute top-0 right-0 bg-gradient-cta text-foreground text-xs font-body font-bold px-4 py-1.5 rounded-bl-2xl rounded-tr-2xl uppercase tracking-wider">
               Grátis
             </div>
           </motion.div>
