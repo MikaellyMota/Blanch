@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 6%;
+    --foreground: 270 20% 95%;
+
+    --card: 260 25% 10%;
+    --card-foreground: 270 20% 95%;
+
+    --popover: 260 25% 10%;
+    --popover-foreground: 270 20% 95%;
+
+    --primary: 280 70% 65%;
+    --primary-foreground: 260 30% 6%;
+
+    --secondary: 260 20% 14%;
+    --secondary-foreground: 270 20% 85%;
+
+    --muted: 260 18% 15%;
+    --muted-foreground: 270 12% 55%;
+
+    --accent: 175 70% 50%;
+    --accent-foreground: 260 30% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 270 15% 18%;
+    --input: 270 15% 18%;
+    --ring: 280 70% 65%;
+
+    --radius: 0.75rem;
+
+    /* Energy colors */
+    --energy-violet: 280 70% 65%;
+    --energy-magenta: 320 80% 60%;
+    --energy-teal: 175 70% 50%;
+    --energy-indigo: 245 60% 55%;
+    --energy-pink: 330 75% 65%;
+    --warm-glow: 45 90% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gradient-energy {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(280 70% 65%), hsl(320 80% 60%), hsl(175 70% 55%));
+  }
+
+  .text-gradient-violet {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(280 80% 70%), hsl(320 75% 65%));
+  }
+
+  .bg-gradient-cta {
+    background-image: linear-gradient(135deg, hsl(280 70% 55%), hsl(320 80% 55%));
+  }
+
+  .bg-gradient-cta-hover {
+    background-image: linear-gradient(135deg, hsl(280 70% 60%), hsl(320 80% 60%));
+  }
+
+  .shadow-energy {
+    box-shadow: 0 0 40px -10px hsl(280 70% 65% / 0.5), 0 0 20px -5px hsl(320 80% 60% / 0.3);
+  }
+
+  .shadow-energy-lg {
+    box-shadow: 0 0 60px -10px hsl(280 70% 65% / 0.5), 0 0 30px -5px hsl(320 80% 60% / 0.4);
+  }
+
+  .border-energy {
+    border-color: hsl(280 60% 50% / 0.3);
+  }
+
+  .bg-section-alt {
+    background-color: hsl(260 28% 8%);
+  }
+
+  .bg-section-dark {
+    background-color: hsl(260 30% 5%);
+  }
+
+  .glow-pulse {
+    animation: glowPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px -5px hsl(280 70% 65% / 0.4), 0 0 10px -3px hsl(320 80% 60% / 0.2); }
+    50% { box-shadow: 0 0 50px -5px hsl(280 70% 65% / 0.7), 0 0 25px -3px hsl(320 80% 60% / 0.5); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  @keyframes countDown {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-countdown {
+    animation: countDown 1s ease-in-out infinite;
+  }
+
+  @keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    33% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
+    66% { transform: translate(-20px, 10px) scale(0.9); opacity: 0.3; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  }
+
+  .animate-orb {
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+
+  .animate-orb-delay {
+    animation: orbFloat 10s ease-in-out infinite 2s;
+  }
+
+  .animate-orb-delay-2 {
+    animation: orbFloat 12s ease-in-out infinite 4s;
+  }
+}

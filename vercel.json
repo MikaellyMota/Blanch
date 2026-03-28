@@ -9,6 +9,11 @@
       "source": "/3tecnicas",
       "destination": "/3tecnicas/",
       "permanent": true
+    },
+    {
+      "source": "/nova",
+      "destination": "/nova/",
+      "permanent": true
     }
   ]
 }
