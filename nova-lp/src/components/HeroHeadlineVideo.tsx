@@ -40,16 +40,8 @@ const HeroHeadlineVideo = () => {
     };
   }, []);
 
-  /** Começa a descarregar o ficheiro logo que o bloco existe — reduz espera ao tocar em play. */
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    try {
-      video.load();
-    } catch {
-      /* ignore */
-    }
-  }, []);
+  // Não chamar video.load() aqui: no 1.º mount o browser já está a carregar os <source>;
+  // load() aborta e reinicia, o que atrasa buffer (pior no Instagram / WebView).
 
   useEffect(
     () => () => {
@@ -139,6 +131,7 @@ const HeroHeadlineVideo = () => {
           loop
           playsInline
           preload="auto"
+          fetchPriority="high"
           poster={heroPoster}
           width={1080}
           height={1920}
