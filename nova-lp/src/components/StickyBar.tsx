@@ -13,7 +13,7 @@ const StickyBar = () => (
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center font-body font-semibold text-sm px-8 py-3 rounded-full bg-gradient-cta text-foreground glow-pulse w-full sm:w-auto text-center transition-all hover:opacity-90"
       >
-        ✨ Comprar agora →
+        ✨ Mudar de vida agora →
       </a>
     </div>
   </div>
