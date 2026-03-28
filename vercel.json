@@ -1,4 +1,7 @@
 {
+  "installCommand": "npm ci --prefix nova-lp",
+  "buildCommand": "npm run build --prefix nova-lp",
+  "outputDirectory": ".",
   "redirects": [
     {
       "source": "/3tecnicas.html",
