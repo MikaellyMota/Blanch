@@ -113,16 +113,16 @@ const SolutionSection = () => (
         className="rounded-3xl border border-energy-violet/20 bg-gradient-to-br from-energy-violet/5 via-card/60 to-energy-magenta/5 backdrop-blur-sm p-8 md:p-12 mb-16"
       >
         <div className="text-center mb-8">
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-2">
+          <h3 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-3">
             O que acontece quando sua energia{" "}
             <span className="text-gradient-energy">destrava:</span>
           </h3>
-          <p className="font-body text-muted-foreground text-base">
+          <p className="font-body text-muted-foreground text-lg md:text-xl max-w-xl mx-auto">
             Resultados reais relatados por quem já aplicou o protocolo
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-5 max-w-2xl mx-auto">
           {results.map((result, i) => (
             <motion.div
               key={i}
@@ -130,12 +130,12 @@ const SolutionSection = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-3 p-4 rounded-xl bg-card/50 border border-energy-teal/10"
+              className="flex items-start gap-3.5 p-5 md:p-6 rounded-xl bg-card/50 border border-energy-teal/10"
             >
-              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-energy-teal/20 flex items-center justify-center text-energy-teal text-sm font-bold">
+              <span className="flex-shrink-0 w-10 h-10 mt-0.5 rounded-full bg-energy-teal/20 flex items-center justify-center text-energy-teal text-base font-bold">
                 ✓
               </span>
-              <p className="font-body text-foreground text-sm">{result}</p>
+              <p className="font-body text-foreground text-lg md:text-xl leading-snug">{result}</p>
             </motion.div>
           ))}
         </div>
