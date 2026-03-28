@@ -11,7 +11,9 @@ const LOAD_ERROR_MSG =
 const HeroHeadlineVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingLoadErrorRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const playingListenerRef = useRef<(() => void) | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isStarting, setIsStarting] = useState(false);
   const [paused, setPaused] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -38,6 +40,17 @@ const HeroHeadlineVideo = () => {
     };
   }, []);
 
+  /** Começa a descarregar o ficheiro logo que o bloco existe — reduz espera ao tocar em play. */
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    try {
+      video.load();
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
   useEffect(
     () => () => {
       if (pendingLoadErrorRef.current) clearTimeout(pendingLoadErrorRef.current);
@@ -54,16 +67,52 @@ const HeroHeadlineVideo = () => {
     const video = videoRef.current;
     if (!video) return;
     clearLoadErrorState();
-    video.muted = false;
-    video.volume = 1;
-    video
-      .play()
-      .then(() => {
-        setIsPlaying(true);
-      })
-      .catch(() => {
-        showPlayError("Não foi possível reproduzir. Atualize a página ou tente em outro navegador.");
-      });
+    setIsStarting(true);
+
+    if (playingListenerRef.current) {
+      video.removeEventListener("playing", playingListenerRef.current);
+      playingListenerRef.current = null;
+    }
+
+    const onPlaying = () => {
+      setIsPlaying(true);
+      setIsStarting(false);
+      if (playingListenerRef.current) {
+        video.removeEventListener("playing", playingListenerRef.current);
+        playingListenerRef.current = null;
+      }
+    };
+    playingListenerRef.current = onPlaying;
+    video.addEventListener("playing", onPlaying, { once: true });
+
+    const fail = () => {
+      setIsStarting(false);
+      if (playingListenerRef.current) {
+        video.removeEventListener("playing", playingListenerRef.current);
+        playingListenerRef.current = null;
+      }
+      showPlayError("Não foi possível reproduzir. Atualize a página ou tente em outro navegador.");
+    };
+
+    const tryMutedThenSound = async () => {
+      try {
+        // Muitos browsers começam a descodificar mais depressa com muted; no mesmo gesto do utilizador ligamos o som.
+        video.muted = true;
+        await video.play();
+        video.muted = false;
+        video.volume = 1;
+      } catch {
+        try {
+          video.muted = false;
+          video.volume = 1;
+          await video.play();
+        } catch {
+          fail();
+        }
+      }
+    };
+
+    void tryMutedThenSound();
   }, [clearLoadErrorState]);
 
   const togglePause = useCallback(() => {
@@ -138,9 +187,12 @@ const HeroHeadlineVideo = () => {
         >
           <button
             type="button"
+            disabled={isStarting}
+            aria-busy={isStarting}
             className={cn(
               "flex flex-col items-center gap-3.5 font-body cursor-pointer border-0 bg-transparent text-white p-2 px-4 rounded-xl transition-transform hover:scale-[1.03] hover:brightness-110",
-              "touch-manipulation outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[hsl(45_50%_70%)]"
+              "touch-manipulation outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[hsl(45_50%_70%)]",
+              isStarting && "opacity-90 cursor-wait hover:scale-100"
             )}
             aria-label="Assistir o vídeo com som"
             onClick={startPlayback}
@@ -152,7 +204,7 @@ const HeroHeadlineVideo = () => {
               ▶
             </span>
             <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-white/[0.88] [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]">
-              Assistir com som
+              {isStarting ? "A carregar…" : "Assistir com som"}
             </span>
           </button>
           {hasError ? (
