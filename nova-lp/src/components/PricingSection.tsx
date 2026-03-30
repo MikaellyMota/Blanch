@@ -38,7 +38,11 @@ const CountdownTimer = () => {
 
 const pricingItems = [
   { name: "Destrave Sua Energia — protocolo completo (PDF)", sub: "Ebook + práticas guiadas + protocolo semanal", price: "R$ 67,00" },
-  { name: "Bônus: Perfume Energético (guia completo)", sub: "Preparo, uso e conexão com prosperidade", price: "R$ 47,00" },
+  {
+    name: "Bônus: Perfume Energético (guia completo)",
+    sub: "Preparo, uso e conexão com prosperidade; ativação de prosperidade (com a força da energia da lua crescente)",
+    price: "R$ 47,00",
+  },
   { name: "Bônus: Técnica 369 estruturada (33 dias)", sub: "Roteiro diário · escrita e ativação emocional", price: "R$ 39,00" },
   { name: "Organização e suporte ao protocolo", sub: "Como encaixar na rotina sem complicar", price: "R$ 29,00" },
 ];
