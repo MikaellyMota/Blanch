@@ -7,7 +7,6 @@ const testimonials = [
   {
     name: "Camila M.",
     phone: "+55 11 98374-4821",
-    hideDigits: "8374",
     avatar: avatarCamila,
     clockTime: "12:28",
     dateLabel: "sexta-feira",
@@ -20,7 +19,6 @@ const testimonials = [
   {
     name: "Amanda S.",
     phone: "+55 21 97652-7153",
-    hideDigits: "7652",
     avatar: avatarAmanda,
     clockTime: "14:18",
     dateLabel: "quinta-feira",
@@ -33,7 +31,6 @@ const testimonials = [
   {
     name: "Renata L.",
     phone: "+55 31 99481-0392",
-    hideDigits: "9481",
     avatar: avatarRenata,
     clockTime: "20:36",
     dateLabel: "quarta-feira",
@@ -98,23 +95,14 @@ const WhatsAppChat = ({ testimonial, index }: { testimonial: (typeof testimonial
       />
       <div className="min-w-0 flex-1">
         <p className="text-[13px] font-medium text-white truncate">
-          {(() => {
-            const idx = testimonial.phone.indexOf(testimonial.hideDigits);
-            if (idx === -1) return testimonial.phone;
-            const before = testimonial.phone.slice(0, idx);
-            const hidden = testimonial.phone.slice(idx, idx + testimonial.hideDigits.length);
-            const after = testimonial.phone.slice(idx + testimonial.hideDigits.length);
-            return (
-              <>
-                {before}
-                <span className="relative inline-block">
-                  {hidden}
-                  <span className="absolute left-0 right-0 top-1/2 h-[4px] bg-black rounded-full" style={{ transform: 'translateY(-50%) rotate(-2deg)' }} />
-                </span>
-                {after}
-              </>
-            );
-          })()}
+          <span className="relative inline-block max-w-full">
+            {testimonial.phone}
+            <span
+              className="pointer-events-none absolute left-0 right-0 top-1/2 h-[6px] bg-black rounded-full"
+              style={{ transform: "translateY(-50%) rotate(-2deg)" }}
+              aria-hidden
+            />
+          </span>
         </p>
         <p className="text-[10px] text-white/70 -mt-0.5">online</p>
       </div>
@@ -227,15 +215,12 @@ const TestimonialsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-energy-magenta text-sm font-body tracking-[0.2em] uppercase mb-4 block">
-          ✦ Sem filtro, sem edição
-        </span>
         <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
           Vidas que mudaram{" "}
           <em className="text-gradient-violet not-italic">em dias, não meses</em>
         </h2>
         <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
-          Prints reais do WhatsApp — sem edição, sem filtro. Essas mulheres estavam exatamente onde você está agora.
+          Essas mulheres estavam exatamente onde você está agora.
         </p>
       </motion.div>
 
