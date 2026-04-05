@@ -26,7 +26,10 @@
       --shipping-bar-height: 48px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--shipping-bar-height) + 80px);
+    }
 
     body {
       font-family: 'Jost', sans-serif;
@@ -258,6 +261,137 @@
     nav:not(.scrolled) .nav-cart-btn .cart-badge {
       background: #fff;
       color: var(--gold);
+    }
+
+    /* Menu mobile (gaveta à esquerda — categorias / produtos) */
+    .nav-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-right: 4px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .nav-menu-btn svg { width: 24px; height: 24px; }
+    nav:not(.scrolled) .nav-menu-btn { color: #fff; }
+    nav.scrolled .nav-menu-btn { color: var(--text); }
+    .nav-menu-btn:hover { opacity: 0.85; }
+    .nav-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 24, 16, 0.5);
+      z-index: 262;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+    .nav-menu-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-menu-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: min(100vw - 56px, 360px);
+      height: 100%;
+      max-height: 100dvh;
+      background: #fffefb;
+      z-index: 263;
+      box-shadow: 8px 0 40px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu-drawer.is-open { transform: translateX(0); }
+    .nav-menu-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .nav-menu-drawer-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text);
+      margin: 0;
+    }
+    .nav-menu-close {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      font-size: 1.75rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .nav-menu-close:hover { color: var(--gold); }
+    .nav-menu-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 0 24px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-menu-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 16px 22px 8px;
+      margin: 0;
+    }
+    .nav-menu-drawer-body a {
+      display: block;
+      padding: 12px 22px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(140, 108, 70, 0.12);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-menu-drawer-body a:hover,
+    .nav-menu-drawer-body a:focus-visible {
+      background: var(--bg-2);
+      color: var(--gold);
+      outline: none;
+    }
+    .nav-menu-drawer-body a.nav-menu-sublink {
+      padding-left: 32px;
+      font-size: 0.84rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .nav-menu-drawer-footer {
+      flex-shrink: 0;
+      padding: 16px 20px 24px;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(180deg, #fffefb 0%, var(--bg-2) 100%);
+    }
+    .nav-menu-drawer-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-menu-drawer-footer a:hover { color: var(--gold); }
+    @media (max-width: 960px) {
+      .nav-menu-btn { display: inline-flex; }
     }
 
     /* Carrinho lateral */
@@ -1507,6 +1641,7 @@
       nav { padding: 20px 32px; }
       nav.scrolled { padding: 14px 32px; }
       .nav-links { display: none; }
+      .nav-logo { margin-right: auto; }
       .nav-actions { gap: 8px; }
       .nav-cta { padding: 10px 14px; font-size: 0.65rem; letter-spacing: 0.14em; }
       .hero-content {
@@ -1554,6 +1689,9 @@
 
   <!-- ─── NAV ─── -->
   <nav id="navbar">
+    <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-label="Abrir menu de categorias" aria-expanded="false" aria-controls="nav-menu-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
     <a href="#" class="nav-logo" style="color:#fff">Blanch</a>
     <ul class="nav-links">
       <li><a href="#o-que-fazemos">Aromaterapia</a></li>
@@ -1649,7 +1787,7 @@
 
     <div class="products-grid">
 
-      <div class="product-card">
+      <div class="product-card" id="produto-camomila-azul">
         <img src="produto-camomila-azul.png" alt="Camomila Azul" class="product-img" />
         <div class="product-body">
         <span class="product-tag">O perfume que desacelera</span>
@@ -1671,7 +1809,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" id="produto-chave-do-sol">
         <img src="produto-chave-do-sol.png" alt="Chave do Sol" class="product-img" />
         <div class="product-body">
         <span class="product-tag">O perfume que destrava</span>
@@ -1693,7 +1831,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" id="produto-poder-olibano">
         <img src="produto-poder-olibano.png" alt="Poder do Olíbano" class="product-img" />
         <div class="product-body">
         <span class="product-tag">O perfume que protege</span>
@@ -1715,7 +1853,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" id="produto-salvia-branca">
         <img src="produto-salvia-branca.png" alt="Sálvia Branca" class="product-img" />
         <div class="product-body">
         <span class="product-tag">O perfume que renova</span>
@@ -1737,7 +1875,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" id="produto-eu-sou-luz">
         <img src="produto-eu-sou-luz.png" alt="Eu Sou Luz" class="product-img" />
         <div class="product-body">
         <span class="product-tag">O perfume que desperta</span>
@@ -1861,7 +1999,7 @@
         </div>
         <p class="kit-desbloqueio-heading">Cada sachê, em detalhe</p>
         <ul class="kit-desbloqueio-list">
-          <li>
+          <li id="banho-recomeco">
             <strong>1. Recomeço — Limpeza espiritual</strong>
             <p class="product-intent">Banho para limpeza espiritual</p>
             <div class="product-composition">
@@ -1874,7 +2012,7 @@
             </div>
             <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
           </li>
-          <li>
+          <li id="banho-circulo-sagrado">
             <strong>2. Círculo Sagrado — Proteção energética</strong>
             <p class="product-intent">Banho para proteção energética</p>
             <div class="product-composition">
@@ -1887,7 +2025,7 @@
             </div>
             <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
           </li>
-          <li>
+          <li id="banho-caminhos-abertos">
             <strong>3. Caminhos Abertos — Prosperidade e dinheiro</strong>
             <p class="product-intent">Banho para prosperidade</p>
             <div class="product-composition">
@@ -2199,6 +2337,47 @@
     </div>
   </footer>
 
+  <!-- Menu mobile (categorias) -->
+  <div id="nav-menu-backdrop" class="nav-menu-backdrop" aria-hidden="true"></div>
+  <aside id="nav-menu-drawer" class="nav-menu-drawer" aria-hidden="true" aria-labelledby="nav-menu-title">
+    <div class="nav-menu-drawer-header">
+      <h2 id="nav-menu-title">Categorias</h2>
+      <button type="button" class="nav-menu-close" id="nav-menu-close" aria-label="Fechar menu">&times;</button>
+    </div>
+    <div class="nav-menu-drawer-body">
+      <p class="nav-menu-label">Navegação</p>
+      <a href="#o-que-fazemos">Aromaterapia</a>
+      <a href="#como-usar">Como usar roll-ons</a>
+      <a href="#preparo-banhos">Preparo dos banhos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a href="/3tecnicas/">Protocolo Destrave Sua Energia</a>
+
+      <p class="nav-menu-label">Roll-ons terapêuticos</p>
+      <a href="#produtos">Ver todos os roll-ons</a>
+      <a href="#produto-camomila-azul" class="nav-menu-sublink">Camomila Azul</a>
+      <a href="#produto-chave-do-sol" class="nav-menu-sublink">Chave do Sol</a>
+      <a href="#produto-poder-olibano" class="nav-menu-sublink">Poder do Olíbano</a>
+      <a href="#produto-salvia-branca" class="nav-menu-sublink">Sálvia Branca</a>
+      <a href="#produto-eu-sou-luz" class="nav-menu-sublink">Eu Sou Luz</a>
+      <a href="#kit-dupla-essencial" class="nav-menu-sublink">Kit Dupla Essencial</a>
+
+      <p class="nav-menu-label">Banhos de ervas</p>
+      <a href="#banhos">Ver banhos e kits</a>
+      <a href="#banho-recomeco" class="nav-menu-sublink">Recomeço</a>
+      <a href="#banho-circulo-sagrado" class="nav-menu-sublink">Círculo Sagrado</a>
+      <a href="#banho-caminhos-abertos" class="nav-menu-sublink">Caminhos Abertos</a>
+      <a href="#kit-dupla-banho" class="nav-menu-sublink">Dupla de banhos</a>
+      <a href="#kit-desbloqueio-completo" class="nav-menu-sublink">Kit Desbloqueio Completo</a>
+    </div>
+    <div class="nav-menu-drawer-footer">
+      <a href="https://wa.me/5585920015254?text=Olá! Gostaria de saber mais sobre os produtos Blanch" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Blanch
+      </a>
+    </div>
+  </aside>
+
   <!-- Carrinho (checkout combinado Yampi: token:qtd,token:qtd) -->
   <div id="cart-backdrop" class="cart-backdrop" aria-hidden="true"></div>
   <aside id="cart-drawer" class="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
@@ -2254,6 +2433,44 @@
       if (navCta) navCta.style.borderColor = scrolled ? '' : 'rgba(255,255,255,0.5)';
       if (navCta) navCta.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
     });
+
+    // ─── Menu mobile (gaveta categorias) ───
+    const navMenuBtn = document.getElementById('nav-menu-btn');
+    const navMenuBackdrop = document.getElementById('nav-menu-backdrop');
+    const navMenuDrawer = document.getElementById('nav-menu-drawer');
+    const navMenuClose = document.getElementById('nav-menu-close');
+    function openNavMenu() {
+      if (typeof closeCart === 'function') closeCart();
+      navMenuBackdrop.classList.add('is-open');
+      navMenuDrawer.classList.add('is-open');
+      navMenuBackdrop.setAttribute('aria-hidden', 'false');
+      navMenuDrawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (navMenuBtn) {
+        navMenuBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+    function closeNavMenu() {
+      navMenuBackdrop.classList.remove('is-open');
+      navMenuDrawer.classList.remove('is-open');
+      navMenuBackdrop.setAttribute('aria-hidden', 'true');
+      navMenuDrawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (navMenuBtn) {
+        navMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+    if (navMenuBtn) navMenuBtn.addEventListener('click', function () {
+      if (navMenuDrawer.classList.contains('is-open')) closeNavMenu();
+      else openNavMenu();
+    });
+    if (navMenuBackdrop) navMenuBackdrop.addEventListener('click', closeNavMenu);
+    if (navMenuClose) navMenuClose.addEventListener('click', closeNavMenu);
+    if (navMenuDrawer) {
+      navMenuDrawer.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { closeNavMenu(); });
+      });
+    }
 
     // ─── Carrinho (Yampi: link combinado seguro.theblanch.com/r/TOKEN:qtd,TOKEN:qtd) ───
     const CART_KEY = 'blanch_cart_v1';
@@ -2376,6 +2593,7 @@
       }
     }
     function openCart() {
+      if (typeof closeNavMenu === 'function') closeNavMenu();
       cartBackdrop.classList.add('is-open');
       cartDrawer.classList.add('is-open');
       cartBackdrop.setAttribute('aria-hidden', 'false');
