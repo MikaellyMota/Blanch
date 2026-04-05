@@ -1093,11 +1093,21 @@
       }
     }
     .banhos-grid {
-      max-width: 1000px;
+      max-width: 1200px;
     }
     .banhos-grid .product-card {
       flex: 0 0 calc(33.333% - 16px);
       max-width: calc(33.333% - 16px);
+    }
+    .banhos-grid--4 .product-card {
+      flex: 0 0 calc(25% - 18px);
+      max-width: calc(25% - 18px);
+    }
+    @media(max-width:1100px) {
+      .banhos-grid--4 .product-card {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+      }
     }
     @media(max-width:800px) {
       .banhos-grid .product-card {
@@ -1106,7 +1116,8 @@
       }
     }
     @media(max-width:520px) {
-      .banhos-grid .product-card {
+      .banhos-grid .product-card,
+      .banhos-grid--4 .product-card {
         flex: 0 0 100%;
         max-width: 100%;
       }
@@ -1985,7 +1996,10 @@
       Cada um foi criado com um propósito claro — para você sentir, na prática, a diferença no seu dia.
     </p>
 
-    <div class="products-grid banhos-grid" style="margin-bottom: 72px;">
+    <p class="section-label" style="justify-content:center">Sachês avulsos</p>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Quatro intenções. Cada uma com foto, composição e preço.</h3>
+
+    <div class="products-grid banhos-grid banhos-grid--4" style="margin-bottom: 72px;">
       <div class="product-card" id="banho-desacelera">
         <img src="banho-desacelera.png" alt="Desacelera — Banho de ervas, 20g" class="product-img" loading="lazy" decoding="async" />
         <div class="product-body">
@@ -2008,6 +2022,72 @@
           </div>
         </div>
       </div>
+
+      <div class="product-card" id="banho-recomeco">
+        <img src="banho-recomeco.jpg" alt="Banho Recomeço — limpeza espiritual" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">Sachê 20g · limpeza espiritual</span>
+          <h3>Recomeço</h3>
+          <p class="product-intent">Banho para limpeza espiritual</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Alecrim · Camomila · Hortelã · Blend exclusivo de ervas.
+          </div>
+          <div class="product-usage">
+            <strong>Para quem é</strong>
+            Se você está sobrecarregada, cansada ou carregando coisas que já não fazem mais sentido. Ideal para momentos de virada, recomeços e quando você sente que precisa "limpar tudo".
+          </div>
+          <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 15,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="HYYISSXOU0" data-product-name="Banho Recomeço (sachê 20g)" data-price="15.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" id="banho-circulo-sagrado">
+        <img src="banho-circulo-sagrado.jpg" alt="Banho Círculo Sagrado — proteção energética" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">Sachê 20g · proteção</span>
+          <h3>Círculo Sagrado</h3>
+          <p class="product-intent">Banho para proteção energética</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Alecrim · Erva doce · Camomila · Blend exclusivo de ervas.
+          </div>
+          <div class="product-usage">
+            <strong>Para quem é</strong>
+            Ideal para dias de exposição, ambientes pesados ou quando você sente sua energia sendo drenada. Use quando precisar se proteger e se fortalecer.
+          </div>
+          <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 15,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="6ZBZE8UEY4" data-product-name="Banho Círculo Sagrado (sachê 20g)" data-price="15.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" id="banho-caminhos-abertos">
+        <img src="banho-caminhos-abertos.jpg" alt="Banho Caminhos Abertos — prosperidade" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">Sachê 20g · prosperidade</span>
+          <h3>Caminhos Abertos</h3>
+          <p class="product-intent">Banho para prosperidade e dinheiro</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Hortelã · Camomila · Louro · Blend exclusivo de ervas.
+          </div>
+          <div class="product-usage">
+            <strong>Para quem é</strong>
+            Ideal para momentos em que você quer destravar sua vida, atrair oportunidades e prosperar. Use quando quiser abrir caminhos e permitir que o novo chegue até você.
+          </div>
+          <p class="product-affirmation">"O fluxo volta. Os caminhos se abrem. Eu prospero."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 15,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="QS6CMKPESF" data-product-name="Banho Caminhos Abertos (sachê 20g)" data-price="15.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="kit-dupla-wrap" id="kit-dupla-banho">
@@ -2016,54 +2096,11 @@
         <h3>Dupla de Banhos Blanch — escolha seus dois sachês</h3>
         <div class="kit-dupla-photo-wrap">
           <div class="kit-banho-photo-row" aria-hidden="true">
-            <img src="banho-desacelera.png" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-recomeco.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-circulo-sagrado.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-caminhos-abertos.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
           </div>
         </div>
-        <p class="kit-desbloqueio-heading">Cada sachê, em detalhe</p>
-        <ul class="kit-desbloqueio-list">
-          <li id="banho-recomeco">
-            <strong>1. Recomeço — Limpeza espiritual</strong>
-            <p class="product-intent">Banho para limpeza espiritual</p>
-            <div class="product-composition">
-              <strong>Composição</strong>
-              Alecrim · Camomila · Hortelã · Blend exclusivo de ervas.
-            </div>
-            <div class="product-usage">
-              <strong>Para quem é</strong>
-              Se você está sobrecarregada, cansada ou carregando coisas que já não fazem mais sentido. Ideal para momentos de virada, recomeços e quando você sente que precisa "limpar tudo".
-            </div>
-            <p class="product-affirmation">"Solto o que pesa. Abro espaço para o novo."</p>
-          </li>
-          <li id="banho-circulo-sagrado">
-            <strong>2. Círculo Sagrado — Proteção energética</strong>
-            <p class="product-intent">Banho para proteção energética</p>
-            <div class="product-composition">
-              <strong>Composição</strong>
-              Alecrim · Erva doce · Camomila · Blend exclusivo de ervas
-            </div>
-            <div class="product-usage">
-              <strong>Para quem é</strong>
-              Ideal para dias de exposição, ambientes pesados ou quando você sente sua energia sendo drenada. Use quando precisar se proteger e se fortalecer.
-            </div>
-            <p class="product-affirmation">"Minha energia é sagrada. Estou protegida."</p>
-          </li>
-          <li id="banho-caminhos-abertos">
-            <strong>3. Caminhos Abertos — Prosperidade e dinheiro</strong>
-            <p class="product-intent">Banho para prosperidade</p>
-            <div class="product-composition">
-              <strong>Composição</strong>
-              Hortelã · Camomila · Louro · Blend exclusivo de ervas
-            </div>
-            <div class="product-usage">
-              <strong>Para quem é</strong>
-              Ideal para momentos em que você quer destravar sua vida, atrair oportunidades e prosperar. Use quando quiser abrir caminhos e permitir que o novo chegue até você.
-            </div>
-            <p class="product-affirmation">"O fluxo volta. Os caminhos se abrem. Eu prospero."</p>
-          </li>
-        </ul>
         <p class="kit-dupla-lead">Escolha 2 banhos de ervas (20g cada) e leve com valor especial.</p>
         <div class="kit-dupla-selects">
           <div class="kit-dupla-field">
