@@ -1234,9 +1234,48 @@
       flex: 0 0 100%;
       max-width: 100%;
     }
-    .steps-grid--3 {
-      grid-template-columns: repeat(3, 1fr);
-      max-width: 1000px;
+    .oleos-como {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .oleos-como .section-label {
+      text-align: center;
+    }
+    .oleos-como-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.35rem, 2.8vw, 1.95rem);
+      color: var(--text);
+      line-height: 1.35;
+      text-align: center;
+      width: 100%;
+      max-width: 40rem;
+      margin: 0 0 48px;
+      padding: 0 8px;
+      box-sizing: border-box;
+      text-wrap: balance;
+    }
+    .oleos-como-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 20px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto 72px;
+      box-sizing: border-box;
+    }
+    .oleos-como-steps .step {
+      flex: 0 1 300px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
     }
     .product-affirmation {
       font-family: 'Cormorant Garamond', serif;
@@ -1690,6 +1729,10 @@
     }
     @media (max-width: 600px) {
       .steps-grid { grid-template-columns: 1fr; }
+      .oleos-como-steps .step {
+        flex: 1 1 100%;
+        max-width: none;
+      }
     }
   </style>
 </head>
@@ -1722,8 +1765,8 @@
     <a href="#" class="nav-logo" style="color:#fff">Blanch</a>
     <ul class="nav-links">
       <li><a href="#o-que-fazemos">Aromaterapia</a></li>
-      <li><a href="#produtos">Roll-ons</a></li>
       <li><a href="#oleos-terapeuticos">Óleos</a></li>
+      <li><a href="#produtos">Roll-ons</a></li>
       <li><a href="#banhos">Banhos</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato">Contato</a></li>
@@ -1806,7 +1849,72 @@
     </div>
   </section>
 
-  <!-- ─── PRODUTOS ─── -->
+  <!-- ─── ÓLEOS TERAPÊUTICOS ─── -->
+  <section class="products" id="oleos-terapeuticos">
+    <p class="section-label" style="justify-content:center">Óleos terapêuticos</p>
+    <h2>Para agir onde você<br><em>precisa.</em></h2>
+    <p style="max-width:620px; margin: 0 auto 48px; line-height:2; font-size:0.95rem;">
+      Soluções concentradas para corpo, mente e energia.<br><br>
+      Cada óleo tem uma função específica — para momentos de dor, tensão, bloqueio ou desequilíbrio, físico ou energético.<br><br>
+      Você aplica exatamente onde precisa.
+    </p>
+
+    <div class="oleos-como">
+      <p class="section-label" style="justify-content:center">Como funciona</p>
+      <h3 class="oleos-como-heading">Três frentes: corpo, mente e energia.</h3>
+      <div class="oleos-como-steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>No corpo</h3>
+          <p>Ajudam a reduzir a tensão e sinalizar relaxamento.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Na mente</h3>
+          <p>Os aromas acessam o sistema límbico, influenciando emoções e respostas.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Na energia</h3>
+          <p>Auxiliam na liberação, proteção e reequilíbrio do seu campo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-grid oleos-grid">
+      <div class="product-card" id="produto-alivio-divino">
+        <img src="oleo-alivio-divino.jpg" alt="Alívio Divino — óleo terapêutico 1ml" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">O óleo que alivia</span>
+          <h3>Alívio Divino</h3>
+          <p class="product-intent">Dor, Tensão & Relaxamento</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Lavanda Francesa · Camomila Romana · Bergamota · Eucalipto · Olíbano · Gerânio · Blend terapêutico
+          </div>
+          <div class="product-usage">
+            <strong>Modo de usar</strong>
+            Aplique diretamente no local da dor ou tensão.<br><br>
+            Pode ser usado em:
+            <ul>
+              <li>têmporas</li>
+              <li>nuca</li>
+              <li>pescoço</li>
+              <li>ombros</li>
+              <li>ou qualquer região do corpo com desconforto</li>
+            </ul>
+          </div>
+          <p class="product-affirmation">"Eu solto a tensão. Meu corpo relaxa. Eu volto ao equilíbrio."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 19,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="21WHIOAUZQ" data-product-name="Alívio Divino (óleo terapêutico 1ml)" data-price="19.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUTOS (ROLL-ONS) ─── -->
   <section class="products" id="produtos">
     <p class="section-label" style="justify-content:center">Os roll-ons terapêuticos</p>
     <h2>Cinco intenções. Uma para cada momento.</h2>
@@ -2000,69 +2108,6 @@
         <div class="step-number">04</div>
         <h3>Declare a afirmação</h3>
         <p>Diga em voz alta ou mentalize a afirmação do roll-on. A intenção + o aroma = o campo completo.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── ÓLEOS TERAPÊUTICOS ─── -->
-  <section class="products" id="oleos-terapeuticos">
-    <p class="section-label" style="justify-content:center">Óleos terapêuticos</p>
-    <h2>Para agir onde você<br><em>precisa.</em></h2>
-    <p style="max-width:620px; margin: 0 auto 48px; line-height:2; font-size:0.95rem;">
-      Soluções concentradas para corpo, mente e energia.<br><br>
-      Cada óleo tem uma função específica — para momentos de dor, tensão, bloqueio ou desequilíbrio, físico ou energético.<br><br>
-      Você aplica exatamente onde precisa.
-    </p>
-
-    <p class="section-label" style="justify-content:center">Como funciona</p>
-    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Três frentes: corpo, mente e energia.</h3>
-    <div class="steps-grid steps-grid--3" style="margin-bottom: 72px;">
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>No corpo</h3>
-        <p>Ajudam a reduzir a tensão e sinalizar relaxamento.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Na mente</h3>
-        <p>Os aromas acessam o sistema límbico, influenciando emoções e respostas.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <h3>Na energia</h3>
-        <p>Auxiliam na liberação, proteção e reequilíbrio do seu campo.</p>
-      </div>
-    </div>
-
-    <div class="products-grid oleos-grid">
-      <div class="product-card" id="produto-alivio-divino">
-        <img src="oleo-alivio-divino.jpg" alt="Alívio Divino — óleo terapêutico 1ml" class="product-img" loading="lazy" decoding="async" />
-        <div class="product-body">
-          <span class="product-tag">O óleo que alivia</span>
-          <h3>Alívio Divino</h3>
-          <p class="product-intent">Dor, Tensão & Relaxamento</p>
-          <div class="product-composition">
-            <strong>Composição</strong>
-            Lavanda Francesa · Camomila Romana · Bergamota · Eucalipto · Olíbano · Gerânio · Blend terapêutico
-          </div>
-          <div class="product-usage">
-            <strong>Modo de usar</strong>
-            Aplique diretamente no local da dor ou tensão.<br><br>
-            Pode ser usado em:
-            <ul>
-              <li>têmporas</li>
-              <li>nuca</li>
-              <li>pescoço</li>
-              <li>ombros</li>
-              <li>ou qualquer região do corpo com desconforto</li>
-            </ul>
-          </div>
-          <p class="product-affirmation">"Eu solto a tensão. Meu corpo relaxa. Eu volto ao equilíbrio."</p>
-          <div class="product-footer">
-            <span class="product-price">R$ 19,90</span>
-            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="21WHIOAUZQ" data-product-name="Alívio Divino (óleo terapêutico 1ml)" data-price="19.90">Adicionar</button>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -2487,11 +2532,11 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h4>Roll-ons</h4>
+        <h4>Óleos & roll-ons</h4>
         <ul>
+          <li><a href="#oleos-terapeuticos">Óleos terapêuticos</a></li>
           <li><a href="#produtos">Ver roll-ons</a></li>
           <li><a href="#como-usar">Como usar roll-ons</a></li>
-          <li><a href="#oleos-terapeuticos">Óleos terapêuticos</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -2532,6 +2577,10 @@
       <a href="#contato">Contato</a>
       <a href="/3tecnicas/">Protocolo Destrave Sua Energia</a>
 
+      <p class="nav-menu-label">Óleos terapêuticos</p>
+      <a href="#oleos-terapeuticos">Ver óleo terapêutico</a>
+      <a href="#produto-alivio-divino" class="nav-menu-sublink">Alívio Divino</a>
+
       <p class="nav-menu-label">Roll-ons terapêuticos</p>
       <a href="#produtos">Ver todos os roll-ons</a>
       <a href="#produto-camomila-azul" class="nav-menu-sublink">Camomila Azul</a>
@@ -2541,10 +2590,6 @@
       <a href="#produto-eu-sou-luz" class="nav-menu-sublink">Eu Sou Luz</a>
       <a href="#kit-dupla-essencial" class="nav-menu-sublink">Kit Dupla Essencial</a>
       <a href="#como-usar">Como usar roll-ons</a>
-
-      <p class="nav-menu-label">Óleos terapêuticos</p>
-      <a href="#oleos-terapeuticos">Ver óleo terapêutico</a>
-      <a href="#produto-alivio-divino" class="nav-menu-sublink">Alívio Divino</a>
 
       <p class="nav-menu-label">Banhos de ervas</p>
       <a href="#banhos">Ver banhos e kits</a>
