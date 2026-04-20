@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blanch — Roll-ons terapêuticos</title>
+  <title>Blanch — Roll-ons e óleos terapêuticos</title>
   <!-- Meta Pixel: carregado no final do body para não bloquear pintura em WebViews (ex.: Instagram) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,19 +59,14 @@
       flex-wrap: nowrap;
       white-space: nowrap;
     }
-    .section-label::before {
+    .section-label::before,
+    .section-label::after {
       content: '';
       display: block;
       width: 28px;
       height: 1px;
       background: var(--gold);
-    }
-
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--gold-light);
-      margin: 0 auto 48px;
+      flex-shrink: 0;
     }
 
     /* ─── BARRA FRETE GRÁTIS ─── */
@@ -1222,6 +1217,27 @@
       margin-bottom: 6px;
       font-weight: 400;
     }
+    .product-usage ul {
+      margin: 10px 0 0 1.1em;
+      padding: 0;
+      list-style: disc;
+    }
+    .product-usage li {
+      margin-bottom: 4px;
+    }
+    .oleos-grid {
+      max-width: 420px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    .oleos-grid .product-card {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .steps-grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1000px;
+    }
     .product-affirmation {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -1707,6 +1723,7 @@
     <ul class="nav-links">
       <li><a href="#o-que-fazemos">Aromaterapia</a></li>
       <li><a href="#produtos">Roll-ons</a></li>
+      <li><a href="#oleos-terapeuticos">Óleos</a></li>
       <li><a href="#banhos">Banhos</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato">Contato</a></li>
@@ -1987,6 +2004,69 @@
     </div>
   </section>
 
+  <!-- ─── ÓLEOS TERAPÊUTICOS ─── -->
+  <section class="products" id="oleos-terapeuticos">
+    <p class="section-label" style="justify-content:center">Óleos terapêuticos</p>
+    <h2>Para agir onde você<br><em>precisa.</em></h2>
+    <p style="max-width:620px; margin: 0 auto 48px; line-height:2; font-size:0.95rem;">
+      Soluções concentradas para corpo, mente e energia.<br><br>
+      Cada óleo tem uma função específica — para momentos de dor, tensão, bloqueio ou desequilíbrio, físico ou energético.<br><br>
+      Você aplica exatamente onde precisa.
+    </p>
+
+    <p class="section-label" style="justify-content:center">Como funciona</p>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Três frentes: corpo, mente e energia.</h3>
+    <div class="steps-grid steps-grid--3" style="margin-bottom: 72px;">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>No corpo</h3>
+        <p>Ajudam a reduzir a tensão e sinalizar relaxamento.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Na mente</h3>
+        <p>Os aromas acessam o sistema límbico, influenciando emoções e respostas.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Na energia</h3>
+        <p>Auxiliam na liberação, proteção e reequilíbrio do seu campo.</p>
+      </div>
+    </div>
+
+    <div class="products-grid oleos-grid">
+      <div class="product-card" id="produto-alivio-divino">
+        <img src="oleo-alivio-divino.jpg" alt="Alívio Divino — óleo terapêutico 1ml" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">O óleo que alivia</span>
+          <h3>Alívio Divino</h3>
+          <p class="product-intent">Dor, Tensão & Relaxamento</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Lavanda Francesa · Camomila Romana · Bergamota · Eucalipto · Olíbano · Gerânio · Blend terapêutico
+          </div>
+          <div class="product-usage">
+            <strong>Modo de usar</strong>
+            Aplique diretamente no local da dor ou tensão.<br><br>
+            Pode ser usado em:
+            <ul>
+              <li>têmporas</li>
+              <li>nuca</li>
+              <li>pescoço</li>
+              <li>ombros</li>
+              <li>ou qualquer região do corpo com desconforto</li>
+            </ul>
+          </div>
+          <p class="product-affirmation">"Eu solto a tensão. Meu corpo relaxa. Eu volto ao equilíbrio."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 19,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="21WHIOAUZQ" data-product-name="Alívio Divino (óleo terapêutico 1ml)" data-price="19.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── BANHOS ─── -->
   <section class="products" id="banhos" style="background: var(--bg-2);">
     <p class="section-label" style="justify-content:center">Banhos de Ervas</p>
@@ -1996,8 +2076,7 @@
       Cada um foi criado com um propósito claro — para você sentir, na prática, a diferença no seu dia.
     </p>
 
-    <p class="section-label" style="justify-content:center">Sachês</p>
-    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Cinco intenções. Cada uma com foto, composição e preço.</h3>
+    <p class="section-label" style="justify-content:center; margin-bottom: 48px;">Sachês</p>
 
     <div class="products-grid banhos-grid banhos-grid--5" style="margin-bottom: 72px;">
       <div class="product-card" id="banho-desacelera">
@@ -2412,6 +2491,7 @@
         <ul>
           <li><a href="#produtos">Ver roll-ons</a></li>
           <li><a href="#como-usar">Como usar roll-ons</a></li>
+          <li><a href="#oleos-terapeuticos">Óleos terapêuticos</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -2462,6 +2542,10 @@
       <a href="#kit-dupla-essencial" class="nav-menu-sublink">Kit Dupla Essencial</a>
       <a href="#como-usar">Como usar roll-ons</a>
 
+      <p class="nav-menu-label">Óleos terapêuticos</p>
+      <a href="#oleos-terapeuticos">Ver óleo terapêutico</a>
+      <a href="#produto-alivio-divino" class="nav-menu-sublink">Alívio Divino</a>
+
       <p class="nav-menu-label">Banhos de ervas</p>
       <a href="#banhos">Ver banhos e kits</a>
       <a href="#banho-desacelera" class="nav-menu-sublink">Desacelera</a>
@@ -2489,7 +2573,7 @@
       <button type="button" class="cart-close" id="cart-close" aria-label="Fechar carrinho">&times;</button>
     </div>
     <div class="cart-drawer-body">
-      <p id="cart-empty" class="cart-empty">Seu carrinho está vazio.<br>Adicione roll-ons ou um dos kits (Dupla Essencial, Dupla de Banhos ou Kit Desbloqueio Completo) acima.</p>
+      <p id="cart-empty" class="cart-empty">Seu carrinho está vazio.<br>Adicione roll-ons, óleos terapêuticos ou um dos kits (Dupla Essencial, Dupla de Banhos ou Kit Desbloqueio Completo) acima.</p>
       <div id="cart-items"></div>
     </div>
     <div class="cart-drawer-footer">
@@ -2584,6 +2668,7 @@
     /* Kit 2 banhos na Yampi — https://seguro.theblanch.com/r/F7CJ21AOVA — Banho Despertar: https://seguro.theblanch.com/r/16PBI922LF */
     var YAMPI_KIT_BANHO_TOKEN = 'F7CJ21AOVA';
     var KIT_BANHO_DUPLA_PRICE = 30.00;
+    /* Alívio Divino (óleo 1ml): https://seguro.theblanch.com/r/21WHIOAUZQ */
     /* Kit 3 banhos — https://seguro.theblanch.com/r/HMK7D7H9SO */
     var YAMPI_KIT_DESBLOQUEIO_TOKEN = 'HMK7D7H9SO';
     var KIT_DESBLOQUEIO_PRICE = 39.90;
