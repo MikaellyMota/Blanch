@@ -1099,14 +1099,14 @@
       flex: 0 0 calc(33.333% - 16px);
       max-width: calc(33.333% - 16px);
     }
-    .banhos-grid--4 .product-card {
-      flex: 0 0 calc(25% - 18px);
-      max-width: calc(25% - 18px);
+    .banhos-grid--5 .product-card {
+      flex: 0 0 calc(20% - 20px);
+      max-width: calc(20% - 20px);
     }
     @media(max-width:1100px) {
-      .banhos-grid--4 .product-card {
-        flex: 0 0 calc(50% - 12px);
-        max-width: calc(50% - 12px);
+      .banhos-grid--5 .product-card {
+        flex: 0 0 calc(33.333% - 16px);
+        max-width: calc(33.333% - 16px);
       }
     }
     @media(max-width:800px) {
@@ -1117,7 +1117,7 @@
     }
     @media(max-width:520px) {
       .banhos-grid .product-card,
-      .banhos-grid--4 .product-card {
+      .banhos-grid--5 .product-card {
         flex: 0 0 100%;
         max-width: 100%;
       }
@@ -1997,9 +1997,9 @@
     </p>
 
     <p class="section-label" style="justify-content:center">Sachês</p>
-    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Quatro intenções. Cada uma com foto, composição e preço.</h3>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.35rem, 2.8vw, 1.95rem); color: var(--text); margin-bottom: 48px; line-height: 1.35;">Cinco intenções. Cada uma com foto, composição e preço.</h3>
 
-    <div class="products-grid banhos-grid banhos-grid--4" style="margin-bottom: 72px;">
+    <div class="products-grid banhos-grid banhos-grid--5" style="margin-bottom: 72px;">
       <div class="product-card" id="banho-desacelera">
         <img src="banho-desacelera.png" alt="Desacelera — Banho de ervas, 20g" class="product-img" loading="lazy" decoding="async" />
         <div class="product-body">
@@ -2019,6 +2019,35 @@
           <div class="product-footer">
             <span class="product-price">R$ 15,90</span>
             <button type="button" class="btn-buy btn-add-cart" data-yampi-token="DHQZIZH00S" data-product-name="Banho Desacelera (sachê 20g)" data-price="15.90">Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" id="banho-despertar">
+        <img src="banho-despertar.png" alt="Despertar — Banho de ervas, 20g" class="product-img" loading="lazy" decoding="async" />
+        <div class="product-body">
+          <span class="product-tag">Sachê 20g · autoestima</span>
+          <h3>Despertar</h3>
+          <p class="product-intent">Banho para autoestima e amor próprio</p>
+          <div class="product-composition">
+            <strong>Composição</strong>
+            Manjericão · Alecrim · Lavanda · Blend exclusivo de ervas.
+          </div>
+          <div class="product-usage">
+            <strong>Para quem é</strong>
+            Para quando você começa a se deixar de lado, se diminuir, se comparar e já não confia mais em si.<br><br>
+            Você até tenta…<br>
+            mas não se reconhece como antes.<br><br>
+            E quanto mais isso se repete,<br>
+            mais distante você fica de quem realmente é.<br><br>
+            O Despertar foi criado pra quebrar esse ciclo.<br><br>
+            Use esse banho para se reconectar, fortalecer sua energia e voltar a se escolher.<br>
+            Para acender sua luz interior e lembrar quem você é.
+          </div>
+          <p class="product-affirmation">"Eu me reconheço. Eu me escolho. Eu sou suficiente."</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 15,90</span>
+            <button type="button" class="btn-buy btn-add-cart" data-yampi-token="16PBI922LF" data-product-name="Banho Despertar (sachê 20g)" data-price="15.90">Adicionar</button>
           </div>
         </div>
       </div>
@@ -2097,6 +2126,7 @@
         <div class="kit-dupla-photo-wrap">
           <div class="kit-banho-photo-row" aria-hidden="true">
             <img src="banho-desacelera.png" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
+            <img src="banho-despertar.png" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-recomeco.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-circulo-sagrado.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
             <img src="banho-caminhos-abertos.jpg" alt="" class="kit-banho-thumb" loading="lazy" decoding="async" />
@@ -2109,6 +2139,7 @@
             <select id="kit-banho-1" aria-label="Primeiro banho do kit">
               <option value="">Escolha…</option>
               <option value="DHQZIZH00S">Desacelera</option>
+              <option value="16PBI922LF">Despertar</option>
               <option value="HYYISSXOU0">Recomeço</option>
               <option value="6ZBZE8UEY4">Círculo Sagrado</option>
               <option value="QS6CMKPESF">Caminhos Abertos</option>
@@ -2119,6 +2150,7 @@
             <select id="kit-banho-2" aria-label="Segundo banho do kit">
               <option value="">Escolha…</option>
               <option value="DHQZIZH00S">Desacelera</option>
+              <option value="16PBI922LF">Despertar</option>
               <option value="HYYISSXOU0">Recomeço</option>
               <option value="6ZBZE8UEY4">Círculo Sagrado</option>
               <option value="QS6CMKPESF">Caminhos Abertos</option>
@@ -2440,6 +2472,7 @@
       <p class="nav-menu-label">Banhos de ervas</p>
       <a href="#banhos">Ver banhos e kits</a>
       <a href="#banho-desacelera" class="nav-menu-sublink">Desacelera</a>
+      <a href="#banho-despertar" class="nav-menu-sublink">Despertar</a>
       <a href="#banho-recomeco" class="nav-menu-sublink">Recomeço</a>
       <a href="#banho-circulo-sagrado" class="nav-menu-sublink">Círculo Sagrado</a>
       <a href="#banho-caminhos-abertos" class="nav-menu-sublink">Caminhos Abertos</a>
@@ -2555,7 +2588,7 @@
     /* Token do produto Kit Dupla (2 roll-ons) na Yampi (link seguro.theblanch.com/r/...) */
     var YAMPI_KIT_DUPLA_TOKEN = 'GMT01RN7KN';
     var KIT_DUPLA_PRICE = 69.90;
-    /* Kit 2 banhos na Yampi — https://seguro.theblanch.com/r/F7CJ21AOVA */
+    /* Kit 2 banhos na Yampi — https://seguro.theblanch.com/r/F7CJ21AOVA — Banho Despertar: https://seguro.theblanch.com/r/16PBI922LF */
     var YAMPI_KIT_BANHO_TOKEN = 'F7CJ21AOVA';
     var KIT_BANHO_DUPLA_PRICE = 30.00;
     /* Kit 3 banhos — https://seguro.theblanch.com/r/HMK7D7H9SO */
