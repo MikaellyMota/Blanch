@@ -1,0 +1,3 @@
+.vercel
+# saída do build (gerada no deploy pela Vercel a partir de numerologia-lp/)
+numerologia/

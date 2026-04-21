@@ -1,6 +1,6 @@
 {
-  "installCommand": "npm ci --prefix nova-lp",
-  "buildCommand": "npm run build --prefix nova-lp",
+  "installCommand": "npm ci --prefix nova-lp && npm ci --prefix numerologia-lp",
+  "buildCommand": "npm run build",
   "outputDirectory": ".",
   "redirects": [
     {
@@ -11,6 +11,11 @@
     {
       "source": "/3tecnicas",
       "destination": "/3tecnicas/",
+      "permanent": true
+    },
+    {
+      "source": "/numerologia",
+      "destination": "/numerologia/",
       "permanent": true
     },
     {
