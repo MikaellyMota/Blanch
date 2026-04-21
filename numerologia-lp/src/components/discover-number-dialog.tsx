@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
@@ -19,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { redirectToCheckoutIfConfigured, saveMapaLead, scrollToOferta } from "@/lib/mapa-lead";
+import { getMapaLead, redirectToCheckoutIfConfigured, saveMapaLead, scrollToOferta } from "@/lib/mapa-lead";
 import { submitLeadToGoogleSheets } from "@/lib/sheets-lead";
 import { toast } from "sonner";
 
@@ -49,6 +50,22 @@ export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: Discove
     resolver: zodResolver(schema),
     defaultValues: { fullName: "", email: "", birthDate: "", whatsapp: "" },
   });
+  const { reset, handleSubmit: handleFormSubmit } = form;
+
+  useEffect(() => {
+    if (!open) return;
+    const lead = getMapaLead();
+    if (lead) {
+      reset({
+        fullName: lead.fullName,
+        email: lead.email,
+        birthDate: lead.birthDate,
+        whatsapp: lead.whatsappDigits,
+      });
+    } else {
+      reset({ fullName: "", email: "", birthDate: "", whatsapp: "" });
+    }
+  }, [open, reset]);
 
   function onSubmit(values: DiscoverFormValues) {
     const whatsappDigits = values.whatsapp.replace(/\D/g, "");
@@ -61,7 +78,7 @@ export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: Discove
     submitLeadToGoogleSheets(lead);
     onCaptured?.();
     onOpenChange(false);
-    form.reset();
+    reset();
 
     const went = redirectToCheckoutIfConfigured(lead);
     if (!went) {
@@ -85,7 +102,7 @@ export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: Discove
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-2">
+          <form onSubmit={handleFormSubmit(onSubmit)} className="space-y-4 pt-2">
             <FormField
               control={form.control}
               name="fullName"
