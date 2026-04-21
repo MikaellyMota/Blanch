@@ -128,31 +128,23 @@ function StickyOfferBar({
               <span>{seconds}</span>
             </div>
           </div>
-          {hasLead ? (
-            <div className="flex flex-shrink-0 flex-col items-end gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-              <a
-                href={getPaymentHref()}
-                className="inline-flex items-center justify-center rounded-full bg-gold-gradient text-deep font-semibold px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm shadow-gold hover:scale-105 transition-transform whitespace-nowrap"
-              >
-                Quero garantir
-              </a>
-              <button
-                type="button"
-                onClick={onOpenDiscover}
-                className="text-[10px] md:text-xs text-cream/90 underline underline-offset-2 decoration-gold/40 hover:text-gold"
-              >
-                Alterar dados
-              </button>
-            </div>
-          ) : (
+          <div className="flex flex-shrink-0 flex-col items-end gap-1.5 sm:flex-row sm:items-center sm:gap-2 md:gap-3">
             <button
               type="button"
               onClick={onOpenDiscover}
-              className="flex-shrink-0 inline-flex items-center justify-center rounded-full bg-gold-gradient text-deep font-semibold px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm shadow-gold hover:scale-105 transition-transform whitespace-nowrap"
+              className="inline-flex items-center justify-center rounded-full bg-gold-gradient text-deep font-semibold px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm shadow-gold hover:scale-105 transition-transform whitespace-nowrap"
             >
-              Descobrir meu número
+              {hasLead ? "Revisar meus dados" : "Descobrir meu número"}
             </button>
-          )}
+            {hasLead && (
+              <a
+                href={getPaymentHref()}
+                className="text-[10px] md:text-xs text-cream/80 underline underline-offset-2 decoration-gold/40 hover:text-gold"
+              >
+                Ir direto ao pagamento
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -364,39 +356,36 @@ function GoldButton({
   );
 }
 
-/** CTA: sem lead abre o modal; com lead, pagamento + atalho para reabrir o formulário. */
-function DiscoverOrPayCtas({
+/**
+ * Sempre abre o formulário (dados anteriores vêm preenchidos se existirem).
+ * Se já houver lead, mostra atalho para a Kiwify quem quiser pular a revisão.
+ */
+function DiscoverCtaBlock({
   hasLead,
   openDiscover,
   size = "lg",
-  payLabel,
-  discoverLabel,
+  labelNew = "✨ Descobrir meu número",
+  labelReturning = "✨ Revisar meus dados",
 }: {
   hasLead: boolean;
   openDiscover: () => void;
   size?: "lg" | "xl";
-  payLabel: React.ReactNode;
-  discoverLabel: React.ReactNode;
+  labelNew?: React.ReactNode;
+  labelReturning?: React.ReactNode;
 }) {
-  if (!hasLead) {
-    return (
-      <GoldButton size={size} onPress={openDiscover}>
-        {discoverLabel}
-      </GoldButton>
-    );
-  }
   return (
     <div className="flex flex-col items-center gap-3">
-      <GoldButton size={size} href={getPaymentHref()}>
-        {payLabel}
+      <GoldButton size={size} onPress={openDiscover}>
+        {hasLead ? labelReturning : labelNew}
       </GoldButton>
-      <button
-        type="button"
-        onClick={openDiscover}
-        className="text-sm text-gold/95 underline underline-offset-4 decoration-gold/50 transition-colors hover:text-cream"
-      >
-        Revisar ou alterar meus dados
-      </button>
+      {hasLead && (
+        <a
+          href={getPaymentHref()}
+          className="text-sm text-cream/65 underline underline-offset-4 transition-colors hover:text-gold"
+        >
+          Ir direto ao pagamento
+        </a>
+      )}
     </div>
   );
 }
@@ -473,13 +462,7 @@ function Index() {
             <br className="hidden md:block" /> e parar de viver no automático.
           </p>
 
-          <DiscoverOrPayCtas
-            hasLead={hasLead}
-            openDiscover={openDiscover}
-            size="xl"
-            payLabel="👉 Continuar para o pagamento"
-            discoverLabel="✨ Descobrir meu número"
-          />
+          <DiscoverCtaBlock hasLead={hasLead} openDiscover={openDiscover} size="xl" />
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-cream/70">
             <span className="flex items-center gap-2"><span className="text-gold">✓</span> Entrega em até 48h</span>
@@ -575,12 +558,7 @@ function Index() {
             você só está repetindo o que <span className="text-gradient-gold italic">nunca foi ajustado.</span>
           </p>
           <div className="mt-12">
-            <DiscoverOrPayCtas
-              hasLead={hasLead}
-              openDiscover={openDiscover}
-              payLabel="👉 Continuar para o pagamento"
-              discoverLabel="✨ Descobrir meu número"
-            />
+            <DiscoverCtaBlock hasLead={hasLead} openDiscover={openDiscover} />
           </div>
         </div>
       </section>
@@ -678,13 +656,7 @@ function Index() {
           </div>
 
           <div className="text-center mt-12">
-            <DiscoverOrPayCtas
-              hasLead={hasLead}
-              openDiscover={openDiscover}
-              size="xl"
-              payLabel="👉 Continuar para o pagamento"
-              discoverLabel="✨ Descobrir meu número"
-            />
+            <DiscoverCtaBlock hasLead={hasLead} openDiscover={openDiscover} size="xl" />
           </div>
         </div>
       </section>
@@ -939,13 +911,7 @@ function Index() {
             </p>
             <p className="text-cream/60 mb-10">pagamento único · acesso imediato</p>
 
-            <DiscoverOrPayCtas
-              hasLead={hasLead}
-              openDiscover={openDiscover}
-              size="xl"
-              payLabel="👉 Quero destravar minha vida agora"
-              discoverLabel="✨ Descobrir meu número"
-            />
+            <DiscoverCtaBlock hasLead={hasLead} openDiscover={openDiscover} size="xl" />
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-cream/70">
               <span>🔒 Compra 100% segura</span>
@@ -1064,13 +1030,7 @@ function Index() {
             ou pode ser a <span className="text-gradient-gold italic">chave da sua virada.</span>
           </p>
 
-          <DiscoverOrPayCtas
-            hasLead={hasLead}
-            openDiscover={openDiscover}
-            size="xl"
-            payLabel="👉 Continuar para o pagamento"
-            discoverLabel="✨ Descobrir meu número"
-          />
+          <DiscoverCtaBlock hasLead={hasLead} openDiscover={openDiscover} size="xl" />
 
           <p className="mt-10 text-sm text-cream/60 tracking-wide">
             Acesso imediato · Garantia de 7 dias · Pagamento único
