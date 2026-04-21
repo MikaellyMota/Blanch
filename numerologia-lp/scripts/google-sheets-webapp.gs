@@ -2,7 +2,7 @@
  * Google Apps Script — cola isto num projeto ligado à tua planilha:
  * Planilha → Extensões → Apps Script → apaga o conteúdo e cola este ficheiro.
  *
- * 1) Primeira linha da aba (cabeçalhos), na A1: Data/hora | Nome completo | Data nascimento | WhatsApp | Capturado em (ISO)
+ * 1) Primeira linha (cabeçalhos): Data/hora | Nome | E-mail | Nascimento | WhatsApp | Capturado (ISO)
  * 2) Executa uma vez "doPost" ou grava o projeto — autoriza o acesso à planilha.
  * 3) Implementar → Nova implementação → Tipo: App da Web
  *    - Executar como: Eu
@@ -26,16 +26,17 @@ function doPost(e) {
     }
     var data = JSON.parse(raw);
     var name = String(data.fullName || "").trim();
+    var em = String(data.email || "").trim();
     var birth = String(data.birthDate || "").trim();
     var wa = String(data.whatsapp || "").trim();
     var cap = String(data.capturedAt || "").trim();
-    if (!name || !birth || !wa) {
+    if (!name || !em || !birth || !wa) {
       return jsonOut({ ok: false, error: "invalid" });
     }
 
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
     var brNow = Utilities.formatDate(new Date(), "America/Sao_Paulo", "dd/MM/yyyy HH:mm:ss");
-    sheet.appendRow([brNow, name, birth, wa, cap || new Date().toISOString()]);
+    sheet.appendRow([brNow, name, em, birth, wa, cap || new Date().toISOString()]);
 
     return jsonOut({ ok: true });
   } catch (err) {

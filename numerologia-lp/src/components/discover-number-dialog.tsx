@@ -24,6 +24,7 @@ import { toast } from "sonner";
 
 const schema = z.object({
   fullName: z.string().min(3, "Informe o nome completo"),
+  email: z.string().min(1, "Informe o e-mail").email("Informe um e-mail válido"),
   birthDate: z.string().min(1, "Informe a data de nascimento"),
   whatsapp: z
     .string()
@@ -45,13 +46,14 @@ type DiscoverNumberDialogProps = {
 export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: DiscoverNumberDialogProps) {
   const form = useForm<DiscoverFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { fullName: "", birthDate: "", whatsapp: "" },
+    defaultValues: { fullName: "", email: "", birthDate: "", whatsapp: "" },
   });
 
   function onSubmit(values: DiscoverFormValues) {
     const whatsappDigits = values.whatsapp.replace(/\D/g, "");
     const lead = saveMapaLead({
       fullName: values.fullName.trim(),
+      email: values.email.trim().toLowerCase(),
       birthDate: values.birthDate,
       whatsappDigits,
     });
@@ -93,6 +95,27 @@ export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: Discove
                     <Input
                       placeholder="Como no documento"
                       autoComplete="name"
+                      className="border-gold-soft/30 bg-deep/80 text-cream placeholder:text-cream/40"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-cream/90">E-mail</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      inputMode="email"
+                      autoComplete="email"
+                      placeholder="seu@email.com"
                       className="border-gold-soft/30 bg-deep/80 text-cream placeholder:text-cream/40"
                       {...field}
                     />

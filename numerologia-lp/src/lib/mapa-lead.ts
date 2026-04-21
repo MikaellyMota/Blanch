@@ -1,7 +1,8 @@
-/** Lead da pré-captura (nome, nascimento, WhatsApp) — persiste no browser. */
+/** Lead da pré-captura (nome, e-mail, nascimento, WhatsApp) — persiste no browser. */
 
 export type MapaLead = {
   fullName: string;
+  email: string;
   birthDate: string;
   whatsappDigits: string;
   capturedAt: string;
@@ -17,7 +18,7 @@ function getCheckoutBaseUrl(): string {
   return env || DEFAULT_CHECKOUT_URL;
 }
 
-export function saveMapaLead(data: Pick<MapaLead, "fullName" | "birthDate" | "whatsappDigits">): MapaLead {
+export function saveMapaLead(data: Pick<MapaLead, "fullName" | "email" | "birthDate" | "whatsappDigits">): MapaLead {
   const lead: MapaLead = {
     ...data,
     capturedAt: new Date().toISOString(),
@@ -35,7 +36,7 @@ export function getMapaLead(): MapaLead | null {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const p = JSON.parse(raw) as MapaLead;
-    if (!p?.fullName || !p?.birthDate || !p?.whatsappDigits) return null;
+    if (!p?.fullName || !p?.email || !p?.birthDate || !p?.whatsappDigits) return null;
     return p;
   } catch {
     return null;
@@ -51,6 +52,7 @@ export function redirectToCheckoutIfConfigured(lead: MapaLead): boolean {
   try {
     const u = new URL(base, window.location.origin);
     u.searchParams.set("name", lead.fullName);
+    u.searchParams.set("email", lead.email);
     u.searchParams.set("birthDate", lead.birthDate);
     u.searchParams.set("phone", lead.whatsappDigits);
     window.location.assign(u.toString());

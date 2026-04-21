@@ -19,6 +19,7 @@ export function submitLeadToGoogleSheets(lead: MapaLead): void {
 
   const payload = {
     fullName: lead.fullName,
+    email: lead.email,
     birthDate: lead.birthDate,
     whatsapp: lead.whatsappDigits,
     capturedAt: lead.capturedAt,
