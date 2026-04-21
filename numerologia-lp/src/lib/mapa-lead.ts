@@ -43,31 +43,41 @@ export function getMapaLead(): MapaLead | null {
   }
 }
 
-/**
- * Redireciona para a Kiwify (ou `VITE_CHECKOUT_URL`) com query params
- * (a Kiwify pode ignorar params extra; serve para tracking / remarketing).
- */
-export function redirectToCheckoutIfConfigured(lead: MapaLead): boolean {
+/** URL do checkout com nome, e-mail, nascimento e telefone na query. A Kiwify pode ou não mapear estes parâmetros ao formulário. */
+function checkoutUrlWithLead(lead: MapaLead): string {
   const base = getCheckoutBaseUrl();
   try {
-    const u = new URL(base, window.location.origin);
+    const u = new URL(base);
     u.searchParams.set("name", lead.fullName);
     u.searchParams.set("email", lead.email);
     u.searchParams.set("birthDate", lead.birthDate);
     u.searchParams.set("phone", lead.whatsappDigits);
-    window.location.assign(u.toString());
-    return true;
+    return u.toString();
   } catch {
-    window.location.assign(base);
-    return true;
+    return base;
   }
+}
+
+/**
+ * Redireciona para a Kiwify com os dados do lead na URL.
+ * (Se a Kiwify não preencher o checkout, confere no painel deles o suporte a “URL com parâmetros” / docs de checkout.)
+ */
+export function redirectToCheckoutIfConfigured(lead: MapaLead): boolean {
+  const url = checkoutUrlWithLead(lead);
+  window.location.assign(url);
+  return true;
 }
 
 export function scrollToOferta() {
   document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-/** Link de pagamento (Kiwify por defeito, ou `VITE_CHECKOUT_URL`). */
+/**
+ * Link de pagamento: se houver lead no `localStorage`, inclui `name`, `email`, `birthDate`, `phone` na query.
+ * Sem lead, devolve só o link base (ex.: CTA “continuar” antes de preencher).
+ */
 export function getPaymentHref(): string {
+  const lead = getMapaLead();
+  if (lead) return checkoutUrlWithLead(lead);
   return getCheckoutBaseUrl();
 }
