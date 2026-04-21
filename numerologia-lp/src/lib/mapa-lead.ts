@@ -9,6 +9,14 @@ export type MapaLead = {
 
 const STORAGE_KEY = "mapa_numerologico_lead_v1";
 
+/** Checkout Kiwify (Mapa Numerológico). `VITE_CHECKOUT_URL` na Vercel substitui, se quiseres outro link. */
+const DEFAULT_CHECKOUT_URL = "https://pay.kiwify.com.br/OAgPf4T";
+
+function getCheckoutBaseUrl(): string {
+  const env = (import.meta.env.VITE_CHECKOUT_URL as string | undefined)?.trim();
+  return env || DEFAULT_CHECKOUT_URL;
+}
+
 export function saveMapaLead(data: Pick<MapaLead, "fullName" | "birthDate" | "whatsappDigits">): MapaLead {
   const lead: MapaLead = {
     ...data,
@@ -34,19 +42,21 @@ export function getMapaLead(): MapaLead | null {
   }
 }
 
-/** Se `VITE_CHECKOUT_URL` existir, redireciona com query params (ajuste ao teu gateway). */
+/**
+ * Redireciona para a Kiwify (ou `VITE_CHECKOUT_URL`) com query params
+ * (a Kiwify pode ignorar params extra; serve para tracking / remarketing).
+ */
 export function redirectToCheckoutIfConfigured(lead: MapaLead): boolean {
-  const base = import.meta.env.VITE_CHECKOUT_URL as string | undefined;
-  if (!base?.trim()) return false;
+  const base = getCheckoutBaseUrl();
   try {
-    const u = new URL(base.trim(), window.location.origin);
+    const u = new URL(base, window.location.origin);
     u.searchParams.set("name", lead.fullName);
     u.searchParams.set("birthDate", lead.birthDate);
     u.searchParams.set("phone", lead.whatsappDigits);
     window.location.assign(u.toString());
     return true;
   } catch {
-    window.location.assign(base.trim());
+    window.location.assign(base);
     return true;
   }
 }
@@ -55,9 +65,7 @@ export function scrollToOferta() {
   document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-/** Link de pagamento (env) ou âncora da oferta na própria página. */
+/** Link de pagamento (Kiwify por defeito, ou `VITE_CHECKOUT_URL`). */
 export function getPaymentHref(): string {
-  const u = (import.meta.env.VITE_CHECKOUT_URL as string | undefined)?.trim();
-  if (u) return u;
-  return "#oferta";
+  return getCheckoutBaseUrl();
 }
