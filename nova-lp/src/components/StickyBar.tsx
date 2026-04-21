@@ -1,4 +1,4 @@
-const CHECKOUT_URL = "https://pay.kiwify.com.br/LUn9cFg";
+import { CHECKOUT_URL } from "@/config/checkout";
 
 const StickyBar = () => (
   <div className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl border-t border-energy-violet/20 py-3 px-4" style={{ background: 'hsla(260, 30%, 6%, 0.92)' }}>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-
-const CHECKOUT_URL = "https://pay.kiwify.com.br/LUn9cFg";
+import { CHECKOUT_URL } from "@/config/checkout";
 
 const CTAButton = ({ children, className = "", size = "lg" }: { children: React.ReactNode; className?: string; size?: "lg" | "md" }) => (
   <motion.a
