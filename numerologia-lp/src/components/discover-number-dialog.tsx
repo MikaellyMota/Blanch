@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -91,9 +92,14 @@ export function DiscoverNumberDialog({ open, onOpenChange, onCaptured }: Discove
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-cream/90">Nome completo</FormLabel>
+                  <FormDescription className="rounded-lg border border-gold-soft/30 bg-gold/5 px-3 py-2.5 text-xs leading-snug text-cream/90">
+                    <span className="font-semibold text-gold">Atenção:</span> use o nome{" "}
+                    <strong className="text-cream">igual ao da certidão de nascimento</strong> (acentos e
+                    ordem dos nomes) — o mapa depende de ser a mesma grafia do registro.
+                  </FormDescription>
                   <FormControl>
                     <Input
-                      placeholder="Como no documento"
+                      placeholder="Igual à certidão de nascimento"
                       autoComplete="name"
                       className="border-gold-soft/30 bg-deep/80 text-cream placeholder:text-cream/40"
                       {...field}
