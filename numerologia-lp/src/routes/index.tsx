@@ -13,9 +13,6 @@ import mandala from "@/assets/mandala.jpg";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
-import avatar4 from "@/assets/avatar-4.jpg";
-import avatar5 from "@/assets/avatar-5.jpg";
-import avatar6 from "@/assets/avatar-6.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -163,58 +160,34 @@ type Testimonial = {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Carla M.",
-    handle: "+55 11 9****-2210",
+    name: "Inês R.",
+    handle: "+55 85 9****-****",
     avatar: avatar1,
     type: "whatsapp",
-    time: "14:32",
+    time: "20:03",
     stars: 5,
-    message: "Meu Deus, você não tem ideia do quanto o mapa mexeu comigo!! Em 2 semanas eu finalmente fechei aquele contrato que estava travado há meses 🥹✨ Obrigada de coração!",
+    message:
+      "Eu não esperava que um mapa fosse me trazer tanta clareza assim. Consegui entender por que minha vida financeira não fluía... e o que eu precisava ajustar. Sério, parece que tirou um peso.",
   },
   {
-    name: "Juliana S.",
-    handle: "@ju.santos",
+    name: "Marina F.",
+    handle: "+55 11 9****-****",
     avatar: avatar2,
-    type: "instagram",
-    time: "agora",
+    type: "whatsapp",
+    time: "20:01",
     stars: 5,
-    message: "Eu chorei lendo o mapa. Era exatamente o que eu vivia e não conseguia explicar. Hoje tomo decisões com muito mais clareza, principalmente sobre dinheiro 💰",
+    message:
+      "Eu fiquei em choque com a precisão... parecia que estavam descrevendo exatamente o que eu vivo. Principalmente na parte dos padrões que me travam, fez MUITO sentido. Depois que li, comecei a enxergar tudo diferente",
   },
   {
-    name: "Mariana C.",
-    handle: "@marianaoficial",
+    name: "Sofia L.",
+    handle: "+55 21 9****-****",
     avatar: avatar3,
-    type: "instagram",
-    time: "2h",
-    stars: 5,
-    message: "Gente, esse mapa é REAL. Identifiquei o padrão de autossabotagem financeira na hora 😱 já estou aplicando os ajustes e percebendo diferença na primeira semana!",
-  },
-  {
-    name: "Patrícia R.",
-    handle: "+55 21 9****-7843",
-    avatar: avatar4,
     type: "whatsapp",
-    time: "09:15",
+    time: "20:05",
     stars: 5,
-    message: "Investimento mais certeiro que fiz esse ano. Sério. Em 30 dias minha relação com dinheiro mudou completamente, estou guardando pela primeira vez na vida ❤️🔥",
-  },
-  {
-    name: "Renata L.",
-    handle: "+55 31 9****-1129",
-    avatar: avatar5,
-    type: "whatsapp",
-    time: "21:04",
-    stars: 5,
-    message: "Não acreditava muito mas resolvi testar. CHOQUE total. Cada coisa que tava escrito ali era a minha vida descrita em detalhes. Os direcionamentos práticos foram o que mais me ajudaram 🙌",
-  },
-  {
-    name: "Tais B.",
-    handle: "@taisbeauty",
-    avatar: avatar6,
-    type: "instagram",
-    time: "5h",
-    stars: 5,
-    message: "Amiga eu PRECISO te contar... aquela proposta que tava parada há 3 meses fechou essa semana 🤯 depois que eu ajustei o que o mapa mostrou. Surreal! 💛",
+    message:
+      "Foi muito além do que eu imaginei. Me senti muito direcionada depois, como se finalmente soubesse pra onde ir. Muito obrigada!!!",
   },
 ];
 
@@ -305,13 +278,13 @@ function TestimonialsSection() {
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 bg-gradient-to-l from-deep to-transparent pointer-events-none" />
         <div className="flex gap-6 animate-marquee w-max py-4">
           {loop.map((t, i) => (
-            <TestimonialCard key={`${t.name}-${i}`} t={t} />
+            <TestimonialCard key={`${t.handle}-${t.time}-${i}`} t={t} />
           ))}
         </div>
       </div>
 
       <p className="text-center text-cream/60 text-xs mt-10 italic">
-        Depoimentos enviados por clientes via WhatsApp e Instagram · Identidades parcialmente preservadas
+        Depoimentos reais de clientes via WhatsApp · Nomes e telefones parcialmente preservados
       </p>
     </section>
   );
