@@ -205,10 +205,6 @@ function TestimonialsSection() {
           ))}
         </div>
       </div>
-
-      <p className="text-center text-cream/60 text-xs mt-10 italic">
-        Prints reais de conversas no WhatsApp
-      </p>
     </section>
   );
 }
