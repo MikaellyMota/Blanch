@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/accordion";
 import heroCosmic from "@/assets/hero-cosmic.jpg";
 import mandala from "@/assets/mandala.jpg";
-import avatar1 from "@/assets/avatar-1.jpg";
-import avatar2 from "@/assets/avatar-2.jpg";
-import avatar3 from "@/assets/avatar-3.jpg";
+import depoWhatsapp1 from "@/assets/depo-whatsapp-1.jpeg";
+import depoWhatsapp2 from "@/assets/depo-whatsapp-2.jpeg";
+import depoWhatsapp3 from "@/assets/depo-whatsapp-3.jpeg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -148,48 +148,11 @@ function StickyOfferBar({
   );
 }
 
-type Testimonial = {
-  name: string;
-  handle: string;
-  avatar: string;
-  type: "whatsapp" | "instagram";
-  message: string;
-  time: string;
-  stars?: number;
-};
-
-const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Inês R.",
-    handle: "+55 85 9****-****",
-    avatar: avatar1,
-    type: "whatsapp",
-    time: "20:03",
-    stars: 5,
-    message:
-      "Eu não esperava que um mapa fosse me trazer tanta clareza assim. Consegui entender por que minha vida financeira não fluía... e o que eu precisava ajustar. Sério, parece que tirou um peso.",
-  },
-  {
-    name: "Marina F.",
-    handle: "+55 11 9****-****",
-    avatar: avatar2,
-    type: "whatsapp",
-    time: "20:01",
-    stars: 5,
-    message:
-      "Eu fiquei em choque com a precisão... parecia que estavam descrevendo exatamente o que eu vivo. Principalmente na parte dos padrões que me travam, fez MUITO sentido. Depois que li, comecei a enxergar tudo diferente",
-  },
-  {
-    name: "Sofia L.",
-    handle: "+55 21 9****-****",
-    avatar: avatar3,
-    type: "whatsapp",
-    time: "20:05",
-    stars: 5,
-    message:
-      "Foi muito além do que eu imaginei. Me senti muito direcionada depois, como se finalmente soubesse pra onde ir. Muito obrigada!!!",
-  },
-];
+const DEPOIMENTO_SCREENSHOTS = [
+  { src: depoWhatsapp1, alt: "Depoimento 1 — conversa no WhatsApp" },
+  { src: depoWhatsapp2, alt: "Depoimento 2 — conversa no WhatsApp" },
+  { src: depoWhatsapp3, alt: "Depoimento 3 — conversa no WhatsApp" },
+] as const;
 
 function Stars({ count = 5 }: { count?: number }) {
   return (
@@ -203,60 +166,8 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
-function TestimonialCard({ t }: { t: Testimonial }) {
-  const isWA = t.type === "whatsapp";
-  return (
-    <div className="w-[300px] sm:w-[340px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl bg-white">
-      {/* Header */}
-      {isWA ? (
-        <div className="px-4 py-3 flex items-center gap-3" style={{ background: "#075E54" }}>
-          <img src={t.avatar} alt={t.name} width={512} height={512} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
-          <div className="flex-1 min-w-0">
-            <p className="text-white text-sm font-semibold truncate">{t.name}</p>
-            <p className="text-white/70 text-xs truncate">{t.handle}</p>
-          </div>
-          <svg className="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
-        </div>
-      ) : (
-        <div className="px-4 py-3 flex items-center gap-3 bg-gradient-to-r from-[#feda75] via-[#d62976] to-[#962fbf]">
-          <img src={t.avatar} alt={t.name} width={512} height={512} loading="lazy" className="w-10 h-10 rounded-full object-cover ring-2 ring-white" />
-          <div className="flex-1 min-w-0">
-            <p className="text-white text-sm font-semibold truncate">{t.handle}</p>
-            <p className="text-white/80 text-xs">Direct · Instagram</p>
-          </div>
-          <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.71 3.71 0 01-1.38-.9 3.71 3.71 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 5.41a4.43 4.43 0 100 8.86 4.43 4.43 0 000-8.86zm5.6-.2a1.04 1.04 0 11-2.07 0 1.04 1.04 0 012.07 0zM12 14.3a2.3 2.3 0 110-4.6 2.3 2.3 0 010 4.6z"/></svg>
-        </div>
-      )}
-
-      {/* Body */}
-      <div className={isWA ? "px-4 py-5" : "px-4 py-5 bg-white"} style={isWA ? { background: "#ECE5DD" } : {}}>
-        <div className={`relative max-w-[88%] ${isWA ? "ml-auto" : ""} px-4 py-3 rounded-2xl text-[15px] leading-snug text-gray-900`}
-          style={{
-            background: isWA ? "#DCF8C6" : "#F1F1F1",
-            borderTopRightRadius: isWA ? "4px" : undefined,
-            borderTopLeftRadius: !isWA ? "4px" : undefined,
-          }}
-        >
-          {t.message}
-          <div className={`flex items-center gap-1 mt-2 ${isWA ? "justify-end" : "justify-start"} text-[11px] text-gray-500`}>
-            <span>{t.time}</span>
-            {isWA && (
-              <svg className="w-4 h-4" viewBox="0 0 16 15" fill="#34B7F1"><path d="M15.01 3.316l-.478-.372a.365.365 0 00-.51.063L8.666 9.879a.32.32 0 01-.484.033l-.358-.325a.319.319 0 00-.484.032l-.378.483a.418.418 0 00.036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 00-.064-.512zm-4.1 0l-.478-.372a.365.365 0 00-.51.063L4.566 9.879a.32.32 0 01-.484.033L1.891 7.769a.366.366 0 00-.515.006l-.423.433a.364.364 0 00.006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 00-.063-.51z"/></svg>
-            )}
-          </div>
-        </div>
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-200/60">
-          <Stars count={t.stars ?? 5} />
-          <span className="text-[11px] text-gray-500 uppercase tracking-wider">Cliente verificada</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function TestimonialsSection() {
-  // Duplicate for seamless infinite marquee
-  const loop = [...TESTIMONIALS, ...TESTIMONIALS];
+  const loop = [...DEPOIMENTO_SCREENSHOTS, ...DEPOIMENTO_SCREENSHOTS];
   return (
     <section className="relative px-6 py-24 md:py-32 bg-deep/60 border-y border-gold-soft/20 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center mb-12">
@@ -272,19 +183,31 @@ function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Marquee */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 bg-gradient-to-r from-deep to-transparent pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 bg-gradient-to-l from-deep to-transparent pointer-events-none" />
-        <div className="flex gap-6 animate-marquee w-max py-4">
-          {loop.map((t, i) => (
-            <TestimonialCard key={`${t.handle}-${t.time}-${i}`} t={t} />
+        <div className="flex gap-6 animate-marquee w-max py-4 items-stretch">
+          {loop.map((item, i) => (
+            <div
+              key={`${item.alt}-${i}`}
+              className="flex w-[min(88vw,280px)] sm:w-[300px] flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-gold-soft/30 bg-cream/5 shadow-2xl"
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                width={800}
+                height={1600}
+                loading="lazy"
+                className="h-auto w-full object-contain object-top"
+                decoding="async"
+              />
+            </div>
           ))}
         </div>
       </div>
 
       <p className="text-center text-cream/60 text-xs mt-10 italic">
-        Depoimentos reais de clientes via WhatsApp · Nomes e telefones parcialmente preservados
+        Prints reais de conversas no WhatsApp
       </p>
     </section>
   );
